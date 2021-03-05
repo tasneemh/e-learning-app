@@ -1,9 +1,12 @@
 //importing express
 const express = require('express');
+//importing middleware for node
 const morgan = require('morgan');
+//importing cors to enable cors
 const cors = require('cors');
 //importing pool i.e.database 
 const pool = require('../db/db');
+//importing pool 
 const dbHelpers = require('../db/dbHelpers/index')(pool);
 //creating express server
 const app = express();

@@ -2,13 +2,13 @@
 //importing Pool
 const { Pool } = require('pg');
 
+//creating pool object
 const pool = new Pool({
   host: 'localhost',
   user: 'development',
   password: 'development',
   database: 'educational_web_app',
   port: 5432,
-
 });
 
 pool.connect((err) => {
