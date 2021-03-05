@@ -8,13 +8,12 @@ const pool = new Pool({
   password: 'development',
   database: 'educational_web_app',
   port: 5432,
-
 });
 
 pool.connect((err) => {
   if (err) throw new Error(err);
 })
 
-console.log("db connection establishing...");
+console.log('postgrel sql db connection establishing...');
 //exporting pool in 
 module.exports = pool;

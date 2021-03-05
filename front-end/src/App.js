@@ -1,24 +1,31 @@
-import axios from 'axios';
 import { useState } from 'react';
+import axios from 'axios';
 import './App.css';
 
 function App() {
 
   const [state, setState] = useState({
-    learners: [],
+    learners: []
   });
 
-  axios.get(`http://localhost:8000`)
-    .then((response) => {
-      setState(prev =>({...prev, learners: response.data.learners}));
+  axios.get('/learners')
+    .then(response => {
+      setState(prev => ({
+        ...prev,
+        learners: response.data.learners
+      }));
     })
-    .catch((error) => {
+    .catch(error => {
       console.log(error);
     });
 
+  const displayLearners = state.learners.map(learner => {
+    return (<div>{learner.first_name}</div>);
+  });
+
   return (
     <div className="App">
-      <div>{state.learners}</div>
+      {state.learners && displayLearners}
     </div>
   );
 }
