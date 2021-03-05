@@ -1,0 +1,12 @@
+DROP TABLE IF EXISTS learners CASCADE;
+
+CREATE TABLE learners (
+  id SERIAL PRIMARY KEY NOT NULL,
+  first_name VARCHAR(255) NOT NULL,
+  last_name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  created_at TIMESTAMPTZ DEFAULT Now()
+  -- course_id INTEGER REFERENCES course(id) ON DELETE CASCADE
+);
+
