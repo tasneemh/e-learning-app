@@ -8,7 +8,7 @@ const cors = require('cors');
 
 
 const pool = require('../sqldb/db');
-const dbHelpers = require('../sqldb/dbHelpers/learners')(pool);
+const sqldbHelpers = require('../sqldb/dbHelpers/learners')(pool);
 //importing mongoDb
 const mongodbSetup = require('../mongodb/db');
 
@@ -22,7 +22,7 @@ app.use(cors());
 mongodbSetup((monogodb) => {
   //creating a route
   app.get("/learners", (request, response) => {
-    dbHelpers.getAllLearners().then(learners => {
+    sqldbHelpers.getAllLearners().then(learners => {
       response.json({ learners });
     });
   });
