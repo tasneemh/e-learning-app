@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
 import './App.css';
+import Header from './components/Header';
+
 
 function App() {
 
@@ -8,7 +10,7 @@ function App() {
     learners: []
   });
 
-  axios.get('/learners')
+  /*axios.get('/learners')
     .then(response => {
       setState(prev => ({
         ...prev,
@@ -17,7 +19,7 @@ function App() {
     })
     .catch(error => {
       console.log(error);
-    });
+    });*/
 
   const displayLearners = state.learners.map(learner => {
     return (<div>{learner.first_name}</div>);
@@ -26,6 +28,7 @@ function App() {
   return (
     <div className="App">
       {state.learners && displayLearners}
+      <Header />
     </div>
   );
 }
