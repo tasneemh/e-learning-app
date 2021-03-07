@@ -33,6 +33,10 @@ mongodbSetup((monogodb) => {
     response.json(result);
   });
 
+  app.get("/user", (request, response) => {
+      console.log("request", request, "response" , response);
+  });
+
   // express server listening to PORT
   app.listen(PORT, () => {
     console.log(`back-end server listening on port ${PORT}`);
