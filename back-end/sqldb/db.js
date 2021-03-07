@@ -2,6 +2,7 @@
 //importing Pool
 const { Pool } = require('pg');
 
+//creating pool object
 const pool = new Pool({
   host: 'localhost',
   user: 'development',

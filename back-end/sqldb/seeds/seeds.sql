@@ -1,4 +1,4 @@
--- table for learners
+-- table for learners... 
 INSERT INTO learners (first_name, last_name, email, password) 
 VALUES ('Eva', 'Stanley','sebastanguerra@yamil.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.'),
 ('Louisa', 'Meyer','jacksonrose@hotmail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.'),

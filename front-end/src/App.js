@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from 'axios';
@@ -14,16 +15,18 @@ function App() {
     learners: []
   });
 
-  /*axios.get('/learners')
+
+  axios.get('/learners')
     .then(response => {
       setState(prev => ({
         ...prev,
         learners: response.data.learners
       }));
+
     })
     .catch(error => {
       console.log(error);
-    });*/
+    });
 
   const displayLearners = state.learners.map(learner => {
     return (<div>{learner.first_name}</div>);
