@@ -1,6 +1,6 @@
+import React, { useState } from "react";
 import axios from 'axios';
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
 import { Switch } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
@@ -17,21 +17,21 @@ export default function Register() {
   const [toggle, setToggle] = useState(false);
   const toggler = () => toggle ? setToggle(false) : setToggle(true);
 
-  const [user, setUser] = useState("learner");
-  const getUserType = () => { 
-    toggle ? setUser("learner"): setUser("educator");
-  }
+  const [userType, setUserType] = useState("learner");
+  const getUserType = () => {
+    toggle ? setUserType("learner") : setUserType("educator");
+  };
 
-  const onSubmit = data => {
-    data["user"] =  user;
+  const onSubmit = (data) => {
+    data["userType"] = userType;
     console.log("form info", data);
-    axios.post(`http://localhost:9001/user`, data)
-    .then(response => {
-      console.log(response);
-    })
-    .catch(error => {
-      console.log(error);
-    });
+    axios.post(`http://localhost:9001/user`, { data })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 
   return (
@@ -85,7 +85,7 @@ export default function Register() {
           {errors.password && errors.password.type === "minLength" && (<span>MinLength of the password is 5</span>)}
           {errors.password && errors.password.type === "maxLength" && (<span>MaxLength of the password is 255</span>)}
         </div>
-        <Switch onClick={toggler} onChange={getUserType}/>
+        <Switch onClick={toggler} onChange={getUserType} />
         {toggle ? <span>Educator</span> : <span>Learner</span>}
         <input type="submit" value="Register" />
       </form>
