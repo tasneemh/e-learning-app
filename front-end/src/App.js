@@ -15,7 +15,6 @@ function App() {
     learners: []
   });
 
-/*
   axios.get('/learners')
     .then(response => {
       setState(prev => ({
@@ -31,7 +30,7 @@ function App() {
   const displayLearners = state.learners.map(learner => {
     return (<div>{learner.first_name}</div>);
   });
-/** */
+
   return (
     <div className="App">
       {state.learners && displayLearners}
