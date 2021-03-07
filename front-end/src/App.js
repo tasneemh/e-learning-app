@@ -34,7 +34,7 @@ function App() {
 /** */
   return (
     <div className="App">
-      {state.learners && displayLearners}
+      {/** {state.learners && displayLearners}*/} 
       <Router>
         <Header />
         <Switch>
