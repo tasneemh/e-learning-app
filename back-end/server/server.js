@@ -9,7 +9,7 @@ const cookieSession = require('cookie-session');
 const bcrypt = require('bcrypt');
 //importing pool i.e.database 
 const pool = require('../sqldb/db');
-const sqldbHelpers = require('../sqldb/dbHelpers/learners')(pool);
+const sqldbHelpers = require('../sqldb/dbHelpers/index')(pool);
 //importing mongoDb
 const mongodbSetup = require('../mongodb/db');
 
@@ -19,7 +19,7 @@ const PORT = 9001;
 
 app.use(morgan('dev'));
 app.use(cors());
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieSession({
   name: 'session',
@@ -36,7 +36,17 @@ app.post("/user", (request, response) => {
   const newUser = request.body.data;
   const hashedPassword = bcrypt.hashSync(newUser.password, 10);
   newUser.password = hashedPassword;
-  sqldbHelpers.saveNewUser(newUser);
+  sqldbHelpers.saveNewUser(newUser).then(
+    user => {
+      if (!user) {
+        response.send({ error: "error" });
+        return;
+      }
+      console.log("in server: user", user);
+      //request.session.userId = user.id;
+      response.send({ user: { firstname: user.first_name, lastname: user.last_name, email: user.email, id: user.id, usertype: user.usertype } });
+    })
+    .catch(error => response.send(error));
 });
 
 mongodbSetup((monogodb) => {

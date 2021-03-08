@@ -1,11 +1,10 @@
 -- table for learners... 
 INSERT INTO learners (first_name, last_name, email, password) 
-VALUES ('Eva', 'Stanley','sebastanguerra@yamil.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.'),
-('Louisa', 'Meyer','jacksonrose@hotmail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.'),
-('Dominic ','Parks', 'victoriablackwell@outlook.com','$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.'),
-('Sue', 'Luna', 'jasonvincent@gmx.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.'),
-('Rosalie', 'Garza', 'jacksondavid@gmax.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.'),
-('Etta', 'West', 'charlielevy@yahoo.com','$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.'),
-('Margaret', 'Wong', 'makaylaweiss@icloud.com','$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.'),
-('Leroy','Hart', 'jacereynold@inbox.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.');
+VALUES ('learner', 'one', 'learnerone@gmail.com', '$2b$10$68DV4LMhjEro5XmCBG8qSum81detBrwlJw18x8hR19a6iyvsJK4s2'),/**password:learnerone**/
+('learner', 'two', 'learnertwo@gmail.com', '$2b$10$1A5lw5QlxdqnJhY.63/y1eDlsLDDoGChgTY4gb4myMMWHf78L3jLG'),/**password:learnertwo**/
+('learner', 'three','learnerthree@gmail.com','$2b$10$R6JjzsUCALWyZSmCpyFSuugXJeQpiyF0HqxandujJCwZnrYQEH.im');/**password:learnerthree**/
 
+INSERT INTO educators (first_name, last_name, email, password) 
+VALUES ('educator', 'one', 'educatorone@gmail.com', '$2b$10$A16s.l8gm5XTv2w5dJsVpu.aOweBetegDxhOL/Jn1TlUlcH014gVq'),/**password:educatorone**/
+('educator', 'two', 'educatortwo@gmail.com', '$2b$10$0z1Aq.1n.ZtmyM4mFD/lguMncsJ2hL66GeWR/9BPlMQzBr7UTWbka'),/**password:educatortwo**/
+('educator', 'three', 'educatorthree@gmail.com', '$2b$10$0ph/R6hrbTbRZj3RwS8T4.YnQWd2xCyGZqRMqCG/nVhSg9bj5/K5y');/**password:educatorthree**/
