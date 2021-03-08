@@ -8,14 +8,17 @@ import Home from "./components/Home";
 import Notes from "./components/Notes";
 import Login from "./components/Login";
 import Register from "./components/Register";
-
+import Educator from './components/Educator';
+import Learner from "./components/Learner";
+import EducatorCourses from "./components/EducatorCourses";
+import CourseForm from "./components/CourseForm";
 
 function App() {
   const [state, setState] = useState({
     learners: []
   });
 
-  axios.get('/learners')
+  /*axios.get('/learners')
     .then(response => {
       setState(prev => ({
         ...prev,
@@ -29,11 +32,10 @@ function App() {
 
   const displayLearners = state.learners.map(learner => {
     return (<div>{learner.first_name}</div>);
-  });
+  });*/
 
   return (
     <div className="App">
-      {state.learners && displayLearners}
       <Router>
         <Header />
         <Switch>
@@ -50,9 +52,26 @@ function App() {
             {/** login*/}
             <Login />
           </Route>
-          <Route path="/register">
-            {/** login*/}
+          <Route path="/register"> 
+            {/** register*/}
             <Register />
+          </Route>
+           {/**<Redirect from="/old-path" to="/new-path" /> */}
+          <Route path="/educator">
+            {/** educator*/}
+            <Educator />
+          </Route>
+          <Route path="/courses">
+            {/** educator/courses*/}
+            <EducatorCourses />
+          </Route>
+          <Route path="/createnewcourses">
+            {/** educator/courses/createnewcourse*/}
+            <CourseForm />
+          </Route>
+          <Route path="/learner">
+            {/** learner*/}
+            <Learner />
           </Route>
         </Switch>
       </Router>
