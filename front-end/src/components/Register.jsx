@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Switch } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
@@ -22,13 +22,14 @@ export default function Register() {
     toggle ? setUserType("learner") : setUserType("educator");
   };
 
+  const history = useHistory();
+
   const onSubmit = (data) => {
-    data["userType"] = userType;
-    console.log("form info", data);
+  
+    data["usertype"] = userType;
     axios.post(`http://localhost:9001/user`, { data })
       .then(response => {
-        console.log("response: ", response);
-      })
+     })
       .catch(error => {
         console.log(error);
       });
@@ -40,7 +41,7 @@ export default function Register() {
         <h1>Register</h1>
         <div className="form-group">
           <input name="firstname" autoComplete="off"
-            ref={register({ required: true, minLength: 5, maxLength: 255, /*pattern: /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/i*/ })}
+            ref={register({ required: true, maxLength: 255, /*pattern: /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/i*/ })}
             className="form-control"
             placeholder="Firstname"
           >
@@ -50,13 +51,12 @@ export default function Register() {
           {errors.firstname && errors.firstname.type === "maxLength" && (<span>MaxLength of the firstname is 255</span>)}
 
           <input name="lastname" autoComplete="off"
-            ref={register({ required: true, minLength: 5, maxLength: 255, /*pattern: /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/i*/ })}
+            ref={register({ required: true, maxLength: 255, /*pattern: /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/i*/ })}
             className="form-control"
             placeholder="Lastname"
           >
           </input>
           {errors.lastname && errors.lastname.type === "required" && (<span>Lastname is required</span>)}
-          {errors.lastname && errors.lastname.type === "minLength" && (<span>MinLength of the lastname is 5</span>)}
           {errors.lastname && errors.lastname.type === "maxLength" && (<span>MaxLength of the lastname is 255</span>)}
 
           <input name="email" autoComplete="off"

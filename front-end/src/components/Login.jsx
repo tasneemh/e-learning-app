@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { useForm } from "react-hook-form";
@@ -15,7 +15,9 @@ export default function Login() {
     setPasswordShown(passwordShown ? false : true);
   };
 
-  const onSubmit = data => console.log("form info", data);
+  const onSubmit = data => 
+      console.log("form info", data);
+      //return <Redirect to="/learner" />;
 
   //hook
   /*const [input, setInput] = useState({
