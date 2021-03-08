@@ -15,21 +15,21 @@ function App() {
     learners: []
   });
 
-  axios.get('/learners')
-    .then(response => {
-      setState(prev => ({
-        ...prev,
-        learners: response.data.learners
-      }));
+  // axios.get('/learners')
+  //   .then(response => {
+  //     setState(prev => ({
+  //       ...prev,
+  //       learners: response.data.learners
+  //     }));
 
-    })
-    .catch(error => {
-      console.log(error);
-    });
+  //   })
+  //   .catch(error => {
+  //     console.log("error: ", error);
+  //   });
 
-  const displayLearners = state.learners.map(learner => {
-    return (<div>{learner.first_name}</div>);
-  });
+  // const displayLearners = state.learners.map(learner => {
+  //   return (<div>{learner.first_name}</div>);
+  // });
 
   return (
     <div className="App">

@@ -27,7 +27,7 @@ export default function Register() {
     console.log("form info", data);
     axios.post(`http://localhost:9001/user`, { data })
       .then(response => {
-        console.log(response);
+        console.log("response: ", response);
       })
       .catch(error => {
         console.log(error);
