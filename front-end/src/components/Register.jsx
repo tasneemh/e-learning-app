@@ -30,18 +30,7 @@ export default function Register() {
     data["usertype"] = userType;
     axios.post(`http://localhost:9001/user`, { data })
       .then(response => {
-        const user = response.data.user;
-        const userType = response.data.user.usertype;
-        if (userType === "learner") {
-          console.log("inside learner");
-          history.push({ pathname: "/learner", state: { user } });
-          //return <Redirect to="/learner">;
-        } else if (userType === "educator") {
-          console.log("inside educator");
-          history.push({ pathname: "/educator", state: { user } });
-          //return <Redirect to="/educator">;
-        }
-      })
+     })
       .catch(error => {
         console.log(error);
       });
