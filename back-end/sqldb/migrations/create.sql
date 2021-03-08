@@ -1,5 +1,8 @@
 DROP TABLE IF EXISTS learners CASCADE;
 DROP TABLE IF EXISTS educators CASCADE;
+DROP TABLE IF EXISTS courses CASCADE;
+DROP TABLE IF EXISTS learners_courses CASCADE;
+DROP TABLE IF EXISTS educators_courses CASCADE;
 
 CREATE TABLE learners (
   id SERIAL PRIMARY KEY NOT NULL,
@@ -21,3 +24,23 @@ CREATE TABLE educators (
   -- course_id INTEGER REFERENCES course(id) ON DELETE CASCADE
 );
 
+CREATE TABLE courses (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  code VARCHAR(255),
+  description TEXT,
+  created_at TIMESTAMPTZ DEFAULT Now()
+  -- course_id INTEGER REFERENCES course(id) ON DELETE CASCADE
+);
+
+CREATE TABLE learners_courses(
+  id SERIAL PRIMARY KEY NOT NULL,
+  learner_id INTEGER REFERENCES learners(id) ON DELETE CASCADE,
+  course_id INTEGER REFERENCES courses(id) ON DELETE CASCADE
+);
+
+CREATE TABLE educators_courses(
+  id SERIAL PRIMARY KEY NOT NULL,
+  educator_id INTEGER REFERENCES educators(id) ON DELETE CASCADE,
+  course_id INTEGER REFERENCES courses(id) ON DELETE CASCADE
+);

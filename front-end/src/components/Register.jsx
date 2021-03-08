@@ -5,6 +5,7 @@ import { Switch } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { useForm } from "react-hook-form";
+import "./Register.css";
 
 export default function Register() {
   const eye = <FontAwesomeIcon icon={faEye} />;

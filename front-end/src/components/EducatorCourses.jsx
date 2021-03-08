@@ -16,10 +16,3 @@ export default function EducatorCourses() {
 
   );
 }
-/**
- * <form onSubmit={handleSubmit(onSubmit)}>
-
-      <input type="file" ref = {register} name="picture" />
-      <button>Submit</button>
-    </form>
- */
