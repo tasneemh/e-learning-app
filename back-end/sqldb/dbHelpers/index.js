@@ -56,5 +56,18 @@ module.exports = (pool) => {
       });
   };
 
-  return { getAllLearners, saveNewUser, saveCourse };
+  const getAllCoursesForEducator = (educatorId) => {
+    return pool.query(`
+    SELECT courses.* FROM courses 
+    JOIN educators_courses ON courses.id = educators_courses.course_id 
+    JOIN educators ON educators.id = educators_courses.educator_id 
+    WHERE educators.id = $1`, [educatorId])
+      .then(response => {
+        return response.rows;
+      }).catch(error => {
+        console.log(error);
+      });
+  };
+  
+  return { getAllLearners, saveNewUser, saveCourse, getAllCoursesForEducator };
 };

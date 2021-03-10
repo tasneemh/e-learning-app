@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { useForm } from "react-hook-form";
 import "./Login.css";
+import 'bootstrap/dist/css/bootstrap.css';
 
 
 export default function Login() {
