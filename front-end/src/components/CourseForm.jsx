@@ -41,7 +41,7 @@ export default function CourseForm() {
       });
   };
 
-  const onSubmit = async (data, e) => {
+
     //upload different file type?
     //using drag and drop package?
     console.log("data", data);
@@ -59,9 +59,7 @@ export default function CourseForm() {
     course['courseMaterialUrl'] = courseMaterialUrl;
     course['educatorId'] = id;
     await saveCourse(course);
-    console.log("event: ", e);
-    e.target.reset();
-  };
+
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

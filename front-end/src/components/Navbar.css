@@ -1,7 +1,7 @@
-.link{
-  color: white;
+.navbar{
+  grid-area: nav;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  align-items: center;
+  justify-items: center;
 }
-.link:hover{
-  text-decoration: none;
-  color: blue;
-} 
