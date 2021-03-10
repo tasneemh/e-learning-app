@@ -11,7 +11,6 @@ CREATE TABLE learners (
   email VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
   created_at TIMESTAMPTZ DEFAULT Now()
-  -- course_id INTEGER REFERENCES course(id) ON DELETE CASCADE
 );
 
 CREATE TABLE educators (
@@ -21,7 +20,6 @@ CREATE TABLE educators (
   email VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
   created_at TIMESTAMPTZ DEFAULT Now()
-  -- course_id INTEGER REFERENCES course(id) ON DELETE CASCADE
 );
 
 CREATE TABLE courses (
@@ -29,8 +27,9 @@ CREATE TABLE courses (
   name VARCHAR(255) NOT NULL,
   code VARCHAR(255),
   description TEXT,
+  image_url VARCHAR,
+  material_url VARCHAR,
   created_at TIMESTAMPTZ DEFAULT Now()
-  -- course_id INTEGER REFERENCES course(id) ON DELETE CASCADE
 );
 
 CREATE TABLE learners_courses(

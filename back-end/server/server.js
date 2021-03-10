@@ -32,7 +32,7 @@ app.get("/learners", (request, response) => {
   });
 });
 
-app.post("/user", (request, response) => {
+app.post("/savenewuser", (request, response) => {
   const newUser = request.body.data;
   const hashedPassword = bcrypt.hashSync(newUser.password, 10);
   newUser.password = hashedPassword;
@@ -49,6 +49,23 @@ app.post("/user", (request, response) => {
     .catch(error => response.send(error));
 });
 
+app.post("/savecourse", (request, response) => {
+  console.log("send to back-end", request.body.course);
+  const course = request.body.course;
+  sqldbHelpers.saveCourse(course).then(
+    user => {
+      if (!user) {
+        response.send({ error: "error" });
+        return;
+      }
+      console.log("in server: user", user);
+      //request.session.userId = user.id;
+      //response.send({ user: { firstname: user.first_name, lastname: user.last_name, email: user.email, id: user.id, usertype: user.usertype } });
+    })
+    .catch(error => response.send(error));
+
+});
+
 mongodbSetup((monogodb) => {
   app.get("/test", async (request, response) => {
     //passing collection named documents
@@ -58,20 +75,7 @@ mongodbSetup((monogodb) => {
 
   app.post("/savecourse", (request, response) => {
     console.log("send to back-end", request.body.data);
-    /*const newUser = request.body.data;
-    const hashedPassword = bcrypt.hashSync(newUser.password, 10);
-    newUser.password = hashedPassword;
-    sqldbHelpers.saveNewUser(newUser).then(
-      user => {
-        if (!user) {
-          response.send({ error: "error" });
-          return;
-        }
-        console.log("in server: user", user);
-        //request.session.userId = user.id;
-        response.send({ user: { firstname: user.first_name, lastname: user.last_name, email: user.email, id: user.id, usertype: user.usertype } });
-      })
-      .catch(error => response.send(error));*/
+
   });
 
 });

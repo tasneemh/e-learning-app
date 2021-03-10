@@ -16,7 +16,6 @@ function App() {
     learners: []
   });
 
-
   return (
     <div className="App">
       <Router>
@@ -39,16 +38,16 @@ function App() {
             {/** register*/}
             <Register />
           </Route>
-           {/**<Redirect from="/old-path" to="/new-path" /> */}
+           {/**/}
           <Route path="/educator">
             {/** educator*/}
             <Educator />
           </Route>
-          <Route path="/courses">
+          <Route path="/educator-courses">
             {/** educator/courses*/}
             <EducatorCourses />
           </Route>
-          <Route path="/createnewcourses">
+          <Route path="/educator-course-createnewcourses">
             {/** educator/courses/createnewcourse*/}
             <CourseForm />
           </Route>
