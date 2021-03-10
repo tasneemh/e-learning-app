@@ -23,7 +23,7 @@ export default function CourseForm() {
       })
 
       const result = await response.json();
-      console.log("result in uploadfie", JSON.stringify(result.secure_url));
+      console.log("result in uploadfile", JSON.stringify(result.secure_url));
       return JSON.stringify(result.secure_url);
     }
     catch (error) {
