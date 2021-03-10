@@ -42,24 +42,33 @@ app.post("/savenewuser", (request, response) => {
         response.send({ error: "error" });
         return;
       }
-      console.log("in server: user", user);
-      //request.session.userId = user.id;
       response.send({ user: { firstname: user.first_name, lastname: user.last_name, email: user.email, id: user.id, usertype: user.usertype } });
     })
     .catch(error => response.send(error));
 });
 
+app.get("/educator/:id/courses", (request, response) => {
+  const educatorId = request.params.id;
+  sqldbHelpers.getAllCoursesForEducator(educatorId).then(
+    course => {
+      if (!course) {
+        response.send({ message: "no active courses" });
+        return;
+      }
+      response.send(course);
+    })
+    .catch(error => response.send(error));
+});
+
 app.post("/savecourse", (request, response) => {
-  console.log("send to back-end", request.body.course);
   const course = request.body.course;
   sqldbHelpers.saveCourse(course).then(
-    user => {
-      if (!user) {
+    course => {
+      if (!course) {
         response.send({ error: "error" });
         return;
       }
-      console.log("in server: user", user);
-      //request.session.userId = user.id;
+      console.log("in server: course", course);
       //response.send({ user: { firstname: user.first_name, lastname: user.last_name, email: user.email, id: user.id, usertype: user.usertype } });
     })
     .catch(error => response.send(error));
@@ -72,12 +81,6 @@ mongodbSetup((monogodb) => {
     const result = await monogodb.collection('documents').find().toArray();
     response.json(result);
   });
-
-  app.post("/savecourse", (request, response) => {
-    console.log("send to back-end", request.body.data);
-
-  });
-
 });
 
 // express server listening to PORT
