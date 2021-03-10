@@ -1,4 +1,7 @@
 .header{
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
+  margin: 2rem 0;
+  width: 100%;
 }
