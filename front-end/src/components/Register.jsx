@@ -66,15 +66,18 @@ export default function Register() {
     <Drawer
       title="Register"
       placement="right"
-      closable={false}
+      closable={true}
       onClose={onClose}
       visible={showDrawer}
-      //getContainer={false}
+      // getContainer={false}
       width={500}
     >
+    <Button onClick={onClose}>X</Button>
+
+    
       <div className="register">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <i className="user">{user}</i>
+        {/*<i className="user">{user}</i>*/}
           <div className="register-container">
             <input className="input" name="firstname" autoComplete="off"
               ref={register({ required: true, maxLength: 255, /*pattern: /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/i*/ })}
@@ -119,7 +122,7 @@ export default function Register() {
             <Switch className="toggle" onClick={toggler} onChange={getUserType} />
             {toggle ? <span >Educator</span> : <span>Learner</span>}
             </div>
-            <input className="btn" type="submit" value="Register" />
+            <input className="btn" type="submit" value="REGISTER" />
           </div>
           <div className="login-container">
           <p>Returning user?</p>

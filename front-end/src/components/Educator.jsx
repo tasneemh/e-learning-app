@@ -13,7 +13,6 @@ export default function Educator() {
 
   return (
     <>
-      <SideBar firstname={firstname} lastname={lastname} email={email}></SideBar>
       <div>
         <button>Statistic</button>
         <button onClick={handleCoursesClick}>Courses</button>
