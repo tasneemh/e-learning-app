@@ -3,5 +3,94 @@
   margin: 0;
   padding: 0;
   font-family: "Nunito", sans-serif;
+  font-size: 20px;
+}
+form{
+  border: 1px solid green;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  width: 400px;
 }
 
+.register{
+  border: 1px solid blue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
+  width: 400px;
+}
+
+.register-container{
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 500px;
+  align-items: center;
+}
+.input{
+  color: black;
+  background-color:rgb(223, 237, 241);
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  font-size: 20px;
+}
+.btn{
+  color: black;
+  background-color: rgb(106, 215, 235);
+  border: none;
+  font-size: 30px;
+  font-weight: bold;
+}
+.btn:hover{
+  cursor: pointer;
+  background-color: rgb(79, 79, 168);
+}
+.errorMsg{
+  color: red;
+}
+.password-container{
+  display: flex;
+  border: 1px solid brown;
+}
+.eye{
+  width: 50px;
+  border: 1px solid yellow;
+  display: inline;
+  position: absolute;
+  top: 61%;
+  right: 22%;
+
+}
+.toggle{
+  width: 50px;
+  height: 70px;
+}
+.btn-container{
+  display: flex;
+  flex-direction:column;
+  border: 1px solid brown;
+  align-items: center;
+}
+.toggle-container{
+  display: flex;
+  flex-direction: row;
+  width: 200px;
+  /* height: 100px; */
+  border: 1px solid orange;
+  justify-content: space-around;
+  align-items: center;
+}
+.login-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 400px;
+  border: 1px solid blue;
+}
