@@ -1,5 +1,5 @@
 import { useHistory } from 'react-router-dom';
-
+import SideBar from './SideBar';
 export default function Educator() {
   const history = useHistory();
   console.log("prop history", JSON.stringify(history));
@@ -13,7 +13,7 @@ export default function Educator() {
 
   return (
     <>
-      <span>Hello, {firstname} {lastname} {email} {id}</span>
+      <SideBar firstname={firstname} lastname={lastname} email={email}></SideBar>
       <div>
         <button>Statistic</button>
         <button onClick={handleCoursesClick}>Courses</button>

@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CourseCard(props) {
   const courses = props.courses;
-
+  console.log("courses in card", props);
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
 
@@ -65,10 +65,10 @@ export default function CourseCard(props) {
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="edit">
-      
+
         </IconButton>
         <IconButton aria-label="archive">
-          
+
         </IconButton>
         <IconButton
           className={clsx(classes.expand, {
@@ -88,7 +88,7 @@ export default function CourseCard(props) {
             Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
             minutes.
           </Typography>
-          
+
         </CardContent>
       </Collapse>
     </Card>

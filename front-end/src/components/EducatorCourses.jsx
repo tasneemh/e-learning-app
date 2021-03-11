@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import SideBar from "./SideBar";
 import CourseCard from "./CourseCard";
+
 
 export default function EducatorCourses() {
   const history = useHistory();
@@ -23,8 +25,8 @@ export default function EducatorCourses() {
 
   return (
     <div>
+      <SideBar></SideBar>
       <span>Hello, {firstname} {lastname} {email} {id}</span>
-      {courses && <CourseCard></CourseCard>}
       <button onClick={handleClick}>Create new course!</button>
     </div>
 

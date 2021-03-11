@@ -1,48 +1,96 @@
-.form-group {
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Nunito", sans-serif;
+  font-size: 20px;
+}
+form{
+  border: 1px solid green;
   display: flex;
   flex-direction: column;
-  text-align: center;
-  justify-items: center;
-  font-size: 22px;
-  max-width: 500px;
-  min-height: 672px;
-  margin: 0 auto;
-  border-radius: 25px;
-  color: black;
-  background-color:white;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  width: 400px;
 }
 
-.form-group > input {
-  margin-top: 200px;
-}
-
-input {
-  margin: 0 auto;
-  background-color: white;
-  opacity: 50%;
-  color: black;
-  margin-top: 10px;
-  width: 300px;
-  height: 59px;
-  font-size: 22px;
-  margin-bottom: 14px;
-  max-width: 527px;
-  padding: 0 10%;
-}
-
-.password-wrapper {
-  position: relative;
+.register{
+  border: 1px solid blue;
   display: flex;
-  margin-bottom: 14px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
+  width: 400px;
 }
 
-i {
-  position: absolute;
-  top: 38%;
-  right: 16%;
+.register-container{
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 500px;
+  align-items: center;
 }
-i:hover {
-  color: #00fcb6;
+.input{
+  color: black;
+  background-color:rgb(223, 237, 241);
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  font-size: 20px;
+}
+.btn{
+  color: black;
+  background-color: rgb(106, 215, 235);
+  border: none;
+  font-size: 30px;
+  font-weight: bold;
+}
+.btn:hover{
   cursor: pointer;
+  background-color: rgb(79, 79, 168);
 }
+.errorMsg{
+  color: red;
+}
+.password-container{
+  display: flex;
+  border: 1px solid brown;
+}
+.eye{
+  width: 50px;
+  border: 1px solid yellow;
+  display: inline;
+  position: absolute;
+  top: 61%;
+  right: 22%;
 
+}
+.toggle{
+  width: 50px;
+  height: 70px;
+}
+.btn-container{
+  display: flex;
+  flex-direction:column;
+  border: 1px solid brown;
+  align-items: center;
+}
+.toggle-container{
+  display: flex;
+  flex-direction: row;
+  width: 200px;
+  /* height: 100px; */
+  border: 1px solid orange;
+  justify-content: space-around;
+  align-items: center;
+}
+.login-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 400px;
+  border: 1px solid blue;
+}
