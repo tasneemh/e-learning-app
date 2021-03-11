@@ -1,14 +1,14 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
+import CourseCard from "./CourseCard";
 
 export default function EducatorCourses() {
   const history = useHistory();
   const educator = history.location.state.educator;
   const { firstname, lastname, email, id } = educator;
-  const [courses, setCourses] = useState([]);
-  
+  const [courses, setCourses] = useState();
+
   useEffect(() => {
     axios.get(`http://localhost:9001/educator/${id}/courses`)
       .then(response => {
@@ -24,6 +24,7 @@ export default function EducatorCourses() {
   return (
     <div>
       <span>Hello, {firstname} {lastname} {email} {id}</span>
+      {courses && <CourseCard></CourseCard>}
       <button onClick={handleClick}>Create new course!</button>
     </div>
 

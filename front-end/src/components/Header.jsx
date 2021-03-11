@@ -9,6 +9,7 @@ export default function Header() {
       <img
         className="logo"
         src="/images/logo.png"
+        width="300"
       />
       <Navbar/>
     </section>

@@ -1,7 +1,5 @@
 .navbar{
-  grid-area: nav;
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-  align-items: center;
-  justify-items: center;
+  display: flex;
+  align-content: space-around;
+  
 }
