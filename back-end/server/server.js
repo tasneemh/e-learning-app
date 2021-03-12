@@ -5,7 +5,6 @@ const morgan = require('morgan');
 //importing cors to enable cors
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const cookieSession = require('cookie-session');
 const bcrypt = require('bcrypt');
 //importing pool i.e.database 
 const pool = require('../sqldb/db');
@@ -21,10 +20,6 @@ app.use(morgan('dev'));
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(cookieSession({
-  name: 'session',
-  keys: ['key1', 'key2']
-}));
 
 app.get("/learners", (request, response) => {
   sqldbHelpers.getAllLearners().then(learners => {
