@@ -2,8 +2,6 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import SideBar from "./SideBar";
-import CourseCard from "./CourseCard";
-
 
 export default function EducatorCourses() {
   //console.log("inside educator courses props", props);

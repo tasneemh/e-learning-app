@@ -2,43 +2,50 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Nunito", sans-serif;
+  
   font-size: 20px;
 }
 form{
-  border: 1px solid green;
+  /* border: 1px solid green;   */
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; 
   height: 500px;
   width: 400px;
 }
 
 .register{
-  border: 1px solid blue;
+  /* border: 1px solid rgb(161, 158, 158);   */
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; 
+  align-items: center; 
+  align-content: center;
   height: 600px;
-  width: 400px;
+   width: 400px; 
+  font-family: "Nunito", sans-serif;
+  /* position: relative; */
+  /* background-color: rgb(207, 204, 204); */
 }
-
+.register:hover{
+box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
 .register-container{
-  border: 1px solid red;
+  /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
   width: 400px;
   height: 500px;
   align-items: center;
+  /* justify-content: space-between; */
 }
 
 .input{
   color: black;
   background-color:rgb(223, 237, 241);
   padding: 10px;
-  margin: 10px;
+  margin: 10px; 
   border: none;
   font-size: 20px;
 }
@@ -46,28 +53,31 @@ form{
   color: black;
   background-color: rgb(106, 215, 235);
   border: none;
-  font-size: 30px;
+  font-size: 25px;
   font-weight: bold;
+  border-radius: 8px;
+  letter-spacing: 5px;
 }
 .btn:hover{
   cursor: pointer;
   background-color: rgb(79, 79, 168);
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 .errorMsg{
   color: red;
 }
 .password-container{
   display: flex;
-  border: 1px solid brown;
+  position: relative;
+  /* border: 1px solid brown;  */
 }
 .eye{
   width: 50px;
-  border: 1px solid yellow;
+  /* border: 1px solid yellow; */
   display: inline;
   position: absolute;
-  top: 61%;
-  right: 22%;
-
+  top: 30%;
+  right: 0%;
 }
 .toggle{
   width: 50px;
@@ -76,7 +86,7 @@ form{
 .btn-container{
   display: flex;
   flex-direction:column;
-  border: 1px solid brown;
+  /* border: 1px solid brown; */
   align-items: center;
 }
 .toggle-container{
@@ -84,7 +94,9 @@ form{
   flex-direction: row;
   width: 200px;
   /* height: 100px; */
-  border: 1px solid orange;
+  /* border: 1px solid orange;  */
+  padding-bottom: 10px;
+  margin-bottom: 5px;
   justify-content: space-around;
   align-items: center;
 }
@@ -93,5 +105,14 @@ form{
   flex-direction: row;
   justify-content: space-around;
   width: 400px;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
+}
+.user{
+  font-size: 70px;
+  color:black;
+  /* top: 5%; */
+  top:0;
+  left: 41.5%;
+  /* position: absolute; */
+  margin-bottom: 10px;
 }

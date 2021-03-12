@@ -8,6 +8,7 @@ export default function Educator() {
   //const { firstname, lastname, email, id } = educator;
 
   return (
-    <SideBar educator={educator}/>
-  )
+    <SideBar educator={educator} />
+  );
+
 }
