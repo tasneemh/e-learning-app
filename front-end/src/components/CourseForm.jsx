@@ -2,12 +2,13 @@ import React from 'react';
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import SideBar from "./SideBar";
 
 export default function CourseForm() {
   const history = useHistory();
-  //console.log("prop history", JSON.stringify(history));
-  const educator = history.location.state.educator;
-  const { firstname, lastname, email, id } = educator;
+  console.log("prop history in course form", JSON.stringify(history));
+  const user = history.location.state.user;
+  const { firstname, lastname, email, id } = user;
   const { register, handleSubmit } = useForm();
   const url = "https://api.cloudinary.com/v1_1/c0ur-e/auto/upload";
 
@@ -19,8 +20,8 @@ export default function CourseForm() {
       const response = await fetch(url, {
         method: 'POST',
         body: formData,
-        mode: 'cors' 
-      })
+        mode: 'cors'
+      });
 
       const result = await response.json();
       console.log("result in uploadfile", JSON.stringify(result.secure_url));
@@ -41,7 +42,7 @@ export default function CourseForm() {
       });
   };
 
-const onSubmit = async (data, event) => {
+  const onSubmit = async (data, event) => {
     //upload different file type?
     //using drag and drop package?
     console.log("data", data);
@@ -60,23 +61,26 @@ const onSubmit = async (data, event) => {
     course['educatorId'] = id;
     await saveCourse(course);
     event.target.reset();
-}
+  };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <span>Hello, {firstname} {lastname} {email} {id}</span>
-      Course name: <input name="courseName" ref={register} />
-      <br />
+    <div>
+      <SideBar />
+      <form onSubmit={handleSubmit(onSubmit)}>
+        Course name: <input name="courseName" ref={register} />
+        <br />
       Course code: <input name="courseCode" ref={register} />
-      <br />
+        <br />
       Course Description: <textarea name="courseDescription" ref={register}></textarea>
-      <br />
+        <br />
       Upload course material: <input type="file" name="courseMaterial" multiple ref={register} />
-      <br />
+        <br />
       Upload course image (optional): <input type="file" name="courseImage" multiple ref={register} />
-      <br />
-      <input type="submit" />
-    </form>
+        <br />
+        <input type="submit" />
+      </form>
+    </div>
+
   );
 
 }

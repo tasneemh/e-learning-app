@@ -1,5 +1,5 @@
 //import { BrowserRouter as Router, Route } from "react-router-dom";
-import Navbar from "./Navbar";
+import NavBar from "./NavBar";
 import "./Header.css";
 
 export default function Header() {
@@ -11,7 +11,7 @@ export default function Header() {
         src="/images/logo.png"
         width="300"
       />
-      <Navbar/>
+      <NavBar/>
     </section>
   );
 }

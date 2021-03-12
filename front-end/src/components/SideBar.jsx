@@ -1,13 +1,15 @@
+import "./SideBar.css";
+import Button from "./Button";
+import { useHistory } from "react-router-dom";
+
 export default function SideBar(props) {
-  
+  console.log("props in sidebar", props);
   return (
-    <div className="sidebar">
+    <section className="sidebar">
       <div className="profile">
-        Hello
+        <div className="message">Hello</div>
+        <div className="overlay"></div>
       </div>
-      <div>
-        <button>Statistic</button>  
-        <button>Courses</button>
-      </div>
-    </div>);
+      <Button />
+    </section>);
 } 

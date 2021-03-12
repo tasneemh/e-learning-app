@@ -5,7 +5,7 @@ const morgan = require('morgan');
 //importing cors to enable cors
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const cookieSession = require('cookie-session');
+const Firebase = require('firebase');
 const bcrypt = require('bcrypt');
 //importing pool i.e.database 
 const pool = require('../sqldb/db');
@@ -17,14 +17,15 @@ const mongodbSetup = require('../mongodb/db');
 const app = express();
 const PORT = 9001;
 
+Firebase.initializeApp({
+  databaseURL: "https://educational-web-app-9209d-default-rtdb.firebaseio.com/",
+  serviceAccount: "7dea0f381e260fb2effdf718641672e9b608c717"
+});
+
 app.use(morgan('dev'));
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(cookieSession({
-  name: 'session',
-  keys: ['key1', 'key2']
-}));
 
 app.get("/learners", (request, response) => {
   sqldbHelpers.getAllLearners().then(learners => {

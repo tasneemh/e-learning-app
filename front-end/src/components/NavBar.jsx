@@ -1,7 +1,6 @@
-import React from "react";
-import "./Navbar.css";
+import "./NavBar.css";
 
-export default function Navbar() {
+export default function NavBar() {
   return (
     <nav className="navbar">
       <h4><a href="/">Home</a></h4>

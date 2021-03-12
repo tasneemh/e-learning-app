@@ -6,9 +6,11 @@ import CourseCard from "./CourseCard";
 
 
 export default function EducatorCourses() {
+  //console.log("inside educator courses props", props);
   const history = useHistory();
-  const educator = history.location.state.educator;
-  const { firstname, lastname, email, id } = educator;
+  console.log("history in educator course", JSON.stringify(history));
+  const user = history.location.state.user;
+  const { firstname, lastname, email, id } = user;
   const [courses, setCourses] = useState();
 
   useEffect(() => {
@@ -19,15 +21,14 @@ export default function EducatorCourses() {
       });
   }, [id]);
 
-  const handleClick = () => {
-    history.push({ pathname: "/educator-course-createnewcourses", state: { educator } });
+  const handleCreateNewCourseClick = () => {
+    history.push({ pathname: "/educator-course-createnewcourses", state: { user } });
   };
 
   return (
     <div>
-      <SideBar></SideBar>
-      <span>Hello, {firstname} {lastname} {email} {id}</span>
-      <button onClick={handleClick}>Create new course!</button>
+      <SideBar />
+      <button onClick={handleCreateNewCourseClick}>Create new course!</button>
     </div>
 
   );
