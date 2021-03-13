@@ -1,19 +1,19 @@
-import { useState } from 'react';
+import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import './App.css';
-import Header from './components/Header';
+import "./App.css";
+import Header from "./components/Header";
 import Home from "./components/Home";
 import Notes from "./components/Notes";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import Educator from './components/Educator';
+import Educator from "./components/Educator";
 import Learner from "./components/Learner";
-import EducatorCourses from "./components/EducatorCourses";
+import EducatorCoursesList from "./components/EducatorCoursesList";
 import CourseForm from "./components/CourseForm";
 
 function App() {
   const [state, setState] = useState({
-    learners: []
+    learners: [],
   });
 
   return (
@@ -27,33 +27,26 @@ function App() {
             <Home />
           </Route>
           <Route path="/notes">
-            {/** Notes*/}
-            <Notes />
+            {/** Notes*/} <Notes />
           </Route>
           <Route path="/login">
-            {/** login*/}
-            <Login />
+            {/** login*/} <Login />
           </Route>
-          <Route path="/register"> 
-            {/** register*/}
-            <Register />
+          <Route path="/register">
+            {/** register*/} <Register />
           </Route>
-           {/**/}
           <Route path="/educator">
-            {/** educator*/}
-            <Educator />
+            {/** educator*/} <Educator />
           </Route>
           <Route path="/educator-courses">
-            {/** educator/courses*/}
-            <EducatorCourses />
+            {/** educator/courses*/} 
+            <EducatorCoursesList />
           </Route>
           <Route path="/educator-course-createnewcourses">
-            {/** educator/courses/createnewcourse*/}
-            <CourseForm />
+            {/** educator/courses/createnewcourse*/} <CourseForm />
           </Route>
           <Route path="/learner">
-            {/** learner*/}
-            <Learner />
+            {/** learner*/} <Learner />
           </Route>
         </Switch>
       </Router>
