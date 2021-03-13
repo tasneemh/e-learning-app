@@ -161,7 +161,7 @@ export default function Register() {
           <div className="btn-container">
             <div className="toggle-container">
               <Switch
-                className="toggle"
+                className="register-toggle"
                 onClick={toggler}
                 onChange={getUserType}
               />

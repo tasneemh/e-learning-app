@@ -3,6 +3,7 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import EducatorSideBar from "./EducatorSideBar";
+import "./CourseForm.css";
 
 export default function CourseForm() {
   const history = useHistory();
@@ -68,25 +69,32 @@ export default function CourseForm() {
   };
 
   return (
-    <div>
+   <div className="main-container">
       <EducatorSideBar />
-      <form className="form" onSubmit={handleSubmit(onSubmit)}>
-        Course name: <input className="input" name="courseName" ref={register} />
+      <form className="course-form" onSubmit={handleSubmit(onSubmit)}>
+        <input className="course-input" name="courseName" placeholder="Course Name"ref={register} />
        
-        Course code: <input name="courseCode" className="input" ref={register} />
+        <input name="courseCode" className="course-input" 
+        placeholder="Course Code"
+        ref={register} />
         
-        Course Description:
-        <input name="courseDescription" className="textarea" ref={register}/>
+        <textarea name="courseDescription" className="textarea" ref={register}
+        placeholder="Course Description"/>
         
-        Upload course material:
-        <input type="file" name="courseMaterial" multiple ref={register} />
-        
-        Upload course image (optional):
-        <input type="file" name="courseImage" multiple ref={register} />
-        
-        <input type="submit" className="btn" />
-      </form>
-      {message && <span>{message}</span>}
+        <div className="course-container">
+        <label className="file-label"> Course Material:</label>
+        <input type="file" className="file-input" name="courseMaterial" multiple ref={register} />
+        </div>
+        <div className="course-container">
+        <label className="file-label">Course Image (optional):</label>
+        <input type="file" className="file-input" name="courseImage" multiple ref={register} />
+        </div>
+        <div className="courseForm-btn-container">
+        <input type="submit" className="courseForm-submit-btn" />
+        <button className="courseForm-back-btn"type="button" onClick={() => history.goBack()}>Back</button>
+        </div>
+        {message && <span>{message}</span>}
+      </form>    
     </div>
   );
 }

@@ -4,15 +4,23 @@
     padding: 0;
     font-size: 20px;
 }
-
-.form {
+.main-container{
+  width: 100%;  
+  border: 1px solid blue;
+  display: flex;
+  flex-direction: row;
+}
+.course-form {
     border: 1px solid green;   
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: left;
     height: 500px;
-    width: 400px;
+    width: 80%;
+    height: 100%;
+    margin: 1em;
+    padding: 0.5em;
 }
 
 .register {
@@ -29,35 +37,62 @@
     /* background-color: rgb(207, 204, 204); */
 }
 
-.register:hover {
+.course-form:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.register-container {
-    /* border: 1px solid red; */
-    display: flex;
-    flex-direction: column;
-    width: 400px;
-    height: 500px;
-    align-items: center;
-    /* justify-content: space-between; */
-}
 .textarea{
-width: 400px;
-height: 400px;
+height: 50%;
+width:58%;
 color: black;
 background-color: rgb(223, 237, 241);
+border: none;
+padding: 10px;
+margin: 10px;
+font-size: 20px;
 }
-.input {
+
+.course-input {
     color: black;
+    width:60%;
     background-color: rgb(223, 237, 241);
     padding: 10px;
     margin: 10px;
     border: none;
     font-size: 20px;
+    
+   
 }
+.course-container{
+border: 1px solid red;
+width:90%;
+display: flex;
+flex-direction: row;
+justify-content: start;
+align-items: center;
+}
+.file-label{
+ align-self: flex-start; 
+ border: 1px solid green;   
+ padding-top: 10px;
+ padding-bottom: 10px;
+ padding-left: 10px;  
+ margin:10px;
 
-.btn {
+}
+.file-input {
+    color: black;
+    background-color:transparent;
+    padding: 10px;
+    margin: 10px;
+    border: none;
+    font-size: 20px;
+    width:60%;
+    align-self:flex-end;
+    border: 1px solid brown;
+
+}
+.courseForm-submit-btn {
     color: black;
     background-color: rgb(106, 215, 235);
     border: none;
@@ -65,71 +100,46 @@ background-color: rgb(223, 237, 241);
     font-weight: bold;
     border-radius: 8px;
     letter-spacing: 5px;
+    align-self: flex-start;
+    height: 90%;
+    margin:10px;
 }
-
-.btn:hover {
+.courseForm-back-btn {
+    color: black;
+    background-color: transparent;
+    border: 1px solid blue;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 8px;
+    letter-spacing: 5px;
+    align-self: flex-end;
+    height: 90%;
+    margin-top: 10px;
+    /* margin: 10px; */
+    /* padding:10px; */
+}
+.courseForm-submit-btn:hover {
     cursor: pointer;
     background-color: rgb(79, 79, 168);
     box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
+.courseForm-back-btn:hover {
+    cursor: pointer;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
 .errorMsg {
     color: red;
 }
 
-.password-container {
-    display: flex;
-    position: relative;
-    /* border: 1px solid brown;  */
-}
-
-.eye {
-    width: 50px;
-    /* border: 1px solid yellow; */
-    display: inline;
-    position: absolute;
-    top: 30%;
-    right: 0%;
-}
-
-.toggle {
-    width: 50px;
-    height: 70px;
-}
-
-.btn-container {
-    display: flex;
-    flex-direction: column;
-    /* border: 1px solid brown; */
-    align-items: center;
-}
-
-.toggle-container {
+.courseForm-btn-container {
     display: flex;
     flex-direction: row;
-    width: 200px;
-    /* height: 100px; */
-    /* border: 1px solid orange;  */
-    padding-bottom: 10px;
-    margin-bottom: 5px;
-    justify-content: space-around;
+    border: 1px solid blue; 
     align-items: center;
-}
-
-.login-container {
-    display: flex;
-    flex-direction: row;
+    height: 60px;
+    margin: 10px;
+    width: 100%;
     justify-content: space-around;
-    width: 400px;
-    /* border: 1px solid blue; */
-}
-
-.user {
-    font-size: 70px;
-    color: black;
-    /* top: 5%; */
-    top: 0;
-    left: 41.5%;
-    /* position: absolute; */
-    margin-bottom: 10px;
+    /* padding:10px; */
 }
