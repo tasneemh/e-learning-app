@@ -9,10 +9,11 @@ export default function Educator() {
   const history = useHistory();
   console.log("educator history", JSON.stringify(history));
   const educator = history.location.state.user;
-  //const { firstname, lastname, email, id } = educator;
+  const { firstname, lastname, email, id } = educator;
 
   return (
     <div className="educator-container">
+      <span>{firstname} {lastname} {email} {id}</span>
       <EducatorSideBar educator={educator} />
       <div className="educator-content">
         <div className="educator-report">

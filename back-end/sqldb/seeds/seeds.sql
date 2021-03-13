@@ -8,3 +8,9 @@ INSERT INTO educators (first_name, last_name, email, password)
 VALUES ('educator', 'one', 'educatorone@gmail.com', '$2b$10$A16s.l8gm5XTv2w5dJsVpu.aOweBetegDxhOL/Jn1TlUlcH014gVq'),/**password:educatorone**/
 ('educator', 'two', 'educatortwo@gmail.com', '$2b$10$0z1Aq.1n.ZtmyM4mFD/lguMncsJ2hL66GeWR/9BPlMQzBr7UTWbka'),/**password:educatortwo**/
 ('educator', 'three', 'educatorthree@gmail.com', '$2b$10$0ph/R6hrbTbRZj3RwS8T4.YnQWd2xCyGZqRMqCG/nVhSg9bj5/K5y');/**password:educatorthree**/
+
+
+
+
+
+

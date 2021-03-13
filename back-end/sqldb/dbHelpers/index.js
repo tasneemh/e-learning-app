@@ -68,6 +68,18 @@ module.exports = (pool) => {
         console.log(error);
       });
   };
-  
-  return { getAllLearners, saveNewUser, saveCourse, getAllCoursesForEducator };
+
+  const getUserData = (user) => {
+    return pool.query(`
+    SELECT *, 'educator' AS source FROM educators WHERE email = $1
+    UNION ALL
+    SELECT *, 'learner' AS source FROM learners WHERE email = $1`, [user.email])
+      .then(response => {
+        return response.rows[0];
+      }).catch(error => {
+        console.log(error);
+      });
+  };
+
+  return { getAllLearners, saveNewUser, saveCourse, getAllCoursesForEducator, getUserData };
 };

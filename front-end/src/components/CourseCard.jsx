@@ -15,9 +15,6 @@ import "./CourseCard.css";
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
-    "& > *": {
-      marginTop: theme.spacing(2),
-    },
   },
   media: {
     height: 0,
@@ -45,7 +42,6 @@ export default function CourseCard(props) {
 
   console.log("props in course card", props.courses);
   const coursesList = props.courses;
-  const image_url_string = coursesList[0].image_url.slice(1, -1);
 
   const displayCourses = coursesList.map((course) => {
     return (
@@ -74,17 +70,13 @@ export default function CourseCard(props) {
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent>
               <Typography paragraph>Description:</Typography>
-              <Typography paragraph>{}</Typography>
+              <Typography paragraph>{course.description}</Typography>
             </CardContent>
           </Collapse>
         </Card>
       </section>
     );
   });
-  return (
-    <>
-      <div className="courses-cards-container">{displayCourses}</div>
-    
-    </>
-  );
+
+  return <div className="courses-cards-container">{displayCourses}</div>;
 }

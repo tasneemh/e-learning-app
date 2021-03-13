@@ -17,17 +17,11 @@ const mongodbSetup = require('../mongodb/db');
 const app = express();
 const PORT = 9001;
 
-
 app.use(morgan('dev'));
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get("/learners", (request, response) => {
-  sqldbHelpers.getAllLearners().then(learners => {
-    response.json({ learners });
-  });
-});
 
 app.post("/savenewuser", (request, response) => {
   const newUser = request.body.data;
@@ -40,6 +34,21 @@ app.post("/savenewuser", (request, response) => {
         return;
       }
       response.send({ user: { firstname: user.first_name, lastname: user.last_name, email: user.email, id: user.id, usertype: user.usertype } });
+    })
+    .catch(error => response.send(error));
+});
+
+app.post("/getregistereduser", (request, response) => {
+  console.log("request", request.body.data);
+  const registeredUser = request.body.data;
+  sqldbHelpers.getUserData(registeredUser).then(
+    user => {
+      if (!user) {
+        response.send({ error: "error" });
+        return;
+      }
+      console.log("user", user);
+      response.send({ user: { firstname: user.first_name, lastname: user.last_name, email: user.email, id: user.id, usertype: user.source } });
     })
     .catch(error => response.send(error));
 });
