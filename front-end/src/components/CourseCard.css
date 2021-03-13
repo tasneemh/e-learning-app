@@ -1,0 +1,22 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.courses-cards-container{
+  display: flex;
+  border: 1px solid black;
+  width: 100%;
+  height: 100%;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.course-card{
+  display: flex;
+  border: 1px solid teal;
+  flex-direction: row;
+  justify-content: center;
+  margin: 5px;
+}

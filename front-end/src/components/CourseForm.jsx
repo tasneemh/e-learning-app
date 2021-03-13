@@ -1,8 +1,8 @@
-import React from 'react';
-import axios from 'axios';
+import { useState } from "react";
+import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import SideBar from "./SideBar";
+import EducatorSideBar from "./EducatorSideBar";
 
 export default function CourseForm() {
   const history = useHistory();
@@ -11,33 +11,35 @@ export default function CourseForm() {
   const { firstname, lastname, email, id } = user;
   const { register, handleSubmit } = useForm();
   const url = "https://api.cloudinary.com/v1_1/c0ur-e/auto/upload";
+  const [message, setMessage] = useState("");
 
   const uploadFile = async (file) => {
     const formData = new FormData();
-    formData.append('file', file);
-    formData.append('upload_preset', 'courses');
+    formData.append("file", file);
+    formData.append("upload_preset", "courses");
     try {
       const response = await fetch(url, {
-        method: 'POST',
+        method: "POST",
         body: formData,
-        mode: 'cors'
+        mode: "cors",
       });
 
       const result = await response.json();
       console.log("result in uploadfile", JSON.stringify(result.secure_url));
       return JSON.stringify(result.secure_url);
-    }
-    catch (error) {
+    } catch (error) {
       console.log("upload file error", error);
     }
   };
 
   const saveCourse = (course) => {
-    axios.post(`http://localhost:9001/savecourse`, { course })
-      .then(response => {
-        console.log(response);
+    axios
+      .post(`http://localhost:9001/savecourse`, { course })
+      .then((response) => {
+        console.log("response", response);
+        setMessage("course material has been successfully uploaded!");
       })
-      .catch(error => {
+      .catch((error) => {
         console.log("error in save course", error);
       });
   };
@@ -53,35 +55,38 @@ export default function CourseForm() {
     const courseMaterialUrl = await uploadFile(data.courseMaterial[0]);
     console.log("url", courseImageUrl, courseMaterialUrl);
     const course = {};
-    course['courseName'] = data['courseName'];
-    course['courseCode'] = data['courseCode'];
-    course['courseDescription'] = data['courseDescription'];
-    courseImageUrl ? course['courseImageUrl'] = courseImageUrl : course['courseImageUrl'] = "";
-    course['courseMaterialUrl'] = courseMaterialUrl;
-    course['educatorId'] = id;
+    course["courseName"] = data["courseName"];
+    course["courseCode"] = data["courseCode"];
+    course["courseDescription"] = data["courseDescription"];
+    courseImageUrl
+      ? (course["courseImageUrl"] = courseImageUrl)
+      : (course["courseImageUrl"] = "");
+    course["courseMaterialUrl"] = courseMaterialUrl;
+    course["educatorId"] = id;
     await saveCourse(course);
     event.target.reset();
   };
 
   return (
     <div>
-      <SideBar />
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <EducatorSideBar />
+      <form className="form"onSubmit={handleSubmit(onSubmit)}>
         Course name: <input name="courseName" ref={register} />
         <br />
-      Course code: <input name="courseCode" ref={register} />
+        Course code: <input name="courseCode" ref={register} />
         <br />
-      Course Description: <textarea name="courseDescription" ref={register}></textarea>
+        Course Description:{" "}
+        <textarea name="courseDescription" ref={register}></textarea>
         <br />
-      Upload course material: <input type="file" name="courseMaterial" multiple ref={register} />
+        Upload course material:{" "}
+        <input type="file" name="courseMaterial" multiple ref={register} />
         <br />
-      Upload course image (optional): <input type="file" name="courseImage" multiple ref={register} />
+        Upload course image (optional):{" "}
+        <input type="file" name="courseImage" multiple ref={register} />
         <br />
         <input type="submit" />
       </form>
+      {message && <span>{message}</span>}
     </div>
-
   );
-
 }
-

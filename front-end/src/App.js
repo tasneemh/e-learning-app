@@ -8,7 +8,6 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Educator from "./components/Educator";
 import Learner from "./components/Learner";
-import EducatorCoursesList from "./components/EducatorCoursesList";
 import CourseForm from "./components/CourseForm";
 
 function App() {
@@ -38,12 +37,9 @@ function App() {
           <Route path="/educator">
             {/** educator*/} <Educator />
           </Route>
-          <Route path="/educator-courses">
-            {/** educator/courses*/} 
-            <EducatorCoursesList />
-          </Route>
-          <Route path="/educator-course-createnewcourses">
-            {/** educator/courses/createnewcourse*/} <CourseForm />
+          <Route path="/educator-createnewcourses">
+            {/** educator/courses/createnewcourse*/} 
+            <CourseForm />
           </Route>
           <Route path="/learner">
             {/** learner*/} <Learner />

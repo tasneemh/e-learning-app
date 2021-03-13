@@ -20,13 +20,6 @@ export default function EducatorCoursesList() {
       });
   }, [id]);
 
-  const handleCreateNewCourseClick = () => {
-    history.push({
-      pathname: "/educator-course-createnewcourses",
-      state: { user },
-    });
-  };
-
   return (
     <div>
       {courses.length ? (
