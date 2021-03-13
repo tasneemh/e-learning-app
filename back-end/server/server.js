@@ -63,8 +63,7 @@ app.post("/savecourse", (request, response) => {
         response.send({ error: "error" });
         return;
       }
-      console.log("in server: course", course);
-      //response.send({ user: { firstname: user.first_name, lastname: user.last_name, email: user.email, id: user.id, usertype: user.usertype } });
+      response.send(course);
     })
     .catch(error => response.send(error));
 

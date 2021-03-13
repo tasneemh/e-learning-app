@@ -39,7 +39,7 @@
 
 .educator-courses-list {
     display: flex;
-    /**border: 1px solid yellow;**/
+    border: 1px solid yellow;
     margin-right: 1em;
     padding: 1em;
     width: 100%;
