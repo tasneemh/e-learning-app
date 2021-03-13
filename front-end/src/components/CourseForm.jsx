@@ -70,21 +70,21 @@ export default function CourseForm() {
   return (
     <div>
       <EducatorSideBar />
-      <form className="form"onSubmit={handleSubmit(onSubmit)}>
-        Course name: <input name="courseName" ref={register} />
-        <br />
-        Course code: <input name="courseCode" ref={register} />
-        <br />
-        Course Description:{" "}
-        <textarea name="courseDescription" ref={register}></textarea>
-        <br />
-        Upload course material:{" "}
+      <form className="form" onSubmit={handleSubmit(onSubmit)}>
+        Course name: <input className="input" name="courseName" ref={register} />
+       
+        Course code: <input name="courseCode" className="input" ref={register} />
+        
+        Course Description:
+        <input name="courseDescription" className="textarea" ref={register}/>
+        
+        Upload course material:
         <input type="file" name="courseMaterial" multiple ref={register} />
-        <br />
-        Upload course image (optional):{" "}
+        
+        Upload course image (optional):
         <input type="file" name="courseImage" multiple ref={register} />
-        <br />
-        <input type="submit" />
+        
+        <input type="submit" className="btn" />
       </form>
       {message && <span>{message}</span>}
     </div>

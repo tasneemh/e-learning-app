@@ -6,7 +6,7 @@
 }
 
 .form {
-    /* border: 1px solid green;   */
+    border: 1px solid green;   
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -42,7 +42,12 @@
     align-items: center;
     /* justify-content: space-between; */
 }
-
+.textarea{
+width: 400px;
+height: 400px;
+color: black;
+background-color: rgb(223, 237, 241);
+}
 .input {
     color: black;
     background-color: rgb(223, 237, 241);
