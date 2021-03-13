@@ -75,16 +75,17 @@ export default function CourseForm() {
         <br />
         Course code: <input name="courseCode" ref={register} />
         <br />
-        Course Description:{" "}
+        Course Description:
         <textarea name="courseDescription" ref={register}></textarea>
         <br />
-        Upload course material:{" "}
+        Upload course material:
         <input type="file" name="courseMaterial" multiple ref={register} />
         <br />
-        Upload course image (optional):{" "}
+        Upload course image (optional):
         <input type="file" name="courseImage" multiple ref={register} />
         <br />
         <input type="submit" />
+        <button type="button" onClick={() => history.goBack()}>back</button>
       </form>
       {message && <span>{message}</span>}
     </div>

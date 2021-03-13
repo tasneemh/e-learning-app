@@ -22,6 +22,7 @@ export default function EducatorCoursesList() {
 
   return (
     <div>
+      
       {courses.length ? (
         <CourseCard courses={courses} />
       ) : (
