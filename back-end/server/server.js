@@ -5,6 +5,7 @@ const morgan = require('morgan');
 //importing cors to enable cors
 const cors = require('cors');
 const bodyParser = require('body-parser');
+
 const bcrypt = require('bcrypt');
 //importing pool i.e.database 
 const pool = require('../sqldb/db');
@@ -15,6 +16,7 @@ const mongodbSetup = require('../mongodb/db');
 //creating express server
 const app = express();
 const PORT = 9001;
+
 
 app.use(morgan('dev'));
 app.use(cors());
