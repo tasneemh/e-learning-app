@@ -1,5 +1,4 @@
 import { useHistory } from 'react-router-dom';
-import SideBar from './EducatorSideBar';
 import EducatorSideBar from "./EducatorSideBar";
 import EducatorCoursesList from './EducatorCoursesList';
 import EducatorReport from "./EducatorReport";

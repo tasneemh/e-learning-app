@@ -69,9 +69,9 @@ export default function Register() {
       closable={true}
       onClose={onClose}
       visible={showDrawer}
-      // getContainer={false}
       width={500}
     >
+      
       <div className="register">
         <form className="form" onSubmit={handleSubmit(onSubmit)}>
           {/*<i className="user">{user}</i>*/}

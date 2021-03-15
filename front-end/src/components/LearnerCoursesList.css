@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-.courses-cards-container{
+.learner-allcourses-container{
   display: flex;
   border: 1px solid black;
   width: 100%;
@@ -13,7 +13,7 @@
   justify-content: space-around;
 }
 
-.educator-course-card{
+.learner-course-card{
   display: flex;
   border: 1px solid teal;
   flex-direction: row;

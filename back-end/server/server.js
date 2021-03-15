@@ -53,20 +53,7 @@ app.post("/getregistereduser", (request, response) => {
     .catch(error => response.send(error));
 });
 
-app.get("/educator/:id/courses", (request, response) => {
-  const educatorId = request.params.id;
-  sqldbHelpers.getAllCoursesForEducator(educatorId).then(
-    course => {
-      if (!course) {
-        response.send({ message: "no active courses" });
-        return;
-      }
-      response.send(course);
-    })
-    .catch(error => response.send(error));
-});
-
-app.post("/savecourse", (request, response) => {
+app.post("/uploadcourse", (request, response) => {
   const course = request.body.course;
   sqldbHelpers.saveCourse(course).then(
     course => {
@@ -80,13 +67,38 @@ app.post("/savecourse", (request, response) => {
 
 });
 
-mongodbSetup((monogodb) => {
+app.get("/educator/:id/courses", (request, response) => {
+  const educatorId = request.params.id;
+  sqldbHelpers.getAllCoursesForEducator(educatorId).then(
+    course => {
+      if (!course) {
+        response.send({ message: "no courses" });
+        return;
+      }
+      response.send(course);
+    })
+    .catch(error => response.send(error));
+});
+
+app.get("/allcoursesforlearner", (request, response) => {
+  sqldbHelpers.getAllCoursesForLearner().then(
+    courses => {
+      if (!courses) {
+        response.send({ message: "no courses" });
+        return;
+      }
+      response.send(courses);
+    })
+    .catch(error => response.send(error));
+});
+
+/*mongodbSetup((monogodb) => {
   app.get("/test", async (request, response) => {
     //passing collection named documents
     const result = await monogodb.collection('documents').find().toArray();
     response.json(result);
   });
-});
+});*/
 
 // express server listening to PORT
 app.listen(PORT, () => {

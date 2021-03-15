@@ -35,7 +35,7 @@ export default function CourseForm() {
 
   const saveCourse = (course) => {
     axios
-      .post(`http://localhost:9001/savecourse`, { course })
+      .post(`http://localhost:9001/uploadcourse`, { course })
       .then((response) => {
         console.log("response", response);
         setMessage("course material has been successfully uploaded!");

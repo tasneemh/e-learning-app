@@ -17,6 +17,9 @@ export default function EducatorCoursesList() {
       .then((response) => {
         setCourses(response.data);
         console.log("courses", response.data);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }, [id]);
 
@@ -26,7 +29,7 @@ export default function EducatorCoursesList() {
       {courses.length ? (
         <CourseCard courses={courses} />
       ) : (
-        <span>No active courses</span>
+        <span>No Courses</span>
       )}
     </div>
   );

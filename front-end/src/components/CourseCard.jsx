@@ -17,8 +17,8 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 345,
   },
   media: {
-    height: 0,
-    paddingTop: "56.25%", // 16:9
+    height: 150,
+    padding: "56.25%", // 16:9
   },
   expand: {
     transform: "rotate(0deg)",
@@ -43,18 +43,18 @@ export default function CourseCard(props) {
   console.log("props in course card", props.courses);
   const coursesList = props.courses;
 
-  const displayCourses = coursesList.map((course) => {
+  const displayCourses = coursesList.map((course, index) => {
     return (
-      <section className="course-card">
+      <section className="educator-course-card" key={index}>
         <Card className={classes.root}>
-          <CardHeader title={course.name} subheader={course.created_at} />
-          <CardContent>
-            <Typography>{course.code}</Typography>
-          </CardContent>
           <CardMedia
             className={classes.media}
             image={course.image_url.slice(1, -1)}
           />
+          <CardHeader title={course.name} subheader={course.created_at} />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">{course.code}</Typography>
+          </CardContent>
           <CardActions disableSpacing>
             <IconButton
               className={clsx(classes.expand, {

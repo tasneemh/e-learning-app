@@ -81,5 +81,20 @@ module.exports = (pool) => {
       });
   };
 
-  return { getAllLearners, saveNewUser, saveCourse, getAllCoursesForEducator, getUserData };
+
+  const getAllCoursesForLearner = () => {
+    return pool.query(`
+    SELECT courses.*, educators.* FROM courses 
+    JOIN educators_courses ON courses.id = educators_courses.course_id 
+    JOIN educators ON educators.id = educators_courses.educator_id 
+    ORDER BY courses.created_at DESC`)
+      .then(response => {
+        //console.log("response", response.rows);
+        return response.rows;
+      }).catch(error => {
+        console.log(error);
+      });
+  };
+
+  return { getAllLearners, saveNewUser, saveCourse, getAllCoursesForEducator, getUserData, getAllCoursesForLearner };
 };

@@ -9,6 +9,7 @@ import Register from "./components/Register";
 import Educator from "./components/Educator";
 import Learner from "./components/Learner";
 import CourseForm from "./components/CourseForm";
+import CourseDetails from "./components/CourseDetails";
 
 function App() {
   const [state, setState] = useState({
@@ -38,11 +39,14 @@ function App() {
             {/** educator*/} <Educator />
           </Route>
           <Route path="/educator-createnewcourses">
-            {/** educator/courses/createnewcourse*/} 
+            {/** educator/courses/createnewcourse*/}
             <CourseForm />
           </Route>
           <Route path="/learner">
             {/** learner*/} <Learner />
+          </Route>
+          <Route path="/learner-coursedetails">
+            {/** learner*/} <CourseDetails />
           </Route>
         </Switch>
       </Router>
