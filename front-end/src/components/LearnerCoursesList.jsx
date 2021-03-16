@@ -4,12 +4,13 @@ import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
-import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
 import "./LearnerCoursesList.css";
 
 const useStyles = makeStyles({
@@ -44,7 +45,7 @@ export default function LearnerCoursesList() {
 
   const displayCourses = courses.map((course, index) => {
     return (
-      <section className="learner-course-card" key={index}>
+      <SwiperSlide className="learner-course-card" key={index}>
         <Card className={classes.root}>
           <CardMedia
             className={classes.media}
@@ -69,7 +70,7 @@ export default function LearnerCoursesList() {
             </Button>
           </CardActions>
         </Card>
-      </section>
+      </SwiperSlide>
     );
   });
 
@@ -82,7 +83,15 @@ export default function LearnerCoursesList() {
 
   return (
     <div className="learner-allcourses-container">
-      {courses && displayCourses}
+      <Swiper
+        spaceBetween={50}
+        slidesPerView={3}
+        onSlideChange={() => console.log("slide change")}
+        onSwiper={(swiper) => console.log(swiper)}
+      >
+        <span>New Courses</span>
+        {courses && displayCourses}
+      </Swiper>
     </div>
   );
 }

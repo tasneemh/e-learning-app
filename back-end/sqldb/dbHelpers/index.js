@@ -1,14 +1,4 @@
 module.exports = (pool) => {
-  const getAllLearners = () => {
-    //quering db for info
-    return pool.query(`SELECT * FROM learners;`).
-      then(response => {
-        return response.rows;
-      }).catch(error => {
-        console.log(error);
-      });
-  };
-
   const saveNewUser = (newUser) => {
     const { firstname, lastname, email, password, usertype } = newUser;
     if (usertype === "educator") {
@@ -56,6 +46,19 @@ module.exports = (pool) => {
       });
   };
 
+  const enrollCourse = (id) => {
+    console.log("id", id);
+    return pool.query(`
+    INSERT INTO learners_courses(learner_id, course_id) VALUES($1, $2) RETURNING *;`,
+    [id.learnerid, id.courseid])
+      .then(data => {
+        return data.rows[0];
+      })
+      .catch(error => {
+        return error;
+      });
+  };
+
   const getAllCoursesForEducator = (educatorId) => {
     return pool.query(`
     SELECT courses.* FROM courses 
@@ -96,5 +99,18 @@ module.exports = (pool) => {
       });
   };
 
-  return { getAllLearners, saveNewUser, saveCourse, getAllCoursesForEducator, getUserData, getAllCoursesForLearner };
+  const getRegisteredCoursesForLearner = (learnerId) => {
+    return pool.query(`
+    SELECT courses.* FROM courses 
+    JOIN educators_courses ON courses.id = educators_courses.course_id 
+    JOIN educators ON educators.id = educators_courses.educator_id 
+    WHERE educators.id = $1`, [learnerId])
+      .then(response => {
+        return response.rows;
+      }).catch(error => {
+        console.log(error);
+      });
+  };
+
+  return { saveNewUser, saveCourse, getAllCoursesForEducator, getUserData, getAllCoursesForLearner, enrollCourse, getRegisteredCoursesForLearner };
 };

@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.coursedetails-container {
+  display: flex;
+  border: 1px solid green;
+  margin: 2em;
+  padding: 2em;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  overflow: auto;
+}
+
+.course-material {
+  display: flex;
+  border: 1px solid red;
+  margin: 1em;
+  padding: 1em;
+}
+
+.course-info {
+  display: flex;
+  border: 1px solid yellow;
+  margin: 1em;
+  padding: 1em;
+}

@@ -12,7 +12,6 @@ export default function Educator() {
 
   return (
     <div className="educator-container">
-      <span>{firstname} {lastname} {email} {id}</span>
       <EducatorSideBar educator={educator} />
       <div className="educator-content">
         <div className="educator-report">

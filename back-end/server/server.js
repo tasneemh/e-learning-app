@@ -64,12 +64,39 @@ app.post("/uploadcourse", (request, response) => {
       response.send(course);
     })
     .catch(error => response.send(error));
+});
 
+app.post("/enrollcourse", (request, response) => {
+  const id = request.body.data;
+  console.log(id);
+  sqldbHelpers.enrollCourse(id).then(
+    data => {
+      if (!data) {
+        response.send({ error: "error" });
+        return;
+      }
+      response.send(data);
+    })
+    .catch(error => response.send(error));
 });
 
 app.get("/educator/:id/courses", (request, response) => {
   const educatorId = request.params.id;
   sqldbHelpers.getAllCoursesForEducator(educatorId).then(
+    course => {
+      if (!course) {
+        response.send({ message: "no courses" });
+        return;
+      }
+      response.send(course);
+    })
+    .catch(error => response.send(error));
+});
+
+app.get("/learner/:id/courses", (request, response) => {
+  const learnerId = request.params.id;
+  console.log("learnerid", request.params.id);
+  sqldbHelpers.getRegisteredCoursesForLearner(learnerId).then(
     course => {
       if (!course) {
         response.send({ message: "no courses" });

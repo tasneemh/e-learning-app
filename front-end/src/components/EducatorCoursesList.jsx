@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 import CourseCard from "./CourseCard";
 
 export default function EducatorCoursesList() {
-  //console.log("inside educator courses props", props);
   const history = useHistory();
   console.log("history in educator course", JSON.stringify(history));
   const user = history.location.state.user;
