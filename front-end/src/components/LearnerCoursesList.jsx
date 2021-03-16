@@ -9,7 +9,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, EffectFade } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "./LearnerCoursesList.css";
 
@@ -22,6 +22,8 @@ const useStyles = makeStyles({
     padding: "56.25%", // 16:9
   },
 });
+
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, useEffect]);
 
 export default function LearnerCoursesList() {
   const history = useHistory();
@@ -44,13 +46,11 @@ export default function LearnerCoursesList() {
   }, [id]);
 
   const displayCourses = courses.map((course, index) => {
+    console.log("display courses", course.image_url);
     return (
       <SwiperSlide className="learner-course-card" key={index}>
         <Card className={classes.root}>
-          <CardMedia
-            className={classes.media}
-            image={course.image_url.slice(1, -1)}
-          />
+          <CardMedia className={classes.media} image={course.image_url} />
           <CardHeader title={course.name} subheader={course.created_at} />
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
@@ -83,13 +83,16 @@ export default function LearnerCoursesList() {
 
   return (
     <div className="learner-allcourses-container">
+      <span>New Courses</span>
       <Swiper
+        effect="fade"
         spaceBetween={50}
         slidesPerView={3}
-        onSlideChange={() => console.log("slide change")}
+        navigation
+        pagination={{ clickable: true }}
+        scrollbar={{ draggable: true }}
         onSwiper={(swiper) => console.log(swiper)}
       >
-        <span>New Courses</span>
         {courses && displayCourses}
       </Swiper>
     </div>

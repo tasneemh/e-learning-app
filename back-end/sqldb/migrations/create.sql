@@ -29,6 +29,8 @@ CREATE TABLE courses (
   description TEXT,
   image_url VARCHAR,
   material_url VARCHAR,
+  image_file_format VARCHAR,
+  material_file_format VARCHAR,
   created_at TIMESTAMPTZ DEFAULT Now()
 );
 

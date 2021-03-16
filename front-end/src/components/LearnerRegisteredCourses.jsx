@@ -14,7 +14,7 @@ export default function LearnerRegisteredCourses() {
       .get(`http://localhost:9001/learner/${id}/courses`)
       .then((response) => {
         setCourses(response.data);
-        console.log("courses", response.data);
+        //console.log("courses", response.data);
       })
       .catch((error) => {
         console.log(error);

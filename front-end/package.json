@@ -15,6 +15,7 @@
     "antd": "^4.13.1",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
+    "firebase": "^8.3.0",
     "form-data": "^4.0.0",
     "react": "^17.0.1",
     "react-animated-css": "^1.2.1",
@@ -50,5 +51,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {}
 }

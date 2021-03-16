@@ -68,7 +68,6 @@ app.post("/uploadcourse", (request, response) => {
 
 app.post("/enrollcourse", (request, response) => {
   const id = request.body.data;
-  console.log(id);
   sqldbHelpers.enrollCourse(id).then(
     data => {
       if (!data) {
@@ -97,12 +96,12 @@ app.get("/learner/:id/courses", (request, response) => {
   const learnerId = request.params.id;
   console.log("learnerid", request.params.id);
   sqldbHelpers.getRegisteredCoursesForLearner(learnerId).then(
-    course => {
-      if (!course) {
+    courses => {
+      if (!courses) {
         response.send({ message: "no courses" });
         return;
       }
-      response.send(course);
+      response.send(courses);
     })
     .catch(error => response.send(error));
 });

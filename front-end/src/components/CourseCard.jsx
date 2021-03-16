@@ -49,7 +49,7 @@ export default function CourseCard(props) {
         <Card className={classes.root}>
           <CardMedia
             className={classes.media}
-            image={course.image_url.slice(1, -1)}
+            image={course.image_url}
           />
           <CardHeader title={course.name} subheader={course.created_at} />
           <CardContent>

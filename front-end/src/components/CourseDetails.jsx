@@ -9,6 +9,7 @@ import "./CourseDetails.css";
 import { CardHeader } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import SaveIcon from "@material-ui/icons/Save";
+import { Player } from "video-react";
 
 const useStyles = makeStyles({
   root: {
@@ -27,12 +28,35 @@ export default function CourseDetails() {
     first_name,
     last_name,
     email,
+    material_url,
+    material_file_format,
   } = history.location.state;
 
   console.log("history in course details", history);
   const learnerId = history.location.state.learner.id;
   const classes = useStyles();
   const [message, setMessage] = useState("");
+
+  const displayCourseMaterial = () => {
+    const fileType = material_file_format.toLowerCase();
+    if (fileType === "mp3" || fileType === "mp4") {
+      return (
+        <Player>
+          <source src={material_url} />
+        </Player>
+      );
+    } 
+    /*else if (fileType === "pdf" )
+      return (
+      <iframe src={material_url} height="100%" width="100%"></iframe>
+      );
+    }*/ 
+    else if (fileType === "png" || fileType === "jpg"){
+      return(
+        <img src={material_url} width="100%" height="100%"/>
+      );
+    }
+  };
 
   const enrollCourse = () => {
     const data = {};
@@ -51,14 +75,13 @@ export default function CourseDetails() {
 
   return (
     <div className="coursedetails-container">
-      <div className="course-material"></div>
+      <div className="course-material">{displayCourseMaterial()}</div>
       <div className="course-info">
         <Card className={classes.root}>
           <CardHeader title={name} subheader={created_at} />
           <CardContent>
             <Typography>{code}</Typography>
             <Typography color="textSecondary">{description}</Typography>
-
             <Typography variant="body2" component="p">
               {first_name}
               <br />
@@ -77,10 +100,7 @@ export default function CourseDetails() {
           >
             Save
           </Button>
-          <button            
-            type="button"
-            onClick={() => history.goBack()}
-          >
+          <button type="button" onClick={() => history.goBack()}>
             Back
           </button>
           {message && <span>{message}</span>}
