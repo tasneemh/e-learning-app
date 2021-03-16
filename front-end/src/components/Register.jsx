@@ -9,6 +9,8 @@ import { Drawer, Button } from "antd";
 import "./Register.css";
 import "antd/dist/antd.css";
 import { faUsers } from "@fortawesome/free-solid-svg-icons";
+import fire from "./fire";
+import SelectInput from "@material-ui/core/Select/SelectInput";
 
 export default function Register() {
   const eye = <FontAwesomeIcon icon={faEye} />;
@@ -18,7 +20,8 @@ export default function Register() {
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
   };
-
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
   const [toggle, setToggle] = useState(false);
   const toggler = () => (toggle ? setToggle(false) : setToggle(true));
 
@@ -34,7 +37,10 @@ export default function Register() {
       visible: true,
     });
   };
-
+  const clearErrors = () =>{
+   setEmailError("");
+   setPasswordError("");
+ }
   const onClose = () => {
     setDrawer({
       visible: false,
@@ -42,9 +48,17 @@ export default function Register() {
   };
   const history = useHistory();
 
-  const onSubmit = (data) => {
+  const onSubmit = (data, event) => {
+    console.log("data onSubmit: ", data);
+    clearErrors();
     data["usertype"] = userType;
-    axios
+    fire.auth()
+    .createUserWithEmailAndPassword(data.email, data.password)
+    .then(userCredentials =>{
+      const user = userCredentials.user;
+      console.log("user: ", user);
+      event.target.reset();
+      axios
       .post(`http://localhost:9001/savenewuser`, { data })
       .then((response) => {
         const user = response.data.user;
@@ -60,6 +74,23 @@ export default function Register() {
       .catch((error) => {
         console.log(error);
       });
+    })
+    .catch(error => {
+      console.log("error with register: ", error.code);
+      console.log("error.code: ", error.code);
+        switch(error.code){
+        case "auth/email-already-in-use":
+        setEmailError("Email is already in use");
+        break;
+        case "auth/invalid-email":
+        setEmailError("This is an invalid email");
+        break;
+        case "auth/weak-password":
+        setPasswordError("Password is weak");
+        break;
+      }   
+    })
+    
   };
 
   return (
@@ -120,7 +151,9 @@ export default function Register() {
               ref={register({
                 required: true,
                 minLength: 5,
-                maxLength: 255 /*pattern: /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/i*/,
+                maxLength: 255, 
+                /*pattern: /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/i
+                */
               })}
               placeholder="Email"
             ></input>
@@ -134,6 +167,8 @@ export default function Register() {
             {errors.email && errors.email.type === "maxLength" && (
               <span className="errorMsg">MaxLength of the email is 255</span>
             )}
+            {/**handling email errors coming from Firebase */}
+            <p className="errorMsg">{emailError ? emailError: ""}</p>
             {/*errors.email && errors.email.type === "pattern" && (<span>Email can have </span>)*/}
             <div className="password-container">
               <input
@@ -157,6 +192,8 @@ export default function Register() {
             {errors.password && errors.password.type === "maxLength" && (
               <span className="errorMsg">MaxLength of the password is 255</span>
             )}
+            {/**handling password errors from Firebase */}
+            <p className="errorMsg">{passwordError ? passwordError: ""}</p>
           </div>
           <div className="btn-container">
             <div className="toggle-container">
