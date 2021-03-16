@@ -8,7 +8,7 @@
   min-height: 672px;
   margin: 0 auto;
   border-radius: 25px;
-  color: white;
+  color: black;
   background-color: white;
   
 }
@@ -19,9 +19,9 @@
 
 input {
   margin: 0 auto;
-  background-color: black;
+  background-color: white;
   opacity: 50%;
-  color: white;
+  color: black;
   margin-top: 10px;
   width: 300px;
   height: 59px;
