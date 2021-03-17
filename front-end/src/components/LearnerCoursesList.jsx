@@ -23,7 +23,7 @@ const useStyles = makeStyles({
   },
 });
 
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, useEffect]);
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, EffectFade]);
 
 export default function LearnerCoursesList() {
   const history = useHistory();

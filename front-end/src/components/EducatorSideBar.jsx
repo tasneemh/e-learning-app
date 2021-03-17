@@ -1,5 +1,5 @@
 import { useHistory } from "react-router-dom";
-import "./EducatorSideBar.css";
+// import "./EducatorSideBar.css";
 
 export default function EducatorSideBar(props) {
   console.log("props in educator sidebar", props);
@@ -12,7 +12,7 @@ export default function EducatorSideBar(props) {
   };
 
   return (
-    <section className="sidebar">
+    <section className="educator-sidebar">
       <div className="profile">
         <div className="message">Hello</div>
         <div className="learner-overlay"></div>
