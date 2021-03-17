@@ -6,7 +6,7 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import "./Login.css";
-import "bootstrap/dist/css/bootstrap.css";
+
 //import fire
 import fire from "./fire";
 

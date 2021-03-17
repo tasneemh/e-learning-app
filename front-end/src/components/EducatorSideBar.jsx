@@ -18,7 +18,7 @@ export default function EducatorSideBar(props) {
         <div className="learner-overlay"></div>
       </div>
       <div className="educator-btn-group">
-        <button onClick={handleCreateNewCoursesClick}>Create new courses</button>
+        <button className="btn-test" onClick={handleCreateNewCoursesClick}>Create new courses</button>
       </div>
     </section>);
 } 

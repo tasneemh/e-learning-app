@@ -11,6 +11,8 @@ import IconButton from "@material-ui/core/IconButton";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Collapse from "@material-ui/core/Collapse";
 import "./CourseCard.css";
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, EffectFade } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,6 +34,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, EffectFade]);
+
 export default function CourseCard(props) {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
@@ -45,7 +49,8 @@ export default function CourseCard(props) {
 
   const displayCourses = coursesList.map((course, index) => {
     return (
-      <section className="educator-course-card" key={index}>
+      
+      <SwiperSlide className="educator-course-card" key={index}>
         <Card className={classes.root}>
           <CardMedia
             className={classes.media}
@@ -74,9 +79,20 @@ export default function CourseCard(props) {
             </CardContent>
           </Collapse>
         </Card>
-      </section>
+     </SwiperSlide>
     );
   });
 
-  return <div className="courses-cards-container">{displayCourses}</div>;
+  return <div 
+  className="courses-cards-container">
+  <Swiper className="course-card-swiper"
+        effect="fade"
+        spaceBetween={1}
+        slidesPerView={4}
+        navigation
+        pagination={{ clickable: true }}
+        scrollbar={{ draggable: true }}
+        onSwiper={(swiper) => console.log(swiper)}
+      >{displayCourses}</Swiper>
+  </div>;
 }
