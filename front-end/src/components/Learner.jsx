@@ -4,6 +4,7 @@ import "./Learner.css";
 import LearnerRegisteredCourses from "./LearnerRegisteredCourses";
 import LearnerCoursesList from "./LearnerCoursesList";
 
+
 export default function Learner() {
   const history = useHistory();
   const learner = history.location.state.user;
@@ -11,7 +12,7 @@ export default function Learner() {
   
   return (
     <div className="learner-container">
-      <LearnerSideBar learner={learner} />
+      <LearnerSideBar className="learner-sidebar" learner={learner} />
       <div className="learner-content">
         <div className="learner-registered-courses">
           <LearnerRegisteredCourses />

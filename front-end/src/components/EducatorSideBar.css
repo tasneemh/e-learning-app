@@ -1,8 +1,16 @@
+/* 
 .sidebar{
   display: flex;
   flex-direction: column;
-  background-color:grey;
-  margin: 2em;
-  padding: 2em;
-  width: 30%;
+  background-color: rebeccapurple;
+  margin: 1em;
+  padding: 1em; 
+  width: 20%;
+  
+  height: 830px;  
 }
+.btn-test{
+  width: 70%;
+  height: 10%;
+} 
+*/

@@ -2,6 +2,7 @@ import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUsers } from "@fortawesome/free-solid-svg-icons";
 import { Animated } from "react-animated-css";
+import "./Learner.css";
 
 export default function LearnerSideBar(props) {
   console.log("props in learner sidebar", props);
@@ -12,7 +13,7 @@ export default function LearnerSideBar(props) {
   const userIcon = <FontAwesomeIcon icon={faUsers} />;
 
   return (
-    <section className="sidebar">
+    <section className="learner-sidebar">
       <div className="profile">
         <i className="user-icon">{userIcon}</i>
         <Animated
@@ -28,10 +29,10 @@ export default function LearnerSideBar(props) {
           {firstname} {lastname}
         </div>
         <div className="learner-email">{email}</div>
-        <div className="overlay"></div>
+        <div className="learner-overlay"></div>
       </div>
       <div className="learner-btn-group">
-        <button>button test</button>
+        <button className="btn-test">button test</button>
       </div>
     </section>
   );
