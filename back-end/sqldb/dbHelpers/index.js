@@ -1,4 +1,5 @@
 module.exports = (pool) => {
+  
   const saveNewUser = (newUser) => {
     const { firstname, lastname, email, password, usertype } = newUser;
     if (usertype === "educator") {
@@ -84,10 +85,9 @@ module.exports = (pool) => {
       });
   };
 
-
   const getAllCoursesForLearner = () => {
     return pool.query(`
-    SELECT courses.*, educators.* FROM courses 
+    SELECT courses.id AS course_id, courses.*, educators.id AS educator_id, educators.* FROM courses 
     JOIN educators_courses ON courses.id = educators_courses.course_id 
     JOIN educators ON educators.id = educators_courses.educator_id 
     ORDER BY courses.created_at DESC`)

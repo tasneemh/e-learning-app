@@ -22,72 +22,53 @@ export default function Login() {
     setPasswordShown(passwordShown ? false : true);
   };
 
-  /*const handleLogin = () =>{
-    clearErrors();
-    fire.auth()
-    .signInWithEmailAndPassword(email, password)
-    .catch(error => {
-      console.log("error with sign-in: ", error);
-      switch(error.code){
-        case "auth/invalid-email":
-        case "auth/user-disabled":
-        case "auth/user-not-found":
-        setEmailError(error.message);
-        break;
-        case "auth/wrong-password":
-        setPasswordError(error.message);
-        break;
-      }
-    })
+  const clearErrors = () => {
+    setEmailError("");
+    setPasswordError("");
   };
-  */
- const clearErrors = () =>{
-   setEmailError("");
-   setPasswordError("");
- }
+
   const onSubmit = (data, event) => {
     console.log("data onsubmit: ", data);
     clearErrors();
     fire.auth()
-    .signInWithEmailAndPassword(data.email, data.password)
-    .then(userCredential =>{
-      const user = userCredential.user;
-      console.log("user in login: ", user);
-      event.target.reset();
-      axios
-      .post(`http://localhost:9001/getregistereduser`, { data })
-      .then((response) => {
-        const user = response.data.user;
-        const userType = response.data.user.usertype;
-        console.log("response", response.data.user);
-        if (userType === "learner") {
-          history.push({ pathname: "/learner", state: { user } });
-        } else if (userType === "educator") {
-          history.push({ pathname: "/educator", state: { user } });
-        }
+      .signInWithEmailAndPassword(data.email, data.password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log("user in login: ", user);
+        event.target.reset();
+        axios
+          .post(`http://localhost:9001/getregistereduser`, { data })
+          .then((response) => {
+            const user = response.data.user;
+            const userType = response.data.user.usertype;
+            console.log("response", response.data.user);
+            if (userType === "learner") {
+              history.push({ pathname: "/learner", state: { user } });
+            } else if (userType === "educator") {
+              history.push({ pathname: "/educator", state: { user } });
+            }
+          })
+          .catch((error) => {
+            console.log("error with axios in login", error);
+          });
       })
       .catch((error) => {
-      console.log("error with axios in login", error);
+        console.log("error with login: ", error);
+        switch (error.code) {
+          case "auth/invalid-email":
+            setEmailError("This is an invalid email");
+            break;
+          case "auth/user-disabled":
+            setEmailError("User has been disabled");
+            break;
+          case "auth/user-not-found":
+            setEmailError("User is not found");
+            break;
+          case "auth/wrong-password":
+            setPasswordError("This is wrong password");
+            break;
+        }
       });
-    })
-    .catch(error => {
-      console.log("error with login: ", error);
-      switch(error.code){
-        case "auth/invalid-email":
-        setEmailError("This is an invalid email");
-        break;
-        case "auth/user-disabled":
-        setEmailError("User has been disabled");
-        break;
-        case "auth/user-not-found":
-        setEmailError("User is not found");
-        break;
-        case "auth/wrong-password":
-        setPasswordError("This is wrong password");
-        break;
-      }
-    });
-    
   };
 
   return (
@@ -96,25 +77,26 @@ export default function Login() {
         <h1>Login</h1>
         <div className="form-group">
           <input
-            name = "email"
+            name="email"
             autoComplete="off"
             ref={register({
               required: true,
-              maxLength: 255 /*pattern: /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/i*/
+              maxLength: 255 /*pattern: /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/i*/,
             })}
-             className="form-control"
+            className="form-control"
             placeholder="Email"
             //value={input.email}
             //onChange={handleChange}
           />
           {/* errors will return when field validation fails  */}
-          {errors.email && errors.email.type ==="required" && (<span>Email is required</span>)  
-          }
+          {errors.email && errors.email.type === "required" && (
+            <span>Email is required</span>
+          )}
           {errors.email && errors.email.type === "maxLength" && (
             <span>MaxLength of the email is 255</span>
           )}
-           {/**handling email errors coming from Firebase */}
-            <p>{emailError ? emailError: ""}</p>
+          {/**handling email errors coming from Firebase */}
+          <p>{emailError ? emailError : ""}</p>
           {/*errors.email && errors.email.type === "pattern" && (<span>Email can have </span>)*/}
 
           <div className="password-wrapper">
@@ -140,7 +122,7 @@ export default function Login() {
             <span>MaxLength of the password is 255</span>
           )}
           {/* *handling password errors from Firebase */}
-          <p>{passwordError ? passwordError: ""}</p>
+          <p>{passwordError ? passwordError : ""}</p>
           <input type="submit" value="Login" />
         </div>
       </form>

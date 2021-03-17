@@ -12,5 +12,11 @@ VALUES ('educator', 'one', 'educatorone@gmail.com', '$2b$10$A16s.l8gm5XTv2w5dJsV
 
 
 
-
+SELECT DISTINCT learners.*, courses.* FROM learners
+JOIN learners_courses ON learners.id = learners_courses.course_id
+JOIN courses ON learners_courses.course_id = courses.id
+JOIN educators_courses ON courses.id = educators_courses.educator_id
+    where educators_courses.educator_id= 1
+    GROUP by courses.id, learners.id;
+    
 

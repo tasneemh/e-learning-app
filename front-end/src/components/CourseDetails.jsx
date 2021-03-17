@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 export default function CourseDetails() {
   const history = useHistory();
   const {
-    id,
+    course_id,
     name,
     code,
     description,
@@ -61,7 +61,7 @@ export default function CourseDetails() {
   const enrollCourse = () => {
     const data = {};
     data["learnerid"] = learnerId;
-    data["courseid"] = id;
+    data["courseid"] = course_id;
     axios
       .post(`http://localhost:9001/enrollcourse`, { data })
       .then((response) => {

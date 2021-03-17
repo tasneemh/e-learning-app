@@ -87,7 +87,7 @@ export default function LearnerCoursesList() {
       <Swiper
         effect="fade"
         spaceBetween={50}
-        slidesPerView={3}
+        slidesPerView={10}
         navigation
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
