@@ -12,10 +12,6 @@ import CourseForm from "./components/CourseForm";
 import CourseDetails from "./components/CourseDetails";
 
 function App() {
-  const [state, setState] = useState({
-    learners: [],
-  });
-
   return (
     <div className="App">
       <Router>
@@ -39,14 +35,14 @@ function App() {
             {/** educator*/} <Educator />
           </Route>
           <Route path="/educator-createnewcourses">
-            {/** educator/courses/createnewcourse*/}
+            {/** educator-createnewcourse*/}
             <CourseForm />
           </Route>
           <Route path="/learner">
             {/** learner*/} <Learner />
           </Route>
           <Route path="/learner-coursedetails">
-            {/** learner*/} <CourseDetails />
+            {/** learner-coursedetails*/} <CourseDetails />
           </Route>
         </Switch>
       </Router>

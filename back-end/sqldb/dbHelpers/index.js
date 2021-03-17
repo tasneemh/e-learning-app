@@ -1,5 +1,5 @@
 module.exports = (pool) => {
-  
+
   const saveNewUser = (newUser) => {
     const { firstname, lastname, email, password, usertype } = newUser;
     if (usertype === "educator") {
@@ -31,7 +31,7 @@ module.exports = (pool) => {
     const { courseName, courseCode, courseDescription, courseImageUrl, courseMaterialUrl, educatorId, imageFileFormat, materialFileFormat } = course;
     return pool.query(`
       INSERT INTO courses(name, code, description, image_url, material_url, image_file_format, material_file_format) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *;`,
-      [courseName, courseCode, courseDescription, courseImageUrl, courseMaterialUrl, imageFileFormat, materialFileFormat ])
+      [courseName, courseCode, courseDescription, courseImageUrl, courseMaterialUrl, imageFileFormat, materialFileFormat])
       .then(data => {
         console.log("data", data);
         const courseId = data.rows[0].id;
@@ -51,7 +51,7 @@ module.exports = (pool) => {
     console.log("id", id);
     return pool.query(`
     INSERT INTO learners_courses(learner_id, course_id) VALUES($1, $2) RETURNING *;`,
-    [id.learnerid, id.courseid])
+      [id.learnerid, id.courseid])
       .then(data => {
         return data.rows[0];
       })
@@ -113,5 +113,35 @@ module.exports = (pool) => {
       });
   };
 
-  return { saveNewUser, saveCourse, getAllCoursesForEducator, getUserData, getAllCoursesForLearner, enrollCourse, getRegisteredCoursesForLearner };
+  const getNumLearnersForCourses = (educatorId) => {
+    return pool.query(`
+    SELECT courses.id AS course_id, courses.name AS course_name, COUNT(learners_courses.learner_id) AS num_learners 
+    FROM courses
+    JOIN learners_courses ON courses.id = learners_courses.course_id
+    JOIN educators_courses ON courses.id = educators_courses.course_id
+    WHERE educators_courses.educator_id = $1
+    GROUP by courses.id
+    ORDER by courses.created_at;`, [educatorId])
+      .then(response => {
+        return response.rows;
+      }).catch(error => {
+        console.log(error);
+      });
+  };
+
+  const getTotalLearnersAndCoursesForEducator = (educatorId) => {
+    return pool.query(`
+    SELECT educators_courses.educator_id AS educator_id, COUNT(DISTINCT educators_courses.course_id) AS total_courses, 
+    COUNT(DISTINCT learners_courses.learner_id) AS total_learners FROM educators_courses
+    LEFT JOIN learners_courses ON educators_courses.course_id = learners_courses.course_id
+    WHERE educators_courses.educator_id = $1
+    GROUP BY educators_courses.educator_id;`, [educatorId])
+      .then(response => {
+        return response.rows[0];
+      }).catch(error => {
+        console.log(error);
+      });
+  };
+
+  return { saveNewUser, saveCourse, getAllCoursesForEducator, getUserData, getAllCoursesForLearner, enrollCourse, getRegisteredCoursesForLearner, getNumLearnersForCourses, getTotalLearnersAndCoursesForEducator };
 };

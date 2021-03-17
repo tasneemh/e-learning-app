@@ -79,6 +79,32 @@ app.post("/enrollcourse", (request, response) => {
     .catch(error => response.send(error));
 });
 
+app.get("/educator/:id/learnersforcourses", (request, response) => {
+  const educatorId = request.params.id;
+  sqldbHelpers.getNumLearnersForCourses(educatorId).then(
+    data => {
+      if (!data) {
+        response.send({ message: "no available data" });
+        return;
+      }
+      response.send(data);
+    })
+    .catch(error => response.send(error));
+});
+
+app.get("/educator/:id/totallearnersandcourses", (request, response) => {
+  const educatorId = request.params.id;
+  sqldbHelpers.getTotalLearnersAndCoursesForEducator(educatorId).then(
+    data => {
+      if (!data) {
+        response.send({ message: "no available data" });
+        return;
+      }
+      response.send(data);
+    })
+    .catch(error => response.send(error));
+});
+
 app.get("/educator/:id/courses", (request, response) => {
   const educatorId = request.params.id;
   sqldbHelpers.getAllCoursesForEducator(educatorId).then(
@@ -91,6 +117,8 @@ app.get("/educator/:id/courses", (request, response) => {
     })
     .catch(error => response.send(error));
 });
+
+
 
 app.get("/learner/:id/courses", (request, response) => {
   const learnerId = request.params.id;
