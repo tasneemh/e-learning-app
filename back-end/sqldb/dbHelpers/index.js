@@ -116,9 +116,9 @@ module.exports = (pool) => {
   const getNumLearnersForCourses = (educatorId) => {
     return pool.query(`
     SELECT courses.id AS course_id, courses.name AS course_name, COUNT(learners_courses.learner_id) AS num_learners 
-    FROM courses
-    JOIN learners_courses ON courses.id = learners_courses.course_id
-    JOIN educators_courses ON courses.id = educators_courses.course_id
+    FROM educators_courses
+    LEFT JOIN courses ON educators_courses.course_id = courses.id
+    LEFT JOIN learners_courses ON courses.id = learners_courses.course_id
     WHERE educators_courses.educator_id = $1
     GROUP by courses.id
     ORDER by courses.created_at;`, [educatorId])

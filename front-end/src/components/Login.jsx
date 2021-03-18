@@ -107,8 +107,6 @@ export default function Login() {
               type={passwordShown ? "text" : "password"}
               className="form-control"
               placeholder="Password"
-              //value={input.password}
-              //onChange={handleChange}
             />
             <i onClick={togglePasswordVisiblity}>{eye}</i>
           </div>

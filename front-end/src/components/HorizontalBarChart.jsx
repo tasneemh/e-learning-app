@@ -1,4 +1,3 @@
-import React from "react";
 import { HorizontalBar } from "react-chartjs-2";
 
 export default function HorizontalBarChart(props) {
@@ -33,7 +32,7 @@ export default function HorizontalBarChart(props) {
         {
           ticks: {
             beginAtZero: true,
-            minRotation: 10,
+            minRotation: 5,
             stepSize: 1,
           },
         },

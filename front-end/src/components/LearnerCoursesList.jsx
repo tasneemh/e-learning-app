@@ -9,7 +9,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, EffectFade } from "swiper";
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "./LearnerCoursesList.css";
 
@@ -23,7 +23,7 @@ const useStyles = makeStyles({
   },
 });
 
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, EffectFade]);
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 export default function LearnerCoursesList() {
   const history = useHistory();
@@ -75,9 +75,7 @@ export default function LearnerCoursesList() {
   });
 
   const handleLearnMoreClick = (course) => {
-    //console.log("learner", learner);
     course["learner"] = learner;
-    console.log("course inside the click", learner);
     history.push({ pathname: "learner-coursedetails", state: course });
   };
 
@@ -85,9 +83,8 @@ export default function LearnerCoursesList() {
     <div className="learner-allcourses-container">
       <span>New Courses</span>
       <Swiper
-        effect="fade"
-        spaceBetween={50}
-        slidesPerView={10}
+        spaceBetween={10}
+        slidesPerView={4}
         navigation
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}

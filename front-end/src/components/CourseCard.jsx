@@ -11,7 +11,12 @@ import IconButton from "@material-ui/core/IconButton";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Collapse from "@material-ui/core/Collapse";
 import "./CourseCard.css";
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, EffectFade } from "swiper";
+import SwiperCore, {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+} from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 const useStyles = makeStyles((theme) => ({
@@ -34,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, EffectFade]);
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 export default function CourseCard(props) {
   const classes = useStyles();
@@ -44,21 +49,18 @@ export default function CourseCard(props) {
     setExpanded(!expanded);
   };
 
-  console.log("props in course card", props.courses);
   const coursesList = props.courses;
 
   const displayCourses = coursesList.map((course, index) => {
     return (
-      
       <SwiperSlide className="educator-course-card" key={index}>
         <Card className={classes.root}>
-          <CardMedia
-            className={classes.media}
-            image={course.image_url}
-          />
+          <CardMedia className={classes.media} image={course.image_url} />
           <CardHeader title={course.name} subheader={course.created_at} />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">{course.code}</Typography>
+            <Typography gutterBottom variant="h5" component="h2">
+              {course.code}
+            </Typography>
           </CardContent>
           <CardActions disableSpacing>
             <IconButton
@@ -79,20 +81,24 @@ export default function CourseCard(props) {
             </CardContent>
           </Collapse>
         </Card>
-     </SwiperSlide>
+      </SwiperSlide>
     );
   });
 
-  return <div 
-  className="courses-cards-container">
-  <Swiper className="course-card-swiper"
-        effect="fade"
-        spaceBetween={1}
+  return (
+    <div className="courses-cards-container">
+      <Swiper
+        className="course-card-swiper"
+        spaceBetween={10}
         slidesPerView={4}
         navigation
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
         onSwiper={(swiper) => console.log(swiper)}
-      >{displayCourses}</Swiper>
-  </div>;
+        
+      >
+        {displayCourses}
+      </Swiper>
+    </div>
+  );
 }
