@@ -8,20 +8,20 @@ html{
 }
 .learner-container {
   display: flex;
-  border: 1px solid green;
+  border: 2px solid black;
   width: 100%;
   height: 100%;
   flex-direction: row;
   justify-content: center;
-  margin: 0.5em;
+  /* margin: 0.5em; */
   padding: 0.5em;
   align-items: center;
+  background-color: rgba(244,244,244,1);
 }
 .learner-sidebar{
   display: flex;
   flex-direction: column;
-  background-color: rebeccapurple;
-  margin: 0.5em;
+  /* background-color: rebeccapurple; */
   padding: 0.5em; 
   width: 20%;
   /* height: 100%;   */

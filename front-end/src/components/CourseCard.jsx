@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 345,
   },
   media: {
-    height: 150,
+    height: 100,
     padding: "56.25%", // 16:9
   },
   expand: {
@@ -50,7 +50,9 @@ export default function CourseCard(props) {
       <div className="educator-course-card" key={index}>
         <Card className={classes.root}>
           <CardMedia className={classes.media} image={course.image_url} />
-          <CardHeader title={course.name} subheader={course.created_at} />
+          <CardHeader title={course.name}  
+          subheader={course.created_at} >
+          </CardHeader>
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
               {course.code}

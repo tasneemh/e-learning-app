@@ -13,12 +13,12 @@
   align-content: center;
   margin: 0.5em;
   padding: 1em;
+  background-color: rgba(244,244,244,1);
 }
 .educator-sidebar {
   display: flex;
   flex-direction: column;
   background-color: rebeccapurple;
-  margin: 0.5em;
   padding: 0.5em;
   width: 20%;
   border: 1px solid blue;

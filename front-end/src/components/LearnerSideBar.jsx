@@ -10,12 +10,11 @@ export default function LearnerSideBar(props) {
   console.log("history in learner side bar", JSON.stringify(history));
   const user = history.location.state.user;
   const { firstname, lastname, email } = user;
-  const userIcon = <FontAwesomeIcon icon={faUsers} />;
+  
 
   return (
     <section className="learner-sidebar">
       <div className="profile">
-        <i className="user-icon">{userIcon}</i>
         <Animated
           animationIn="lightSpeedIn"
           animationOut="zoomOutDown"
