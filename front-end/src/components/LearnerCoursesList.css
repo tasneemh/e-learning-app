@@ -14,10 +14,15 @@
 
 .learner-course-card{
   display: flex;
-  border: 1px solid teal;
+  border: 1px solid rgb(145, 145, 145);
   flex-direction: row;
   justify-content: center;
   margin: 5px;
+  height: 90%;
+  width:100%;
 }
-
+.learner-course-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transform: translateY(10px);
+}
 

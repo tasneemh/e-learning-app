@@ -11,6 +11,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, EffectFade } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import Carousel from 'react-elastic-carousel';
 import "./LearnerCoursesList.css";
 
 const useStyles = makeStyles({
@@ -25,6 +26,7 @@ const useStyles = makeStyles({
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, EffectFade]);
 
+
 export default function LearnerCoursesList() {
   const history = useHistory();
   const learner = history.location.state.user;
@@ -32,6 +34,7 @@ export default function LearnerCoursesList() {
   const { firstname, lastname, email, id } = learner;
   const [courses, setCourses] = useState([]);
   const classes = useStyles();
+  const breakPoints = [{width: 768, itemsToShow:2}];
 
   useEffect(() => {
     axios
@@ -48,7 +51,7 @@ export default function LearnerCoursesList() {
   const displayCourses = courses.map((course, index) => {
     console.log("display courses", course.image_url);
     return (
-      <SwiperSlide className="learner-course-card" key={index}>
+      <div className="learner-course-card" key={index}>
         <Card className={classes.root}>
           <CardMedia className={classes.media} image={course.image_url} />
           <CardHeader title={course.name} subheader={course.created_at} />
@@ -70,7 +73,7 @@ export default function LearnerCoursesList() {
             </Button>
           </CardActions>
         </Card>
-      </SwiperSlide>
+      </div>
     );
   });
 
@@ -82,19 +85,10 @@ export default function LearnerCoursesList() {
   };
 
   return (
-    <div className="learner-allcourses-container">
-      <span>New Courses</span>
-      <Swiper
-        effect="fade"
-        spaceBetween={50}
-        slidesPerView={10}
-        navigation
-        pagination={{ clickable: true }}
-        scrollbar={{ draggable: true }}
-        onSwiper={(swiper) => console.log(swiper)}
-      >
+    <div className="learner-allcourses-container"> 
+      <Carousel breakPoints = {breakPoints}>
         {courses && displayCourses}
-      </Swiper>
+      </Carousel>
     </div>
   );
 }

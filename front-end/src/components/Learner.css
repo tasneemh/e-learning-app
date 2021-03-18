@@ -38,7 +38,7 @@ html{
 .learner-overlay{
   width: 90%;
   height: 100%;
-  border: 1px solid yellow;
+  /* border: 1px solid yellow;  */
   background-color: transparent;
 }
 .learner-content {
@@ -66,7 +66,7 @@ html{
 
 .learner-allcourses-list {
   display: flex;
-  border: 1px solid yellow;
+  border: 1px solid yellow; 
   margin-right: 1em;
   padding: 1em;
   width: 100%;

@@ -10,6 +10,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Collapse from "@material-ui/core/Collapse";
+import Carousel from 'react-elastic-carousel';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,6 +32,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const breakPoints = [{width: 768, itemsToShow:2}];
+
 export default function RegisteredCourseCard(props) {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
@@ -41,6 +44,8 @@ export default function RegisteredCourseCard(props) {
 
   console.log("props in registered course card", props.courses);
   const coursesList = props.courses;
+
+  
 
   const displayCourses = coursesList.map((course, index) => {
     return (
@@ -77,5 +82,7 @@ export default function RegisteredCourseCard(props) {
     );
   });
 
-  return <div className="courses-cards-container">{displayCourses}</div>;
+  return <div className="courses-cards-container">
+  <Carousel breakPoints = {breakPoints} >
+  {displayCourses}</Carousel></div>;
 }

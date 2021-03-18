@@ -13,6 +13,7 @@ import Collapse from "@material-ui/core/Collapse";
 import "./CourseCard.css";
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, EffectFade } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import Carousel from 'react-elastic-carousel';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,10 +48,10 @@ export default function CourseCard(props) {
   console.log("props in course card", props.courses);
   const coursesList = props.courses;
 
+  const breakPoints = [{width: 768, itemsToShow:2}];
   const displayCourses = coursesList.map((course, index) => {
     return (
-      
-      <SwiperSlide className="educator-course-card" key={index}>
+      <div className="educator-course-card" key={index}>
         <Card className={classes.root}>
           <CardMedia
             className={classes.media}
@@ -79,20 +80,20 @@ export default function CourseCard(props) {
             </CardContent>
           </Collapse>
         </Card>
-     </SwiperSlide>
+     </div>
     );
   });
 
   return <div 
   className="courses-cards-container">
-  <Swiper className="course-card-swiper"
-        effect="fade"
-        spaceBetween={1}
-        slidesPerView={4}
-        navigation
-        pagination={{ clickable: true }}
-        scrollbar={{ draggable: true }}
-        onSwiper={(swiper) => console.log(swiper)}
-      >{displayCourses}</Swiper>
+  <Carousel breakPoints = {breakPoints} className="course-card-swiper"
+        // effect="fade"
+        // spaceBetween={1}
+        // slidesPerView={4}
+        // navigation
+        // pagination={{ clickable: true }}
+        // scrollbar={{ draggable: true }}
+        // onSwiper={(swiper) => console.log(swiper)}
+      >{displayCourses}</Carousel>
   </div>;
 }

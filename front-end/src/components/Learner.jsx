@@ -18,6 +18,7 @@ export default function Learner() {
           <LearnerRegisteredCourses />
         </div>
         <div className="learner-allcourses-list">
+        <span>New Courses</span>
           <LearnerCoursesList />
         </div>
       </div>
