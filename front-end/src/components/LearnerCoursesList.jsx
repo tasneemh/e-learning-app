@@ -81,7 +81,6 @@ export default function LearnerCoursesList() {
   return (
 
     <div className="learner-allcourses-container">
-    <span>New Courses</span> 
       <Carousel breakPoints = {breakPoints}>
         {courses && displayCourses}
       </Carousel>

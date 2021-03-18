@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -34,10 +36,18 @@
 } */
 .educator-course-card {
   display: flex; 
-  border: 5px solid teal;  
+  border: 1px solid rgb(145, 145, 145);
   margin: 5px;
+  padding: 1em;
+  height: 80%;
+  font-family: 'Roboto', sans-serif;
 }
-
+.bg-red{
+  background-color: red;
+}
+.MuiTypography{
+  font-size: 90px;
+}
 
 
 

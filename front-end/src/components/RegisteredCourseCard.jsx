@@ -50,11 +50,13 @@ export default function RegisteredCourseCard(props) {
         <Card className={classes.root}>
           <CardMedia className={classes.media} image={course.image_url} />
           <CardHeader title={course.name} subheader={course.created_at} />
-          <CardContent>
+          {/** 
+          <CardContent classes={{root:"bg-red"}}>
             <Typography gutterBottom variant="h5" component="h2">
               {course.code}
             </Typography>
-          </CardContent>
+          </CardContent>*/}
+          
           <CardActions disableSpacing>
             <IconButton
               className={clsx(classes.expand, {

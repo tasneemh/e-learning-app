@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
 import Home from "./components/Home";
-import Notes from "./components/Notes";
+
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Educator from "./components/Educator";
@@ -21,9 +21,6 @@ function App() {
           <Route path="/" exact>
             {/**Home -- since we dont want home page to render on every page so we specify that home is an exact component*/}
             <Home />
-          </Route>
-          <Route path="/notes">
-            {/** Notes*/} <Notes />
           </Route>
           <Route path="/login">
             {/** login*/} <Login />
