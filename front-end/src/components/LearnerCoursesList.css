@@ -15,7 +15,6 @@
 .learner-course-card{
   display: flex;
   border: 1px solid teal;
-  flex-direction: row;
   justify-content: center;
   margin: 5px;
 }

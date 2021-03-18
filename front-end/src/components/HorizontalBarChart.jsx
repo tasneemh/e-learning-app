@@ -33,6 +33,8 @@ export default function HorizontalBarChart(props) {
         {
           ticks: {
             beginAtZero: true,
+            minRotation: 10,
+            stepSize: 1,
           },
         },
       ],
