@@ -27,8 +27,8 @@ export default function EducatorReport() {
   return (
     <div>
       <span className="total-number">
-        Total Numbers of {totalLearners ? totalLearners : 0} Learners Enroll in{" "}
-        {totalCourses ? totalCourses : 0} Courses
+      There are a total of {totalLearners ? totalLearners : 0} individual learners enrolled in {" "} 
+        {totalCourses ? totalCourses : 0} differnet courses
       </span>
       {numLearnersForCourses && (
         <HorizontalBarChart numLearnersForCourses={numLearnersForCourses}/>

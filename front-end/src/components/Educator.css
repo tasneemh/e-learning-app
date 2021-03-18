@@ -1,78 +1,62 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html{
-    width: 100%;
-    height: 100%;
-}
-
-body{
-    width: 100%;
-    height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .educator-container {
-    display: flex;
-    border: 1px solid green;
-    width: 100%;
-    height: 80%;
-    flex-direction: row;
-    /* justify-content: center; */
-    align-content: center;
-    margin: 0.5em;
-    padding: 1em;
+  display: flex;
+  border: 1px solid green;
+  width: 100%;
+  height: 80%;
+  flex-direction: row;
+  align-content: center;
+  margin: 0.5em;
+  padding: 1em;
 }
-.educator-sidebar{
+.educator-sidebar {
   display: flex;
   flex-direction: column;
   background-color: rebeccapurple;
   margin: 0.5em;
-  padding: 0.5em; 
+  padding: 0.5em;
   width: 20%;
-  /* height: 100%;   */
-  border: 1px solid blue; 
+  border: 1px solid blue;
   align-self: stretch;
-  /* align-content: stretch; */
-  /* flex-wrap:wrap; */
 }
-.btn-test{
+.btn-test {
   width: 80%;
-  height: 50px; 
+  height: 50px;
 }
+
 .educator-content {
-    display: flex;
-    border: 1px solid red;
-    width: 80%;
-    height: 100%;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    margin: 0.25em;
-    padding: 0.5em;
+  display: flex;
+  border: 1px solid red;
+  width: 80%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin: 0.25em;
+  padding: 0.5em;
 }
 
 .educator-report {
-    display: flex;
-    border: 1px solid blue;
-    margin: 0.5em;
-    /* margin-right: 0.25em;
-    margin-bottom: 0.25em; */
-    padding: 0.5em;
-    width: 98%;
-    height: 50%;
-    flex-direction: column;
+  display: flex;
+  border: 1px solid blue;
+  margin: 0.5em;
+  padding: 0.5em;
+  width: 98%;
+  height: 50%;
+  flex-direction: column;
 }
 
 .educator-courses-list {
-    display: flex;
-    border: 1px solid yellow;
-    /* margin-right: 0.25em; */
-    margin: 0.5em;
-    padding: 0.5em;
-    width: 98%;
-    height: 50%;
-    flex-direction: column;
+  display: flex;
+  border: 1px solid yellow;
+  margin: 0.5em;
+  padding: 0.5em;
+  width: 98%;
+  height: 50%;
+  flex-direction: column;
 }

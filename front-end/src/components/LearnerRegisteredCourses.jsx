@@ -3,6 +3,8 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import RegisteredCourseCard from "./RegisteredCourseCard";
 
+
+
 export default function LearnerRegisteredCourses() {
   const history = useHistory();
   const user = history.location.state.user;
@@ -14,7 +16,6 @@ export default function LearnerRegisteredCourses() {
       .get(`http://localhost:9001/learner/${id}/courses`)
       .then((response) => {
         setCourses(response.data);
-        //console.log("courses", response.data);
       })
       .catch((error) => {
         console.log(error);

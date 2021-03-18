@@ -9,9 +9,3 @@ VALUES ('educator', 'one', 'educatorone@gmail.com', '$2b$10$A16s.l8gm5XTv2w5dJsV
 ('educator', 'two', 'educatortwo@gmail.com', '$2b$10$0z1Aq.1n.ZtmyM4mFD/lguMncsJ2hL66GeWR/9BPlMQzBr7UTWbka'),/**password:educatortwo**/
 ('educator', 'three', 'educatorthree@gmail.com', '$2b$10$0ph/R6hrbTbRZj3RwS8T4.YnQWd2xCyGZqRMqCG/nVhSg9bj5/K5y');/**password:educatorthree**/
 
-
-
-
-    
-
-    

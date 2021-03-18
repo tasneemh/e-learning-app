@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 export default function EducatorSideBar(props) {
   console.log("props in educator sidebar", props);
   const history = useHistory();
-  console.log("history in educator side bar", JSON.stringify(history));
+  //console.log("history in educator side bar", JSON.stringify(history));
   const user = history.location.state.user;
 
   const handleCreateNewCoursesClick = () => {

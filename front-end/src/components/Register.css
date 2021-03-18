@@ -122,9 +122,7 @@
 .user {
     font-size: 70px;
     color: black;
-    /* top: 5%; */
     top: 0;
     left: 41.5%;
-    /* position: absolute; */
     margin-bottom: 10px;
 }

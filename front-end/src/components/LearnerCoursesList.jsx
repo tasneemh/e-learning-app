@@ -9,8 +9,6 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, EffectFade } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
 import Carousel from 'react-elastic-carousel';
 import "./LearnerCoursesList.css";
 
@@ -23,8 +21,6 @@ const useStyles = makeStyles({
     padding: "56.25%", // 16:9
   },
 });
-
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, EffectFade]);
 
 
 export default function LearnerCoursesList() {
@@ -78,14 +74,14 @@ export default function LearnerCoursesList() {
   });
 
   const handleLearnMoreClick = (course) => {
-    //console.log("learner", learner);
     course["learner"] = learner;
-    console.log("course inside the click", learner);
     history.push({ pathname: "learner-coursedetails", state: course });
   };
 
   return (
-    <div className="learner-allcourses-container"> 
+
+    <div className="learner-allcourses-container">
+    <span>New Courses</span> 
       <Carousel breakPoints = {breakPoints}>
         {courses && displayCourses}
       </Carousel>

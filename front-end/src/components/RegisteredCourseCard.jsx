@@ -10,6 +10,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Collapse from "@material-ui/core/Collapse";
+
 import Carousel from 'react-elastic-carousel';
 
 const useStyles = makeStyles((theme) => ({
@@ -42,22 +43,18 @@ export default function RegisteredCourseCard(props) {
     setExpanded(!expanded);
   };
 
-  console.log("props in registered course card", props.courses);
   const coursesList = props.courses;
-
-  
 
   const displayCourses = coursesList.map((course, index) => {
     return (
-      <section className="educator-course-card" key={index}>
+      <div className="educator-course-card" key={index}>
         <Card className={classes.root}>
-          <CardMedia
-            className={classes.media}
-            image={course.image_url}
-          />
+          <CardMedia className={classes.media} image={course.image_url} />
           <CardHeader title={course.name} subheader={course.created_at} />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">{course.code}</Typography>
+            <Typography gutterBottom variant="h5" component="h2">
+              {course.code}
+            </Typography>
           </CardContent>
           <CardActions disableSpacing>
             <IconButton
@@ -78,10 +75,9 @@ export default function RegisteredCourseCard(props) {
             </CardContent>
           </Collapse>
         </Card>
-      </section>
+      </div>
     );
   });
-
   return <div className="courses-cards-container">
   <Carousel breakPoints = {breakPoints} >
   {displayCourses}</Carousel></div>;
