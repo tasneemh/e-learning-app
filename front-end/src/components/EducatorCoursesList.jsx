@@ -2,6 +2,10 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import CourseCard from "./CourseCard";
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, EffectFade } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, EffectFade]);
 
 export default function EducatorCoursesList() {
   const history = useHistory();

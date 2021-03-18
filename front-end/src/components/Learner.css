@@ -24,7 +24,7 @@ html{
   margin: 0.5em;
   padding: 0.5em; 
   width: 20%;
-  height: 100%;  
+  /* height: 100%;   */
   border: 1px solid blue; 
   align-self: stretch;
   /* align-content: stretch; */
