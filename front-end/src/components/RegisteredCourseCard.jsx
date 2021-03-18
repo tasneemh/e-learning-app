@@ -33,11 +33,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const breakPoints = [{width: 768, itemsToShow:2}];
-
 export default function RegisteredCourseCard(props) {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
+  const breakPoints = [{width: 768, itemsToShow:2}];
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
