@@ -1,6 +1,4 @@
 import { useHistory } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUsers } from "@fortawesome/free-solid-svg-icons";
 import { Animated } from "react-animated-css";
 import "./Learner.css";
 

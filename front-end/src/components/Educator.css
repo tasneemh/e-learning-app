@@ -18,7 +18,6 @@
 .educator-sidebar {
   display: flex;
   flex-direction: column;
-  background-color: rebeccapurple;
   padding: 0.5em;
   width: 20%;
   border: 1px solid blue;

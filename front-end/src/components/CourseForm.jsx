@@ -51,8 +51,6 @@ export default function CourseForm() {
   };
 
   const onSubmit = async (data, event) => {
-    //upload different file type?
-    //using drag and drop package?
     console.log("data", data);
     let courseImage;
     if (Object.values(data.courseImage).length > 0) {

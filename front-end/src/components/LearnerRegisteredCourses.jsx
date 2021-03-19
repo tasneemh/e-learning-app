@@ -3,8 +3,6 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import RegisteredCourseCard from "./RegisteredCourseCard";
 
-
-
 export default function LearnerRegisteredCourses() {
   const history = useHistory();
   const user = history.location.state.user;
