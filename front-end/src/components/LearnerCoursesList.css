@@ -14,7 +14,7 @@
 
 .learner-course-card{
   display: flex;
-  border: 1px solid rgb(145, 145, 145);
+  /* border: 1px solid rgb(145, 145, 145); */
   flex-direction: row;
   border: 1px solid teal;
   justify-content: center;

@@ -47,7 +47,7 @@ export default function RegisteredCourseCard(props) {
 
   const displayCourses = coursesList.map((course, index) => {
     return (
-      <div className="educator-course-card" key={index}>
+      <div className="learner-course-card" key={index}>
         <Card className={classes.root}>
           <CardMedia className={classes.media} image={course.image_url} />
           <CardHeader title={course.name} subheader={course.created_at} />

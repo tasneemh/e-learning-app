@@ -14,9 +14,6 @@ import "./CourseCard.css";
 import Carousel from 'react-elastic-carousel';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    maxWidth: 345,
-  },
   media: {
     height: 100,
     padding: "56.25%", // 16:9
@@ -48,18 +45,15 @@ export default function CourseCard(props) {
     return (
 
       <div className="educator-course-card" key={index}>
-        <Card className={classes.root}>
+        <Card style={{width:"80%", backgroundColor: "#36453B", color: "silver"}}>
           <CardMedia className={classes.media} image={course.image_url} />
-          <CardHeader title={course.name}  
-          subheader={course.created_at} >
-          </CardHeader>
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              {course.code}
-            </Typography>
+          <CardContent >
+            <div className="educator-course-name">{course.name}</div>
+            <div className="educator-course-code">{course.code}</div>
+            <div className="educator-course-created">{course.created_at}</div>
           </CardContent>
           <CardActions disableSpacing>
-            <IconButton
+            <IconButton style={{ color: "silver", float: "left"}}
               className={clsx(classes.expand, {
                 [classes.expandOpen]: expanded,
               })}
@@ -72,8 +66,8 @@ export default function CourseCard(props) {
           </CardActions>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent>
-              <Typography paragraph>Description:</Typography>
-              <Typography paragraph>{course.description}</Typography>
+              <div >Description:</div>
+              <div >{course.description}</div>
             </CardContent>
           </Collapse>
         </Card>

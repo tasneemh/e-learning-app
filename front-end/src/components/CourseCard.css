@@ -36,19 +36,30 @@
 } */
 .educator-course-card {
   display: flex; 
-  border: 1px solid rgb(145, 145, 145);
+  /* border: 1px solid rgb(145, 145, 145); */
   margin: 5px;
-  padding: 1em;
-  height: 80%;
-  font-family: 'Roboto', sans-serif;
-}
-.bg-red{
-  background-color: red;
-}
-.MuiTypography{
-  font-size: 90px;
+  height: 90%;
+  font-family: Arial, Helvetica, sans-serif;
+  justify-content: center;
+  width: 100%;
+  
 }
 
+.educator-course-name{
+font-size:30px; 
+font-weight:bold;
 
+}
+.educator-course-code{
+font-size:20px; 
+font-weight:normal;
+
+}
+.educator-course-created{
+font-size:15px; 
+font-weight:lighter;
+text-decoration: underline;
+
+}
 
 

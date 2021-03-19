@@ -60,3 +60,20 @@
   height: 50%;
   flex-direction: column;
 }
+.my-course{
+  font-size: 20px;
+}
+.total-number{
+display: flex;
+font-size: 25px;
+font-weight: normal;
+border: 1px solid red;
+width: 100%;
+justify-content: center;
+}
+.bold-number{
+  font-weight: bold;
+  margin-left: 0.25em;
+  margin-right: 0.25em;
+  font-size: 25px;
+}
