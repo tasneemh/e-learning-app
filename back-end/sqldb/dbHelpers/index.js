@@ -101,7 +101,7 @@ module.exports = (pool) => {
 
   const getRegisteredCoursesForLearner = (learnerId) => {
     return pool.query(`
-    SELECT courses.* FROM courses 
+    SELECT courses.*, learners_courses.date_of_enrollment AS enrollment FROM courses 
     JOIN learners_courses ON courses.id = learners_courses.course_id 
     JOIN learners ON learners.id = learners_courses.learner_id 
     WHERE learners.id = $1`, [learnerId])

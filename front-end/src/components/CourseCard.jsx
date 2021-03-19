@@ -1,22 +1,18 @@
 import { useState } from "react";
 import Card from "@material-ui/core/Card";
 import clsx from "clsx";
-import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
-import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Collapse from "@material-ui/core/Collapse";
 import "./CourseCard.css";
 import Carousel from 'react-elastic-carousel';
+import moment from 'moment';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    maxWidth: 345,
-  },
   media: {
     height: 100,
     padding: "56.25%", // 16:9
@@ -42,24 +38,25 @@ export default function CourseCard(props) {
   };
 
   const coursesList = props.courses;
-
   const breakPoints = [{width: 768, itemsToShow:2}];
+
+  const calDate = function (timeString) {
+    return moment(timeString).fromNow();
+  }
+
   const displayCourses = coursesList.map((course, index) => {
     return (
-
       <div className="educator-course-card" key={index}>
-        <Card className={classes.root}>
+        <Card style={{width:"80%", backgroundColor: "#36453B", color: "silver"}}>
           <CardMedia className={classes.media} image={course.image_url} />
-          <CardHeader title={course.name}  
-          subheader={course.created_at} >
-          </CardHeader>
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              {course.code}
-            </Typography>
+          <CardContent >
+            <div className="educator-course-name">{course.name}</div>
+            <div className="educator-course-code">{course.code}</div>
+            <div className="educator-course-created">Created: {calDate(course.created_at)}</div>
           </CardContent>
           <CardActions disableSpacing>
-            <IconButton
+            <IconButton 
+              style={{ color: "silver"}}
               className={clsx(classes.expand, {
                 [classes.expandOpen]: expanded,
               })}
@@ -67,13 +64,13 @@ export default function CourseCard(props) {
               aria-expanded={expanded}
               aria-label="show more"
             >
-              <ExpandMoreIcon />
+              <ExpandMoreIcon/>
             </IconButton>
           </CardActions>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent>
-              <Typography paragraph>Description:</Typography>
-              <Typography paragraph>{course.description}</Typography>
+              <div >Description:</div>
+              <div >{course.description}</div>
             </CardContent>
           </Collapse>
         </Card>
@@ -82,6 +79,6 @@ export default function CourseCard(props) {
   });
   return (<div 
   className="courses-cards-container">
-  <Carousel breakPoints = {breakPoints} className="course-card-swiper"
+  <Carousel breakPoints = {breakPoints} className="course-card-carousel"
       >{displayCourses}</Carousel>
   </div>)};   

@@ -1,24 +1,39 @@
-.learner-allcourses-container{
+.learner-allcourses-container {
   display: flex;
   border: 1px solid black;
   width: 100%;
   height: 100%;
   flex-direction: row;
 }
-
-.learner-course-card{
+.learner-course-card {
   display: flex;
-  border: 1px solid rgb(145, 145, 145);
   flex-direction: row;
   border: 1px solid teal;
   justify-content: center;
   margin: 5px;
   height: 90%;
-  width:100%;
+  width: 100%;
 }
-
 .learner-course-card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    transform: translateY(10px);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transform: translateY(10px);
+}
+.allcourse-name {
+  font-size: 30px;
+  font-weight: bold;
+}
+.allcourse-code {
+  font-size: 20px;
+  font-weight: normal;
+}
+.allcourse-created {
+  font-size: 15px;
+  font-weight: lighter;
+  text-decoration: underline;
+}
+.allcourse-educator {
+  font-size: 20px;
+  font-weight: normal;
+  margin-top: 3em;
 }
 

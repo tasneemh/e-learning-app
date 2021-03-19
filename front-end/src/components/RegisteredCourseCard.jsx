@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Card from "@material-ui/core/Card";
 import clsx from "clsx";
-import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
@@ -10,13 +9,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Collapse from "@material-ui/core/Collapse";
-
-import Carousel from 'react-elastic-carousel';
+import Carousel from "react-elastic-carousel";
+import "./RegisteredCourseCard.css";
+import moment from 'moment';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    maxWidth: 345,
-  },
   media: {
     height: 150,
     padding: "56.25%", // 16:9
@@ -36,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 export default function RegisteredCourseCard(props) {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
-  const breakPoints = [{width: 768, itemsToShow:2}];
+  const breakPoints = [{ width: 768, itemsToShow: 2 }];
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -44,19 +41,20 @@ export default function RegisteredCourseCard(props) {
 
   const coursesList = props.courses;
 
+  const calDate = function (timeString) {
+    return moment(timeString).fromNow();
+  }
+
   const displayCourses = coursesList.map((course, index) => {
     return (
-      <div className="educator-course-card" key={index}>
-        <Card className={classes.root}>
+      <div className="learner-course-card" key={index}>
+        <Card style={{width:"80%", backgroundColor: "#36453B", color: "silver"}}>
           <CardMedia className={classes.media} image={course.image_url} />
-          <CardHeader title={course.name} subheader={course.created_at} />
-          {/** 
-          <CardContent classes={{root:"bg-red"}}>
-            <Typography gutterBottom variant="h5" component="h2">
-              {course.code}
-            </Typography>
-          </CardContent>*/}
-          
+          <CardContent>
+            <div className="registered-course-name">{course.name}</div>
+            <div className="registered-course-code">{course.code}</div>
+            <div className="enrollment-date">Enrollment: {calDate(course.enrollment)}</div>
+          </CardContent>
           <CardActions disableSpacing>
             <IconButton
               className={clsx(classes.expand, {
@@ -79,7 +77,9 @@ export default function RegisteredCourseCard(props) {
       </div>
     );
   });
-  return <div className="courses-cards-container">
-  <Carousel breakPoints = {breakPoints} >
-  {displayCourses}</Carousel></div>;
+  return (
+    <div className="courses-cards-container">
+      <Carousel breakPoints={breakPoints}>{displayCourses}</Carousel>
+    </div>
+  );
 }

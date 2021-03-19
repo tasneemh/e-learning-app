@@ -37,7 +37,8 @@ CREATE TABLE courses (
 CREATE TABLE learners_courses(
   id SERIAL PRIMARY KEY NOT NULL,
   learner_id INTEGER REFERENCES learners(id) ON DELETE CASCADE,
-  course_id INTEGER REFERENCES courses(id) ON DELETE CASCADE
+  course_id INTEGER REFERENCES courses(id) ON DELETE CASCADE,
+  date_of_enrollment TIMESTAMPTZ DEFAULT Now()
 );
 
 CREATE TABLE educators_courses(

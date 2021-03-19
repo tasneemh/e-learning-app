@@ -24,11 +24,11 @@ export default function EducatorCoursesList() {
 
   return (
     <div>
-      <span className="my-course">My Course</span>
+      <div className="my-course">My Course</div>
       {courses.length ? (
         <CourseCard courses={courses} />
       ) : (
-        <span>No Courses</span>
+        <div>No Course</div>
       )}
     </div>
   );
