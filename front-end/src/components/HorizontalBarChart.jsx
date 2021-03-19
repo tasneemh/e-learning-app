@@ -6,7 +6,7 @@ export default function HorizontalBarChart(props) {
 
   const data = {
     labels: numLearnersForCourses.map((course) => course.course_name),
-
+  
     datasets: [
       {
         label: "Number of Learners",

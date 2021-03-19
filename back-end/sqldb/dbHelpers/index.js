@@ -72,7 +72,18 @@ module.exports = (pool) => {
         console.log(error);
       });
   };
-
+  const checkDuplicateCourseForLearner = (learnerId, courseId) => {
+    return pool.query(`
+    SELECT * FROM learners_courses 
+    WHERE learner_id = $1 AND course_id = $2 
+    `, [learnerId, courseId])
+      .then(response => {
+        console.log("response in dbhelpers: ", response.rows);
+        return response.rows;
+      }).catch(error => {
+        console.log(error);
+      });
+  };
   const getUserData = (user) => {
     return pool.query(`
     SELECT *, 'educator' AS source FROM educators WHERE email = $1
@@ -143,5 +154,6 @@ module.exports = (pool) => {
       });
   };
 
-  return { saveNewUser, saveCourse, getAllCoursesForEducator, getUserData, getAllCoursesForLearner, enrollCourse, getRegisteredCoursesForLearner, getNumLearnersForCourses, getTotalLearnersAndCoursesForEducator };
+  return { saveNewUser, saveCourse, getAllCoursesForEducator, getUserData, getAllCoursesForLearner, enrollCourse, getRegisteredCoursesForLearner, getNumLearnersForCourses, getTotalLearnersAndCoursesForEducator,
+  checkDuplicateCourseForLearner };
 };

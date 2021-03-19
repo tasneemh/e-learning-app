@@ -79,6 +79,24 @@ app.post("/enrollcourse", (request, response) => {
     .catch(error => response.send(error));
 });
 
+app.get("/learner/:learnerid/checkduplicatecourse/:courseid", (request, response) => {
+  console.log("request in checkduplicatecourse: ", request.params);
+  const learnerId = request.params.learnerid;
+  const courseId = request.params.courseid;
+  // const educatorId = request.params.id;
+  sqldbHelpers.checkDuplicateCourseForLearner(learnerId, courseId).then(
+    data => {
+    console.log("data in server.js", data);
+      if (data) {
+        response.send({ message: "You have already enrolled for this course!" });
+        return;
+      } else {
+        response.send({ message: "" });
+      }
+    })
+    .catch(error => response.send(error));
+});
+
 app.get("/educator/:id/learnersforcourses", (request, response) => {
   const educatorId = request.params.id;
   sqldbHelpers.getNumLearnersForCourses(educatorId).then(

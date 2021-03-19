@@ -57,53 +57,82 @@ export default function CourseDetails() {
       );
     }
   };
-
-  const enrollCourse = () => {
+  const clearMessage = () =>{
+    setMessage("");
+  }
+  const checkDuplicateCourse = (data) =>{
+    console.log("data in duplicateCourse: ", 
+    data);
+    return axios
+      .get(`http://localhost:9001/learner/${data.learnerid}/checkduplicatecourse/${data.courseid}`)
+      .then((response) => {
+        //console.log("response in checkDuplicateCourse ",response);
+        //console.log("response.data.message", response.data.message);
+        if (response.data.message === "You have already enrolled for this course!"){
+        console.log("SUCCESSFUL");
+        setMessage("YOU HAVE ALREADY ENROLLED FOR THIS COURSE!");
+        return true;
+        } else{
+        return false;
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const enrollCourse = async () => {
+    clearMessage();
     const data = {};
     data["learnerid"] = learnerId;
     data["courseid"] = course_id;
-    axios
-      .post(`http://localhost:9001/enrollcourse`, { data })
-      .then((response) => {
+    console.log("data inside enroll course, ", data);
+    const message = await checkDuplicateCourse(data);
+    console.log("message inside enroll course", message);
+      if (message){
+        return;
+      } else {
+         axios
+        .post(`http://localhost:9001/enrollcourse`, { data })
+        .then((response) => {
         console.log("response", response);
-        setMessage("you have enrolled in the course successfully!");
-      })
-      .catch((error) => {
-        console.log("error in enrolling course", error);
-      });
+        setMessage("YOU HAVE ENROLLED SUCCESSFULLY IN THE COURSE!");
+        })
+        .catch((error) => {
+        console.log("Error in enrolling course", error);
+        setMessage("ERROR IN ENROLLING COURSE");
+        });
+      }
   };
 
   return (
     <div className="coursedetails-container">
       <div className="course-material">{displayCourseMaterial()}</div>
       <div className="course-info">
-        <Card className={classes.root}>
-          <CardHeader title={name} subheader={created_at} />
+        <Card style = {{width:"100%", height: "50%", backgroundColor: "#36453B", color: "silver"}}>
           <CardContent>
-            <Typography>{code}</Typography>
-            <Typography color="textSecondary">{description}</Typography>
-            <Typography variant="body2" component="p">
-              {first_name}
-              <br />
-              {last_name}
-              <br />
-              {email}
-            </Typography>
+            <div>{name}</div>
+            <div>{code}</div>
+            <div>{created_at}</div>
+            <div>{first_name} {last_name} </div>
+            <div>{email} </div>
+            <div>{description} </div>
           </CardContent>
-          <Button
+          <div className="learner-courseDetails-btn-container">
+          <Button style = {{width:"25%", height: "50%", backgroundColor: "silver", color: "black"}}
             variant="contained"
-            color="primary"
-            size="large"
+            // color="primary"
+            // size="large"
             className={classes.button}
             startIcon={<SaveIcon />}
             onClick={enrollCourse}
           >
-            Save
+            ENROLL
           </Button>
-          <button type="button" onClick={() => history.goBack()}>
-            Back
-          </button>
-          {message && <span>{message}</span>}
+          <Button className={classes.button}style = {{width:"25%", height: "50%", backgroundColor: "silver", color: "black" }} onClick={() => history.goBack()}>
+            BACK
+          </Button>
+          </div>
+          {message && <div className="enroll-msg">{message}</div>}
         </Card>
       </div>
     </div>
