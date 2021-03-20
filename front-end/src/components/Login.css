@@ -1,54 +1,33 @@
-.form-group {
+.loginform-container {
+  border: 2px solid red;
   display: flex;
   flex-direction: column;
-  text-align: center;
-  justify-items: center;
-  font-size: 22px;
-  max-width: 500px;
-  min-height: 672px;
-  margin: 0 auto;
-  border-radius: 25px;
-  color: black;
-  background-color: white;
-  
+  align-items: center;
+  margin: 2em;
+  padding: 2em;
 }
 
-.form-group > input {
-  margin-top: 200px;
+.logingform:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-input {
-  margin: 0 auto;
-  background-color: white;
-  opacity: 50%;
-  color: black;
-  margin-top: 10px;
-  width: 300px;
-  height: 59px;
-  font-size: 22px;
-  margin-bottom: 14px;
-  max-width: 527px;
-  padding: 0 10%;
+.loginform-group {
+  border: 2px solid #36453B;
+  margin: 0.5em;
+  padding: 1em;
 }
 
-.password-wrapper {
-  position: relative;
-  display: flex;
-  margin-bottom: 14px;
+.new-user-container{
+  border: 2px solid salmon;
+  margin: 0.5em;
 }
 
-i {
+.login-eye {
+  width: 50px;
+  border: 1px solid yellow; 
+  display: inline;
   position: absolute;
-  top: 38%;
-  right: 16%;
-}
-i:hover {
-  color: #00fcb6;
-  cursor: pointer;
+  top: 27%;
+  right: 35%;
 }
 
-button {
-  width: 300px;
-  height: 50px;
-  margin: 0 auto;
-}

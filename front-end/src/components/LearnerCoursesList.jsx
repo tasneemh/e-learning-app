@@ -8,8 +8,9 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Carousel from "react-elastic-carousel";
+import moment from "moment";
 import "./LearnerCoursesList.css";
-import moment from 'moment';
+
 
 const useStyles = makeStyles({
   media: {
@@ -41,22 +42,33 @@ export default function LearnerCoursesList() {
 
   const calDate = function (timeString) {
     return moment(timeString).fromNow();
-  }
+  };
 
   const displayCourses = courses.map((course, index) => {
     console.log("display courses", course.image_url);
     return (
       <div className="learner-course-card" key={index}>
-        <Card style={{width:"80%", backgroundColor: "#36453B", color: "silver"}}>
+        <Card
+          style={{ width: "80%", backgroundColor: "#36453B", color: "silver" }}
+        >
           <CardMedia className={classes.media} image={course.image_url} />
           <CardContent>
             <div className="allcourse-name">{course.name}</div>
             <div className="allcourse-code">{course.code}</div>
-            <div className="allcourse-created">Created: {calDate(course.created_at)}</div>
-            <div className="allcourse-educator">Created By: {course.first_name}</div>
+            <div className="allcourse-created">
+              Created: {calDate(course.created_at)}
+            </div>
+            <div className="allcourse-educator">
+              Created By: {course.first_name}
+            </div>
           </CardContent>
           <CardActions>
             <Button
+              style={{
+                width: "40%",
+                backgroundColor: "silver",
+                color: "black",
+              }}
               size="small"
               onClick={() => handleLearnMoreClick(course)}
             >
@@ -74,8 +86,12 @@ export default function LearnerCoursesList() {
   };
 
   return (
-    <div className="learner-allcourses-container">
-      <Carousel breakPoints={breakPoints}>{courses && displayCourses}</Carousel>
+    <div>
+      <div className="learner-allcourses-container">
+        <Carousel breakPoints={breakPoints}>
+          {courses && displayCourses}
+        </Carousel>
+      </div>
     </div>
   );
 }

@@ -1,9 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .educator-container {
   display: flex;
   border: 1px solid green;
@@ -22,10 +16,6 @@
   width: 20%;
   border: 1px solid blue;
   align-self: stretch;
-}
-.btn-test {
-  width: 80%;
-  height: 50px;
 }
 
 .educator-content {

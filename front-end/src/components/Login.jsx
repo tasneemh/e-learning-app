@@ -30,7 +30,8 @@ export default function Login() {
   const onSubmit = (data, event) => {
     console.log("data onsubmit: ", data);
     clearErrors();
-    fire.auth()
+    fire
+      .auth()
       .signInWithEmailAndPassword(data.email, data.password)
       .then((userCredential) => {
         const user = userCredential.user;
@@ -72,21 +73,18 @@ export default function Login() {
   };
 
   return (
-    <div className="container">
+    <div className="loginform-container">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <h1>Login</h1>
-        <div className="form-group">
+        <div className="loginform-group">
+          <div>Login</div>
           <input
             name="email"
             autoComplete="off"
             ref={register({
               required: true,
-              maxLength: 255 /*pattern: /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/i*/,
+              maxLength: 255,
             })}
-            className="form-control"
             placeholder="Email"
-            //value={input.email}
-            //onChange={handleChange}
           />
           {/* errors will return when field validation fails  */}
           {errors.email && errors.email.type === "required" && (
@@ -97,7 +95,6 @@ export default function Login() {
           )}
           {/**handling email errors coming from Firebase */}
           <p>{emailError ? emailError : ""}</p>
-          {/*errors.email && errors.email.type === "pattern" && (<span>Email can have </span>)*/}
 
           <div className="password-wrapper">
             <input
@@ -105,10 +102,9 @@ export default function Login() {
               autoComplete="off"
               ref={register({ required: true, minLength: 5, maxLength: 255 })}
               type={passwordShown ? "text" : "password"}
-              className="form-control"
-              placeholder="Password"
-            />
-            <i onClick={togglePasswordVisiblity}>{eye}</i>
+              placeholder="Password"></input>
+            
+            <i className="login-eye" onClick={togglePasswordVisiblity}>{eye}</i>
           </div>
           {errors.password && errors.password.type === "required" && (
             <span>Password is required</span>
@@ -121,11 +117,13 @@ export default function Login() {
           )}
           {/* *handling password errors from Firebase */}
           <p>{passwordError ? passwordError : ""}</p>
-          <input type="submit" value="Login" />
+          <input className="btn" type="submit" value="Login" />
         </div>
       </form>
-      <p>New user?</p>
-      <Link to="/register">Register</Link>
+      <div className="new-user-container">
+        <span>New user?  </span>
+        <Link to="/register">Register</Link>
+      </div>
     </div>
   );
 }

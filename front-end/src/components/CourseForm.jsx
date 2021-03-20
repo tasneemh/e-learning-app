@@ -10,7 +10,7 @@ export default function CourseForm() {
   console.log("prop history in course form", JSON.stringify(history));
   const user = history.location.state.user;
   const { firstname, lastname, email, id } = user;
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, errors } = useForm();
   const url = "https://api.cloudinary.com/v1_1/c0ur-e/auto/upload";
   const [message, setMessage] = useState("");
 
@@ -42,7 +42,6 @@ export default function CourseForm() {
     axios
       .post(`http://localhost:9001/uploadcourse`, { course })
       .then((response) => {
-        console.log("response", response);
         setMessage("course material has been successfully uploaded!");
       })
       .catch((error) => {
@@ -51,21 +50,20 @@ export default function CourseForm() {
   };
 
   const onSubmit = async (data, event) => {
-    console.log("data", data);
+    console.log("data in on submit", data);
     let courseImage;
-    if (Object.values(data.courseImage).length > 0) {
-      courseImage = await uploadFile(data.courseImage[0]);
+    if (Object.values(data.courseimage).length > 0) {
+      courseImage = await uploadFile(data.courseimage[0]);
     }
-    const courseMaterial = await uploadFile(data.courseMaterial[0]);
-    console.log("object in onsbmit", courseImage, courseMaterial);
+    const courseMaterial = await uploadFile(data.coursematerial[0]);
     const course = {};
-    course["courseName"] = data["courseName"];
-    course["courseCode"] = data["courseCode"];
-    course["courseDescription"] = data["courseDescription"];
-    if(courseImage.secureUrl){
+    course["courseName"] = data["coursename"];
+    course["courseCode"] = data["coursecode"];
+    course["courseDescription"] = data["coursedescription"];
+    if (courseImage) {
       course["courseImageUrl"] = courseImage.secureUrl;
       course["imageFileFormat"] = courseImage.format;
-    }else{
+    } else {
       course["courseImageUrl"] = "";
       course["imageFileFormat"] = "";
     }
@@ -83,41 +81,53 @@ export default function CourseForm() {
       <form className="course-form" onSubmit={handleSubmit(onSubmit)}>
         <input
           className="course-input"
-          name="courseName"
+          name="coursename"
           placeholder="Course Name"
-          ref={register}
+          ref={register({ required: true })}
         />
-
+        {errors.coursename && errors.coursename.type === "required" && (
+          <span className="errorMsg">course name is required</span>
+        )}
         <input
-          name="courseCode"
+          name="coursecode"
           className="course-input"
           placeholder="Course Code"
-          ref={register}
+          ref={register({ required: true })}
         />
-
+        {errors.coursecode && errors.coursecode.type === "required" && (
+          <span className="errorMsg">course code is required</span>
+        )}
         <textarea
-          name="courseDescription"
+          name="coursedescription"
           className="textarea"
-          ref={register}
+          ref={register({ required: true })}
           placeholder="Course Description"
         />
+        {errors.coursedescription &&
+          errors.coursedescription.type === "required" && (
+            <span className="errorMsg">course description is required</span>
+          )}
 
         <div className="course-container">
           <label className="file-label"> Course Material:</label>
           <input
             type="file"
-            className="file-input"
-            name="courseMaterial"
+            className="file-nput"
+            name="coursematerial"
             multiple
-            ref={register}
+            ref={register({ required: true })}
           />
         </div>
+        {errors.coursematerial && errors.coursematerial.type === "required" && (
+          <span className="errorMsg">course material is required</span>
+        )}
+
         <div className="course-container">
           <label className="file-label">Course Image (optional):</label>
           <input
             type="file"
             className="file-input"
-            name="courseImage"
+            name="courseimage"
             multiple
             ref={register}
           />

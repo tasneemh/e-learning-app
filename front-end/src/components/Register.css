@@ -6,7 +6,7 @@
 }
 
 .form {
-    /* border: 1px solid green;   */
+    border: 1px solid green;   
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -16,7 +16,7 @@
 }
 
 .register {
-    /* border: 1px solid rgb(161, 158, 158);   */
+    border: 1px solid rgb(161, 158, 158);   
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -59,7 +59,8 @@
     font-size: 25px;
     font-weight: bold;
     border-radius: 8px;
-    letter-spacing: 5px;
+    letter-spacing: 2px;
+    width: 90%;
 }
 
 .btn:hover {
@@ -75,7 +76,7 @@
 .password-container {
     display: flex;
     position: relative;
-    /* border: 1px solid brown;  */
+    border: 1px solid brown;  
 }
 
 .eye {
@@ -89,39 +90,33 @@
 
 .register-toggle {
     width: 50px;
-    height: 70px;
+    height: 50px;
 }
 
 .btn-container {
     display: flex;
     flex-direction: column;
-    /* border: 1px solid brown; */
+    border: 1px solid brown; 
     align-items: center;
+    padding: 0.5em;
+    margin: 0.5em;
 }
 
 .toggle-container {
     display: flex;
-    flex-direction: row;
     width: 200px;
-    /* border: 1px solid orange;  */
-    padding-bottom: 10px;
-    margin-bottom: 5px;
+    border: 1px solid orange; 
+    padding: 0.5em;
+    margin: 0.5em;
     justify-content: space-around;
     align-items: center;
 }
 
 .login-container {
     display: flex;
-    flex-direction: row;
     justify-content: space-around;
     width: 400px;
-    /* border: 1px solid blue; */
+    border: 1px solid blue;
+    margin: 0.5em; 
 }
 
-.user {
-    font-size: 70px;
-    color: black;
-    top: 0;
-    left: 41.5%;
-    margin-bottom: 10px;
-}

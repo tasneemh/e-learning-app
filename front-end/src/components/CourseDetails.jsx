@@ -4,12 +4,11 @@ import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
 import "./CourseDetails.css";
-import { CardHeader } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import SaveIcon from "@material-ui/icons/Save";
 import { Player } from "video-react";
+import moment from "moment";
 
 const useStyles = makeStyles({
   root: {
@@ -32,8 +31,8 @@ export default function CourseDetails() {
     material_file_format,
   } = history.location.state;
 
-  console.log("history in course details", history);
   const learnerId = history.location.state.learner.id;
+  
   const classes = useStyles();
   const [message, setMessage] = useState("");
 
@@ -45,35 +44,32 @@ export default function CourseDetails() {
           <source src={material_url} />
         </Player>
       );
-    } 
+    } else if (fileType === "png" || fileType === "jpg") {
     /*else if (fileType === "pdf" )
       return (
       <iframe src={material_url} height="100%" width="100%"></iframe>
       );
-    }*/ 
-    else if (fileType === "png" || fileType === "jpg"){
-      return(
-        <img src={material_url} width="100%" height="100%"/>
-      );
+    }*/
+      return <img src={material_url} width="100%" height="100%" />;
     }
   };
-  const clearMessage = () =>{
+  const clearMessage = () => {
     setMessage("");
-  }
-  const checkDuplicateCourse = (data) =>{
-    console.log("data in duplicateCourse: ", 
-    data);
+  };
+  const checkDuplicateCourse = (data) => {
     return axios
-      .get(`http://localhost:9001/learner/${data.learnerid}/checkduplicatecourse/${data.courseid}`)
+      .get(
+        `http://localhost:9001/learner/${data.learnerid}/checkduplicatecourse/${data.courseid}`
+      )
       .then((response) => {
-        //console.log("response in checkDuplicateCourse ",response);
-        //console.log("response.data.message", response.data.message);
-        if (response.data.message === "You have already enrolled for this course!"){
-        console.log("SUCCESSFUL");
-        setMessage("YOU HAVE ALREADY ENROLLED FOR THIS COURSE!");
-        return true;
-        } else{
-        return false;
+        if (
+          response.data.message === "You have already enrolled for this course!"
+        ) {
+          console.log("SUCCESSFUL");
+          setMessage("YOU HAVE ALREADY ENROLLED FOR THIS COURSE!");
+          return true;
+        } else {
+          return false;
         }
       })
       .catch((error) => {
@@ -85,52 +81,75 @@ export default function CourseDetails() {
     const data = {};
     data["learnerid"] = learnerId;
     data["courseid"] = course_id;
-    console.log("data inside enroll course, ", data);
     const message = await checkDuplicateCourse(data);
-    console.log("message inside enroll course", message);
-      if (message){
-        return;
-      } else {
-         axios
+    if (message) {
+      return;
+    } else {
+      axios
         .post(`http://localhost:9001/enrollcourse`, { data })
         .then((response) => {
-        console.log("response", response);
-        setMessage("YOU HAVE ENROLLED SUCCESSFULLY IN THE COURSE!");
+          console.log("response", response);
+          setMessage("YOU HAVE ENROLLED SUCCESSFULLY IN THE COURSE!");
         })
         .catch((error) => {
-        console.log("Error in enrolling course", error);
-        setMessage("ERROR IN ENROLLING COURSE");
+          setMessage("ERROR IN ENROLLING COURSE");
         });
-      }
+    }
   };
+
+  const calDate = function (timeString) {
+    return moment(timeString).fromNow();
+  }
 
   return (
     <div className="coursedetails-container">
       <div className="course-material">{displayCourseMaterial()}</div>
       <div className="course-info">
-        <Card style = {{width:"100%", height: "50%", backgroundColor: "#36453B", color: "silver"}}>
+        <Card
+          style={{
+            width: "100%",
+            height: "50%",
+            backgroundColor: "#36453B",
+            color: "silver",
+          }}
+        >
           <CardContent>
-            <div>{name}</div>
-            <div>{code}</div>
-            <div>{created_at}</div>
-            <div>{first_name} {last_name} </div>
-            <div>{email} </div>
-            <div>{description} </div>
+            <div className="course-details-name">{name}</div>
+            <div className="course-details-code">{code}</div>
+            <div className="course-details-created-at">Created: {calDate(created_at)}</div>
+            <div className="course-details-created-name">
+              Created By: {first_name}{" "}{last_name}
+            </div>
+            <div className="course-details-created-email">{email} </div>
+            <div className="course-details-description">{description} </div>
           </CardContent>
           <div className="learner-courseDetails-btn-container">
-          <Button style = {{width:"25%", height: "50%", backgroundColor: "silver", color: "black"}}
-            variant="contained"
-            // color="primary"
-            // size="large"
-            className={classes.button}
-            startIcon={<SaveIcon />}
-            onClick={enrollCourse}
-          >
-            ENROLL
-          </Button>
-          <Button className={classes.button}style = {{width:"25%", height: "50%", backgroundColor: "silver", color: "black" }} onClick={() => history.goBack()}>
-            BACK
-          </Button>
+            <Button
+              style={{
+                width: "25%",
+                height: "50%",
+                backgroundColor: "silver",
+                color: "black",
+              }}
+              variant="contained"
+              className={classes.button}
+              startIcon={<SaveIcon />}
+              onClick={enrollCourse}
+            >
+              ENROLL
+            </Button>
+            <Button
+              className={classes.button}
+              style={{
+                width: "25%",
+                height: "50%",
+                backgroundColor: "silver",
+                color: "black",
+              }}
+              onClick={() => history.goBack()}
+            >
+              BACK
+            </Button>
           </div>
           {message && <div className="enroll-msg">{message}</div>}
         </Card>
