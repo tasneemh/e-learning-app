@@ -53,10 +53,11 @@ export default function RegisteredCourseCard(props) {
           <CardContent>
             <div className="registered-course-name">{course.name}</div>
             <div className="registered-course-code">{course.code}</div>
-            <div className="enrollment-date">Enrollment: {calDate(course.enrollment)}</div>
+            <div className="enrollment-date">Enrolled: {calDate(course.enrollment)}</div>
           </CardContent>
           <CardActions disableSpacing>
             <IconButton
+              style={{color: "silver"}}
               className={clsx(classes.expand, {
                 [classes.expandOpen]: expanded,
               })}

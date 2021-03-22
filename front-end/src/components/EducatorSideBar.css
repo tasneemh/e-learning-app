@@ -1,16 +1,41 @@
-/* 
-.sidebar{
+.profile-img{
+  width: 95%;
+  display: flex;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0.5em;
+  margin: 0.5em;
+}
+
+.eudcator-profile{
   display: flex;
   flex-direction: column;
-  background-color: rebeccapurple;
-  margin: 1em;
-  padding: 1em; 
-  width: 20%;
+  width: 95%;
+  padding: 0.5em;
+  margin: 0.5em;
+  border: 1px solid green;
+  font-family: Arial, Helvetica, sans-serif;
   
-  height: 830px;  
 }
-.btn-test{
-  width: 70%;
-  height: 10%;
-} 
-*/
+
+.educator-btn-group{
+  width: 95%;
+  padding: 0.5em;
+  margin: 0.5em;
+}
+
+.greeting-message {
+  font-size: 30px;
+  font-weight: bold;
+  color: #6E470B;
+}
+.sidebar-name{
+  font-size: 25px;
+  font-weight: normal;
+  color: #6E470B;
+}
+.sidebar-email{
+  font-size: 20px;
+  font-weight: lighter;
+  color: #6E470B;
+}

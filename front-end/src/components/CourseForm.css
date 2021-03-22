@@ -91,6 +91,7 @@
   align-self: flex-start;
   height: 90%;
   margin: 10px;
+  width: 25%;
 }
 
 .courseForm-back-btn {
@@ -104,6 +105,7 @@
   align-self: flex-end;
   height: 90%;
   margin-top: 10px;
+  width: 25%;
 }
 
 .courseForm-submit-btn:hover {

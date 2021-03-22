@@ -18,17 +18,6 @@
   align-self: stretch;
 }
 
-.btn-test {
-  width: 70%;
-  height: 50px;
-}
-
-.learner-overlay {
-  width: 90%;
-  height: 100%;
-  /* border: 1px solid yellow;  */
-  background-color: transparent;
-}
 .learner-content {
   display: flex;
   border: 3px solid red;

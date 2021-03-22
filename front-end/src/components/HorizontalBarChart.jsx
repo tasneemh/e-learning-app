@@ -1,4 +1,3 @@
-
 import { HorizontalBar } from "react-chartjs-2";
 
 export default function HorizontalBarChart(props) {
@@ -6,7 +5,7 @@ export default function HorizontalBarChart(props) {
 
   const data = {
     labels: numLearnersForCourses.map((course) => course.course_name),
-  
+
     datasets: [
       {
         label: "Number of Learners",
@@ -16,7 +15,6 @@ export default function HorizontalBarChart(props) {
         backgroundColor: "rgba(255, 206, 86, 0.2)",
         borderColor: "rgba(255, 206, 86, 1)",
         borderWidth: 1,
-
       },
     ],
   };
@@ -29,9 +27,7 @@ export default function HorizontalBarChart(props) {
             beginAtZero: true,
             fontSize: 15,
           },
-          
         },
-        
       ],
       xAxes: [
         {
@@ -43,9 +39,10 @@ export default function HorizontalBarChart(props) {
           },
         },
       ],
-    
     },
   };
+
+
 
   return <HorizontalBar data={data} options={options} />;
 }
