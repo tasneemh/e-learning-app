@@ -84,6 +84,35 @@ module.exports = (pool) => {
         console.log(error);
       });
   };
+  const getAllEducators = () =>{
+    return pool.query(`
+    SELECT * FROM educators`)
+      .then(response => {
+        //console.log("response in index.js: ", response.rows);
+        return response.rows;
+      }).catch(error => {
+        console.log(error);
+      });
+  };
+  const addNewSubstitute = (user) => {
+    const substituteId = user.substituteId;
+    const courseId = Number(user.courseId);
+    const educatorId = user.educatorId;
+    return pool.query(`
+    SELECT * FROM educators_courses WHERE educator_id = $1 AND course_id = $2; 
+    `, [educatorId, courseId])
+      .then(response => {
+        const educatorCourseId = response.rows[0].id;
+        return pool.query(`
+        INSERT INTO accessrights(substitute_id, educator_course_id) VALUES($1, $2) RETURNING *; 
+        `, [substituteId, educatorCourseId]).then(response =>{
+          return response.rows[0];
+        })
+      }).catch(error => {
+        console.log("error", error);
+    })
+  };
+
   const getUserData = (user) => {
     return pool.query(`
     SELECT *, 'educator' AS source FROM educators WHERE email = $1
@@ -155,5 +184,5 @@ module.exports = (pool) => {
   };
 
   return { saveNewUser, saveCourse, getAllCoursesForEducator, getUserData, getAllCoursesForLearner, enrollCourse, getRegisteredCoursesForLearner, getNumLearnersForCourses, getTotalLearnersAndCoursesForEducator,
-  checkDuplicateCourseForLearner };
+  checkDuplicateCourseForLearner, addNewSubstitute, getAllEducators };
 };

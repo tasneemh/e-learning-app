@@ -58,7 +58,9 @@ export default function CourseDetails() {
     }
   };
   const clearMessage = () =>{
-    setMessage("");
+    setTimeout(()=>{
+      setMessage("");
+    }, 10000);
   }
   const checkDuplicateCourse = (data) =>{
     console.log("data in duplicateCourse: ", 
@@ -71,6 +73,7 @@ export default function CourseDetails() {
         if (response.data.message === "You have already enrolled for this course!"){
         console.log("SUCCESSFUL");
         setMessage("YOU HAVE ALREADY ENROLLED FOR THIS COURSE!");
+        clearMessage();
         return true;
         } else{
         return false;
@@ -81,7 +84,6 @@ export default function CourseDetails() {
       });
   };
   const enrollCourse = async () => {
-    clearMessage();
     const data = {};
     data["learnerid"] = learnerId;
     data["courseid"] = course_id;
@@ -94,12 +96,12 @@ export default function CourseDetails() {
          axios
         .post(`http://localhost:9001/enrollcourse`, { data })
         .then((response) => {
-        console.log("response", response);
         setMessage("YOU HAVE ENROLLED SUCCESSFULLY IN THE COURSE!");
+        clearMessage();
         })
         .catch((error) => {
-        console.log("Error in enrolling course", error);
         setMessage("ERROR IN ENROLLING COURSE");
+        clearMessage();
         });
       }
   };

@@ -38,8 +38,10 @@ export default function Register() {
     });
   };
   const clearErrors = () =>{
-   setEmailError("");
-   setPasswordError("");
+   setTimeout(()=>{
+    setEmailError("");
+    setPasswordError("");
+   }, 10000);   
  }
   const onClose = () => {
     setDrawer({
@@ -50,7 +52,7 @@ export default function Register() {
 
   const onSubmit = (data, event) => {
     console.log("data onSubmit: ", data);
-    clearErrors();
+    
     data["usertype"] = userType;
     fire.auth()
     .createUserWithEmailAndPassword(data.email, data.password)
@@ -81,12 +83,15 @@ export default function Register() {
         switch(error.code){
         case "auth/email-already-in-use":
         setEmailError("Email is already in use");
+        clearErrors();
         break;
         case "auth/invalid-email":
         setEmailError("This is an invalid email");
+        clearErrors();
         break;
         case "auth/weak-password":
         setPasswordError("Password is weak");
+        clearErrors();
         break;
       }   
     })
@@ -159,7 +164,7 @@ export default function Register() {
             ></input>
             {/* errors will return when field validation fails  */}
             {errors.email && errors.email.type === "required" && (
-              <span className="errorMsg">Email is required</span>
+              <span className="errorMsg">Email is required</span>   
             )}
             {errors.email && errors.email.type === "minLength" && (
               <span className="errorMsg">MinLength of the email is 5</span>

@@ -13,7 +13,11 @@ export default function CourseForm() {
   const { register, handleSubmit } = useForm();
   const url = "https://api.cloudinary.com/v1_1/c0ur-e/auto/upload";
   const [message, setMessage] = useState("");
-
+  const clearMessage = () =>{
+    setTimeout(()=>{
+      setMessage("");
+    }, 10000);
+  }
   const uploadFile = async (file) => {
     const formData = new FormData();
     formData.append("file", file);
@@ -44,6 +48,7 @@ export default function CourseForm() {
       .then((response) => {
         console.log("response", response);
         setMessage("course material has been successfully uploaded!");
+        clearMessage();
       })
       .catch((error) => {
         console.log("error in save course", error);

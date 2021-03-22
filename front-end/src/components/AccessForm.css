@@ -1,0 +1,12 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+.accessform{
+  width: 70%;
+  border: 1px solid green;
+}
+.accessform-input{
+  width: 70%;
+}
