@@ -1,6 +1,7 @@
 import "./NavBar.css";
 
-export default function NavBar() {
+export default function NavBar(props) {
+  const { loggedIn } = props;
   return (
     <nav className="navbar">
     <ul>
@@ -8,5 +9,5 @@ export default function NavBar() {
       <li><a href="/login">Login</a></li>
     </ul>
     </nav>
-    );
+  );
 }

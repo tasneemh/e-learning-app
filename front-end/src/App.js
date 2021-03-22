@@ -9,8 +9,10 @@ import Educator from "./components/Educator";
 import Learner from "./components/Learner";
 import CourseForm from "./components/CourseForm";
 import CourseDetails from "./components/CourseDetails";
+import AccessForm from "./components/AccessForm";
 
 function App() {
+  
   return (
     <div className="App">
       <Router>
@@ -33,6 +35,10 @@ function App() {
           <Route path="/educator-createnewcourses">
             {/** educator-createnewcourse*/}
             <CourseForm />
+          </Route>
+          <Route path="/educator-giveaccessrights">
+            {/** educator-giveaccessrights*/}
+            <AccessForm />
           </Route>
           <Route path="/learner">
             {/** learner*/} <Learner />

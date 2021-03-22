@@ -37,9 +37,21 @@ app.post("/savenewuser", (request, response) => {
     })
     .catch(error => response.send(error));
 });
-
+app.post("/addnewsubstitute", (request, response) => {
+  //console.log("request.body inside server.js: ", request.body.data);
+  const user = request.body.data;
+  sqldbHelpers.addNewSubstitute(user).then(
+  user => {
+      if (!user) {
+      response.send({ error: "error" });
+      return;
+      }
+      response.send({message: "Succesfully provided access rights"});
+    })
+    .catch(error => response.send(error));
+});
 app.post("/getregistereduser", (request, response) => {
-  console.log("request", request.body.data);
+  //console.log("request", request.body.data);
   const registeredUser = request.body.data;
   sqldbHelpers.getUserData(registeredUser).then(
     user => {
@@ -163,7 +175,20 @@ app.get("/allcoursesforlearner", (request, response) => {
     })
     .catch(error => response.send(error));
 });
-
+app.get("/getalleducators", (request, response) => {
+  //console.log("request inside server.js",request.body);
+  sqldbHelpers.getAllEducators().then(
+  educatorsArr => {
+  //console.log("educatorsArr inside server.js", educatorsArr);
+  if (!educatorsArr) {
+  response.send({ message: "no educators" });
+  return;
+  }
+  //console.log("educatorsArr in the else block: ", educatorsArr);
+  response.send(educatorsArr);
+  })
+  .catch(error => response.send(error));
+});
 /*mongodbSetup((monogodb) => {
   app.get("/test", async (request, response) => {
     //passing collection named documents

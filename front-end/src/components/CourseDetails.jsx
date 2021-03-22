@@ -53,23 +53,30 @@ export default function CourseDetails() {
       return <img src={material_url} width="100%" height="100%" />;
     }
   };
-  const clearMessage = () => {
-    setMessage("");
-  };
+
+  const clearMessage = () =>{
+    setTimeout(()=>{
+      setMessage("");
+    }, 10000);
+  }
+
+
   const checkDuplicateCourse = (data) => {
     return axios
       .get(
         `http://localhost:9001/learner/${data.learnerid}/checkduplicatecourse/${data.courseid}`
       )
       .then((response) => {
-        if (
-          response.data.message === "You have already enrolled for this course!"
-        ) {
-          console.log("SUCCESSFUL");
-          setMessage("YOU HAVE ALREADY ENROLLED FOR THIS COURSE!");
-          return true;
-        } else {
-          return false;
+
+        //console.log("response in checkDuplicateCourse ",response);
+        //console.log("response.data.message", response.data.message);
+        if (response.data.message === "You have already enrolled for this course!"){
+        console.log("SUCCESSFUL");
+        setMessage("YOU HAVE ALREADY ENROLLED FOR THIS COURSE!");
+        clearMessage();
+        return true;
+        } else{
+        return false;
         }
       })
       .catch((error) => {
@@ -77,7 +84,6 @@ export default function CourseDetails() {
       });
   };
   const enrollCourse = async () => {
-    clearMessage();
     const data = {};
     data["learnerid"] = learnerId;
     data["courseid"] = course_id;
@@ -88,11 +94,14 @@ export default function CourseDetails() {
       axios
         .post(`http://localhost:9001/enrollcourse`, { data })
         .then((response) => {
-          console.log("response", response);
-          setMessage("YOU HAVE ENROLLED SUCCESSFULLY IN THE COURSE!");
+
+        setMessage("YOU HAVE ENROLLED SUCCESSFULLY IN THE COURSE!");
+        clearMessage();
         })
         .catch((error) => {
-          setMessage("ERROR IN ENROLLING COURSE");
+        setMessage("ERROR IN ENROLLING COURSE");
+        clearMessage();
+
         });
     }
   };
