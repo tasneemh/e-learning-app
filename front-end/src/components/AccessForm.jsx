@@ -10,8 +10,6 @@ function AccessForm() {
   const [message, setMessage] = useState("");
   const [educators, setEducators] = useState([]);
   const [courses, setCourses] = useState([]);
-  const [selectedEducator, setSelectedEducator] = useState("");
-  const [selectedCourse, setSelectedCourse] = useState("");
   const history = useHistory();
   //console.log("history in educator access form", JSON.stringify(history));
   const user = history.location.state.user;
@@ -58,15 +56,12 @@ function AccessForm() {
     );
   };
 
-  const onSubmit = (option) => {
-    const data = {};
-    data['substituteid'] = option.substituteid;
-    data['courseid'] = option.courseid;
-    data['educatorid'] = educatorId;
+  const onSubmit = (event, data) => {
+    data['educatorId'] = educatorId;
     console.log("data in access form", data);
     axios
       .post(`http://localhost:9001/addnewsubstitute`, { data })
-      /*.then((response) => {
+      .then((response) => {
         const message = response.data.message;
         const error = response.data.error;
         if (message) {
@@ -82,7 +77,7 @@ function AccessForm() {
       })
       .catch((error) => {
         console.log(error);
-      });*/
+      });
   };
 
   return (

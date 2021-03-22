@@ -96,9 +96,9 @@ module.exports = (pool) => {
   };
 
   const addNewSubstitute = (user) => {
-    const substituteId = Number(user.substituteid);
-    const courseId = Number(user.courseid);
-    const educatorId = user.educatorid;
+    const substituteId = Number(user.substituteId);
+    const courseId = Number(user.courseId);
+    const educatorId = user.educatorId;
     return pool.query(`
     SELECT * FROM educators_courses WHERE educator_id = $1 AND course_id = $2; 
     `, [educatorId, courseId])
