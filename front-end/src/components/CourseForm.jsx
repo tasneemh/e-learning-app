@@ -7,9 +7,9 @@ import "./CourseForm.css";
 
 export default function CourseForm() {
   const history = useHistory();
-  console.log("prop history in course form", JSON.stringify(history));
+  //console.log("prop history in course form", JSON.stringify(history));
   const user = history.location.state.user;
-  const { firstname, lastname, email, id } = user;
+  const { id } = user;
   const { register, handleSubmit, errors } = useForm();
   const url = "https://api.cloudinary.com/v1_1/c0ur-e/auto/upload";
   const [message, setMessage] = useState("");

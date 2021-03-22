@@ -1,26 +1,26 @@
 .educator-container {
   display: flex;
-  border: 1px solid green;
+  /*border: 1px solid green;**/
   width: 100%;
   height: 80%;
   flex-direction: row;
   align-content: center;
   margin: 0.5em;
   padding: 1em;
-  background-color: rgba(244,244,244,1);
+  background-color: rgba(244, 244, 244, 1);
 }
 .educator-sidebar {
   display: flex;
   flex-direction: column;
   padding: 0.5em;
+  margin: 0.5em;
   width: 20%;
-  border: 1px solid blue;
-  align-self: stretch;
+  border: 5px solid darkgray;
 }
 
 .educator-content {
   display: flex;
-  border: 1px solid red;
+  /**border: 1px solid red;**/
   width: 80%;
   height: 100%;
   flex-direction: column;
@@ -32,7 +32,7 @@
 
 .educator-report {
   display: flex;
-  border: 1px solid blue;
+  /*border: 1px solid blue;*/
   margin: 0.5em;
   padding: 0.5em;
   width: 98%;
@@ -42,25 +42,25 @@
 
 .educator-courses-list {
   display: flex;
-  border: 1px solid yellow;
+  /*border: 1px solid yellow;*/
   margin: 0.5em;
   padding: 0.5em;
   width: 98%;
   height: 50%;
   flex-direction: column;
 }
-.my-course{
+.my-course {
   font-size: 20px;
 }
-.total-number{
-display: flex;
-font-size: 25px;
-font-weight: normal;
-border: 1px solid red;
-width: 100%;
-justify-content: center;
+.total-number {
+  display: flex;
+  font-size: 25px;
+  font-weight: normal;
+  /*border: 1px solid red;*/
+  width: 100%;
+  justify-content: center;
 }
-.bold-number{
+.bold-number {
   font-weight: bold;
   margin-left: 0.25em;
   margin-right: 0.25em;

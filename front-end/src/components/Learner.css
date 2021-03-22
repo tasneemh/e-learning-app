@@ -14,13 +14,14 @@
   flex-direction: column;
   padding: 0.5em;
   width: 20%;
-  border: 1px solid blue;
+  border: 5px solid darkgray;
+  margin: 0.5em;
   align-self: stretch;
 }
 
 .learner-content {
   display: flex;
-  border: 3px solid red;
+  /* border: 3px solid red; */
   width: 80%;
   height: 100%;
   flex-direction: column;
@@ -31,7 +32,7 @@
 
 .learner-registered-courses {
   display: flex;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   margin-right: 1em;
   padding: 1em;
   width: 100%;
@@ -43,7 +44,7 @@
 
 .learner-allcourses-list {
   display: flex;
-  border: 1px solid yellow;
+  /* border: 1px solid yellow; */
   margin-right: 1em;
   padding: 1em;
   width: 100%;

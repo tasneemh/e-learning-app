@@ -7,13 +7,13 @@
 
 .main-container {
   width: 100%;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   display: flex;
   flex-direction: row;
 }
 
 .course-form {
-  border: 1px solid green;
+  /* border: 1px solid green; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -51,17 +51,17 @@
 }
 
 .course-container {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   width: 90%;
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
 }
 
 .file-label {
   align-self: flex-start;
-  border: 1px solid green;
+  /* border: 1px solid green; */
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 10px;
@@ -77,7 +77,7 @@
   font-size: 20px;
   width: 60%;
   align-self: flex-end;
-  border: 1px solid brown;
+  /* border: 1px solid brown; */
 }
 
 .courseForm-submit-btn {
@@ -97,7 +97,7 @@
 .courseForm-back-btn {
   color: black;
   background-color: transparent;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   font-size: 25px;
   font-weight: bold;
   border-radius: 8px;
@@ -128,7 +128,7 @@
 .courseForm-btn-container {
   display: flex;
   flex-direction: row;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   align-items: center;
   height: 60px;
   margin: 10px;

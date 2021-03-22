@@ -8,7 +8,7 @@ export default function EducatorCoursesList() {
   const history = useHistory();
   console.log("history in educator course", JSON.stringify(history));
   const user = history.location.state.user;
-  const { firstname, lastname, email, id } = user;
+  const { id } = user;
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {

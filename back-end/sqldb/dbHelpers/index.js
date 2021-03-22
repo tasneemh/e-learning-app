@@ -84,9 +84,9 @@ module.exports = (pool) => {
         console.log(error);
       });
   };
-  const getAllEducators = () =>{
+  const getAllEducators = (educatorId) =>{
     return pool.query(`
-    SELECT * FROM educators`)
+    SELECT * FROM educators WHERE NOT id = $1`, [educatorId])
       .then(response => {
         //console.log("response in index.js: ", response.rows);
         return response.rows;
@@ -94,10 +94,11 @@ module.exports = (pool) => {
         console.log(error);
       });
   };
+
   const addNewSubstitute = (user) => {
-    const substituteId = user.substituteId;
-    const courseId = Number(user.courseId);
-    const educatorId = user.educatorId;
+    const substituteId = Number(user.substituteid);
+    const courseId = Number(user.courseid);
+    const educatorId = user.educatorid;
     return pool.query(`
     SELECT * FROM educators_courses WHERE educator_id = $1 AND course_id = $2; 
     `, [educatorId, courseId])

@@ -32,7 +32,7 @@ export default function CourseDetails() {
   } = history.location.state;
 
   const learnerId = history.location.state.learner.id;
-  
+
   const classes = useStyles();
   const [message, setMessage] = useState("");
 
@@ -45,21 +45,20 @@ export default function CourseDetails() {
         </Player>
       );
     } else if (fileType === "png" || fileType === "jpg") {
-    /*else if (fileType === "pdf" )
+      /*else if (fileType === "pdf" )
       return (
       <iframe src={material_url} height="100%" width="100%"></iframe>
       );
     }*/
-      return <img src={material_url} width="100%" height="100%" />;
+      return <img src={material_url} width="100%" height="100%" alt=""/>;
     }
   };
 
-  const clearMessage = () =>{
-    setTimeout(()=>{
+  const clearMessage = () => {
+    setTimeout(() => {
       setMessage("");
     }, 10000);
-  }
-
+  };
 
   const checkDuplicateCourse = (data) => {
     return axios
@@ -67,22 +66,24 @@ export default function CourseDetails() {
         `http://localhost:9001/learner/${data.learnerid}/checkduplicatecourse/${data.courseid}`
       )
       .then((response) => {
-
         //console.log("response in checkDuplicateCourse ",response);
-        //console.log("response.data.message", response.data.message);
-        if (response.data.message === "You have already enrolled for this course!"){
-        console.log("SUCCESSFUL");
-        setMessage("YOU HAVE ALREADY ENROLLED FOR THIS COURSE!");
-        clearMessage();
-        return true;
-        } else{
-        return false;
+        console.log("response.data.message", response.data.message);
+        if (
+          response.data.message === "You have already enrolled for this course!"
+        ) {
+          console.log("SUCCESSFUL");
+          setMessage("YOU HAVE ALREADY ENROLLED FOR THIS COURSE!");
+          clearMessage();
+          return true;
+        } else {
+          return false;
         }
       })
       .catch((error) => {
         console.log(error);
       });
   };
+
   const enrollCourse = async () => {
     const data = {};
     data["learnerid"] = learnerId;
@@ -94,21 +95,19 @@ export default function CourseDetails() {
       axios
         .post(`http://localhost:9001/enrollcourse`, { data })
         .then((response) => {
-
-        setMessage("YOU HAVE ENROLLED SUCCESSFULLY IN THE COURSE!");
-        clearMessage();
+          setMessage("YOU HAVE ENROLLED SUCCESSFULLY IN THE COURSE!");
+          clearMessage();
         })
         .catch((error) => {
-        setMessage("ERROR IN ENROLLING COURSE");
-        clearMessage();
-
+          setMessage("ERROR IN ENROLLING COURSE");
+          clearMessage();
         });
     }
   };
 
   const calDate = function (timeString) {
     return moment(timeString).fromNow();
-  }
+  };
 
   return (
     <div className="coursedetails-container">
@@ -125,9 +124,11 @@ export default function CourseDetails() {
           <CardContent>
             <div className="course-details-name">{name}</div>
             <div className="course-details-code">{code}</div>
-            <div className="course-details-created-at">Created: {calDate(created_at)}</div>
+            <div className="course-details-created-at">
+              Created: {calDate(created_at)}
+            </div>
             <div className="course-details-created-name">
-              Created By: {first_name}{" "}{last_name}
+              Created By: {first_name} {last_name}
             </div>
             <div className="course-details-created-email">{email} </div>
             <div className="course-details-description">{description} </div>

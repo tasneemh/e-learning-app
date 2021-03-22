@@ -24,6 +24,12 @@
   margin: 0.5em;
 }
 
+.educator-sidebar-btn{
+  width: 90%;
+  padding: 0.5em;
+  margin: 0.5em;
+}
+
 .greeting-message {
   font-size: 30px;
   font-weight: bold;

@@ -5,13 +5,10 @@ const morgan = require('morgan');
 //importing cors to enable cors
 const cors = require('cors');
 const bodyParser = require('body-parser');
-
 const bcrypt = require('bcrypt');
 //importing pool i.e.database 
 const pool = require('../sqldb/db');
 const sqldbHelpers = require('../sqldb/dbHelpers/index')(pool);
-//importing mongoDb
-const mongodbSetup = require('../mongodb/db');
 
 //creating express server
 const app = express();
@@ -21,7 +18,6 @@ app.use(morgan('dev'));
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
 
 app.post("/savenewuser", (request, response) => {
   const newUser = request.body.data;
@@ -38,20 +34,19 @@ app.post("/savenewuser", (request, response) => {
     .catch(error => response.send(error));
 });
 app.post("/addnewsubstitute", (request, response) => {
-  //console.log("request.body inside server.js: ", request.body.data);
   const user = request.body.data;
   sqldbHelpers.addNewSubstitute(user).then(
-  user => {
+    user => {
       if (!user) {
-      response.send({ error: "error" });
-      return;
+        response.send({ error: "error" });
+        return;
       }
-      response.send({message: "Succesfully provided access rights"});
+      response.send({ message: "Succesfully provided access rights" });
     })
     .catch(error => response.send(error));
 });
+
 app.post("/getregistereduser", (request, response) => {
-  //console.log("request", request.body.data);
   const registeredUser = request.body.data;
   sqldbHelpers.getUserData(registeredUser).then(
     user => {
@@ -92,14 +87,12 @@ app.post("/enrollcourse", (request, response) => {
 });
 
 app.get("/learner/:learnerid/checkduplicatecourse/:courseid", (request, response) => {
-  console.log("request in checkduplicatecourse: ", request.params);
   const learnerId = request.params.learnerid;
   const courseId = request.params.courseid;
-  // const educatorId = request.params.id;
   sqldbHelpers.checkDuplicateCourseForLearner(learnerId, courseId).then(
     data => {
-    console.log("data in server.js", data);
-      if (data) {
+      console.log("data in server.js", data);
+      if (data.length > 0) {
         response.send({ message: "You have already enrolled for this course!" });
         return;
       } else {
@@ -148,8 +141,6 @@ app.get("/educator/:id/courses", (request, response) => {
     .catch(error => response.send(error));
 });
 
-
-
 app.get("/learner/:id/courses", (request, response) => {
   const learnerId = request.params.id;
   console.log("learnerid", request.params.id);
@@ -175,27 +166,19 @@ app.get("/allcoursesforlearner", (request, response) => {
     })
     .catch(error => response.send(error));
 });
-app.get("/getalleducators", (request, response) => {
-  //console.log("request inside server.js",request.body);
-  sqldbHelpers.getAllEducators().then(
-  educatorsArr => {
-  //console.log("educatorsArr inside server.js", educatorsArr);
-  if (!educatorsArr) {
-  response.send({ message: "no educators" });
-  return;
-  }
-  //console.log("educatorsArr in the else block: ", educatorsArr);
-  response.send(educatorsArr);
-  })
-  .catch(error => response.send(error));
+
+app.get("/:id/getalleducators", (request, response) => {
+  const educatorId = request.params.id;
+  sqldbHelpers.getAllEducators(educatorId).then(
+    educatorsArr => {
+      if (!educatorsArr) {
+        response.send({ message: "no educators" });
+        return;
+      }
+      response.send(educatorsArr);
+    })
+    .catch(error => response.send(error));
 });
-/*mongodbSetup((monogodb) => {
-  app.get("/test", async (request, response) => {
-    //passing collection named documents
-    const result = await monogodb.collection('documents').find().toArray();
-    response.json(result);
-  });
-});*/
 
 // express server listening to PORT
 app.listen(PORT, () => {

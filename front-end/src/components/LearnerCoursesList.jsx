@@ -59,7 +59,7 @@ export default function LearnerCoursesList() {
               Created: {calDate(course.created_at)}
             </div>
             <div className="allcourse-educator">
-              Created By: {course.first_name}
+              Created By: {course.first_name} {course.last_name}
             </div>
           </CardContent>
           <CardActions>
