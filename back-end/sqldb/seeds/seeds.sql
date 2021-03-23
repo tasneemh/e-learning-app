@@ -18,8 +18,14 @@ VALUES (
     'three',
     'learnerthree@gmail.com',
     '$2b$10$3GC4qbP73kr161VFsYKNb./fy24XN10yTrqpFgIy93bRvPKrosrbu'
+  ),
+  (
+    'learner',
+    'demo',
+    'learnerdemo@gmail.com',
+    '$2b$10$L14s9t1qiV3wiNazflUg/uGeYmrxIxVGqCpV2PHtadc/UxxgVd6CG'
   );
-/**password:learnerthree**/
+   /**password:learnerdemo**/
 INSERT INTO educators (first_name, last_name, email, password)
 VALUES (
     'educator',
@@ -72,21 +78,19 @@ VALUES(
     'jpg'
   ),
   (
-  'Literature',
-  '104',
-  'This is the course description for Literature.',
-  'https://res.cloudinary.com/c0ur-e/image/upload/v1616426506/courses/wrp30qxj5z89t3eatv2o.jpg',
-  'https://res.cloudinary.com/c0ur-e/image/upload/v1616426507/courses/v5hryyo6ob92vuqrgs9e.jpg',
-  'jpg',
-  'jpg'
-);
-
+    'Literature',
+    '104',
+    'This is the course description for Literature.',
+    'https://res.cloudinary.com/c0ur-e/image/upload/v1616426506/courses/wrp30qxj5z89t3eatv2o.jpg',
+    'https://res.cloudinary.com/c0ur-e/image/upload/v1616426507/courses/v5hryyo6ob92vuqrgs9e.jpg',
+    'jpg',
+    'jpg'
+  );
 INSERT INTO educators_courses (educator_id, course_id)
 VALUES(1, 1),
   (1, 2),
   (2, 3),
   (2, 4);
-  
 INSERT INTO learners_courses (learner_id, course_id)
 VALUES(1, 4),
   (1, 3),
@@ -95,4 +99,6 @@ VALUES(1, 4),
   (2, 4),
   (2, 1),
   (3, 4),
-  (3, 2);
+  (3, 2),
+  (4, 2),
+  (4, 3);

@@ -25,7 +25,7 @@ export default function HorizontalBarChart(props) {
         {
           ticks: {
             beginAtZero: true,
-            fontSize: 15,
+            fontSize: 20,
           },
         },
       ],
@@ -35,7 +35,7 @@ export default function HorizontalBarChart(props) {
             beginAtZero: true,
             minRotation: 5,
             stepSize: 1,
-            fontSize: 15,
+            fontSize: 20,
           },
         },
       ],

@@ -5,7 +5,7 @@ import "./Header.css";
 export default function Header() {
   return (
     <section className="header">
-      <img className="logo" src="/images/logo.png" width="300" />
+      <img className="logo" src="/images/logo.png"/>
       <NavBar />
     </section>
   );

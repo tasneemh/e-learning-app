@@ -1,13 +1,13 @@
 .courses-cards-container {
   display: flex;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   flex-direction: row;
   justify-content: space-around;
 }
 
 .course-card-carousel{
   display: flex;
-  border: 1px solid rgb(145, 145, 145);
+  /* border: 1px solid rgb(145, 145, 145); */
   justify-content: center;
   margin: 1em;
   width: 100%;
@@ -40,4 +40,13 @@
   font-size: 18px;
   font-weight: lighter;
   text-decoration: underline;
+}
+
+.lgksPe:hover:enabled, .lgksPe:focus:enabled {
+  background-color: darkgrey !important;
+}
+
+.cJeRRR{
+  background-color:rgb(128,128,128) !important;
+  box-shadow: 0 0 1px 3px rgb(211,211,211) !important;
 }

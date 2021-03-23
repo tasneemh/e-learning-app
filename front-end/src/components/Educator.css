@@ -1,6 +1,6 @@
 .educator-container {
   display: flex;
-  /*border: 1px solid green;**/
+  /*border: 1px solid green;*/
   width: 100%;
   height: 80%;
   flex-direction: row;
@@ -20,7 +20,7 @@
 
 .educator-content {
   display: flex;
-  /**border: 1px solid red;**/
+  /* border: 1px solid red; */
   width: 80%;
   height: 100%;
   flex-direction: column;
@@ -49,9 +49,12 @@
   height: 50%;
   flex-direction: column;
 }
-.my-course {
-  font-size: 20px;
+
+.educator-my-course {
+  font-size: 25px;
+  margin: 0.25em;
 }
+
 .total-number {
   display: flex;
   font-size: 25px;

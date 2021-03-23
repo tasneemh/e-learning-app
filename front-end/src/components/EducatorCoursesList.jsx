@@ -24,7 +24,7 @@ export default function EducatorCoursesList() {
 
   return (
     <div>
-      <div className="my-course">My Course</div>
+      <div className="educator-my-course">My Course</div>
       {courses.length ? (
         <CourseCard courses={courses} />
       ) : (

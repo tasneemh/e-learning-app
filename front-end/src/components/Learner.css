@@ -1,6 +1,6 @@
 .learner-container {
   display: flex;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   width: 100%;
   height: 100%;
   flex-direction: row;
@@ -51,4 +51,9 @@
   height: 100%;
   flex-direction: column;
   justify-content: center;
+}
+
+.learner-title{
+  font-size: 25px;
+  margin: 0.25em;
 }

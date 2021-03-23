@@ -54,7 +54,6 @@ app.post("/getregistereduser", (request, response) => {
         response.send({ error: "error" });
         return;
       }
-      console.log("user", user);
       response.send({ user: { firstname: user.first_name, lastname: user.last_name, email: user.email, id: user.id, usertype: user.source } });
     })
     .catch(error => response.send(error));
@@ -91,7 +90,6 @@ app.get("/learner/:learnerid/checkduplicatecourse/:courseid", (request, response
   const courseId = request.params.courseid;
   sqldbHelpers.checkDuplicateCourseForLearner(learnerId, courseId).then(
     data => {
-      console.log("data in server.js", data);
       if (data.length > 0) {
         response.send({ message: "You have already enrolled for this course!" });
         return;
@@ -143,7 +141,6 @@ app.get("/educator/:id/courses", (request, response) => {
 
 app.get("/learner/:id/courses", (request, response) => {
   const learnerId = request.params.id;
-  console.log("learnerid", request.params.id);
   sqldbHelpers.getRegisteredCoursesForLearner(learnerId).then(
     courses => {
       if (!courses) {

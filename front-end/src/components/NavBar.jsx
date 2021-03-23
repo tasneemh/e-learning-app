@@ -1,7 +1,6 @@
 import "./NavBar.css";
 
 export default function NavBar(props) {
-  const { loggedIn } = props;
   return (
     <nav className="navbar">
     <ul>
