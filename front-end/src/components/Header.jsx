@@ -2,11 +2,11 @@
 import NavBar from "./NavBar";
 import "./Header.css";
 
-export default function Header() {
+export default function Header(props) {
   return (
     <section className="header">
       <img className="logo" src="/images/logo.png"/>
-      <NavBar />
+      <NavBar validate={props.validate} loggedIn={props.loggedIn}/>
     </section>
   );
 }

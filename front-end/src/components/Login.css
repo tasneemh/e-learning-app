@@ -12,7 +12,7 @@
 }
 
 .loginform-group {
-  border: 2px solid #36453B;
+  border: 2px solid #36453B; 
   margin: 0.5em;
   padding: 1em;
 }
@@ -30,5 +30,10 @@
   position: absolute;
   top: 42%;
   right: 42%;
+}
+
+.login-btn-container{
+  display: flex;
+  justify-content: center;
 }
 
