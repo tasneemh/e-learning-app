@@ -22,7 +22,7 @@ export default function LearnerRegisteredCourses() {
 
   return (
     <div>
-      <div className="my-registered-course">My Course</div>
+      <div className="learner-title">My Course</div>
       {courses.length ? (
         <RegisteredCourseCard courses={courses} />
       ) : (

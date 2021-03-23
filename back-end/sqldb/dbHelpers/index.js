@@ -3,7 +3,6 @@ module.exports = (pool) => {
   const saveNewUser = (newUser) => {
     const { firstname, lastname, email, password, usertype } = newUser;
     if (usertype === "educator") {
-      console.log("educator yes");
       return pool.query(`
       INSERT INTO educators(first_name, last_name, email, password) VALUES($1, $2, $3, $4) RETURNING *;`,
         [firstname, lastname, email, password])
@@ -14,7 +13,6 @@ module.exports = (pool) => {
           return error;
         });
     } else if (usertype === "learner") {
-      console.log("learner yes");
       return pool.query(`
       INSERT INTO learners(first_name, last_name, email, password) VALUES($1, $2, $3, $4) RETURNING *;`,
         [firstname, lastname, email, password])
@@ -33,7 +31,6 @@ module.exports = (pool) => {
       INSERT INTO courses(name, code, description, image_url, material_url, image_file_format, material_file_format) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *;`,
       [courseName, courseCode, courseDescription, courseImageUrl, courseMaterialUrl, imageFileFormat, materialFileFormat])
       .then(data => {
-        console.log("data", data);
         const courseId = data.rows[0].id;
         return pool.query(`
       INSERT INTO educators_courses(educator_id, course_id) VALUES($1, $2) RETURNING *;`,
@@ -88,7 +85,6 @@ module.exports = (pool) => {
     return pool.query(`
     SELECT * FROM educators WHERE NOT id = $1`, [educatorId])
       .then(response => {
-        //console.log("response in index.js: ", response.rows);
         return response.rows;
       }).catch(error => {
         console.log(error);
@@ -147,7 +143,6 @@ module.exports = (pool) => {
     JOIN learners ON learners.id = learners_courses.learner_id 
     WHERE learners.id = $1`, [learnerId])
       .then(response => {
-        console.log("response in get registered course for learner", response.rows);
         return response.rows;
       }).catch(error => {
         console.log(error);

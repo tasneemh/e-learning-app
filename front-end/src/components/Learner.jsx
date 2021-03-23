@@ -18,7 +18,7 @@ export default function Learner() {
           <LearnerRegisteredCourses />
         </div>
         <div className="learner-allcourses-list">
-        <span>New Courses</span>
+        <div className="learner-title">New Courses</div>
           <LearnerCoursesList />
         </div>
       </div>

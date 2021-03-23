@@ -11,7 +11,10 @@ import CourseDetails from "./components/CourseDetails";
 import AccessForm from "./components/AccessForm";
 
 function App() {
-  
+  const isLoggedin = () => {
+
+  }
+
   return (
     <div className="App">
       <Router>
@@ -23,7 +26,7 @@ function App() {
             <Home />
           </Route>
           <Route path="/login">
-            {/** login*/} <Login />
+            {/** login*/} <Login isLoggedin={isLoggedin}/>
           </Route>
           <Route path="/register">
             {/** register*/} <Register />
