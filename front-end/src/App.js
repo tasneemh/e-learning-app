@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
@@ -11,14 +12,17 @@ import CourseDetails from "./components/CourseDetails";
 import AccessForm from "./components/AccessForm";
 
 function App() {
-  const isLoggedin = () => {
+  const [loggedIn, setLoggedIn] = useState(false);
 
-  }
+  const validate = (isLoggedIn) => {
+    console.log("validate function", isLoggedIn);
+    setLoggedIn(isLoggedIn);
+  };
 
   return (
     <div className="App">
       <Router>
-        <Header />
+        <Header validate={validate} loggedIn={loggedIn} />
         <Switch>
           {/**Home, Notes & create note are rerouted using react-router-dom. The path will take to each of the component */}
           <Route path="/" exact>
@@ -26,7 +30,7 @@ function App() {
             <Home />
           </Route>
           <Route path="/login">
-            {/** login*/} <Login isLoggedin={isLoggedin}/>
+            {/** login*/} <Login validate={validate} />
           </Route>
           <Route path="/register">
             {/** register*/} <Register />

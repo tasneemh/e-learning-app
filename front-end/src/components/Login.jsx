@@ -10,11 +10,10 @@ import "./Login.css";
 //import fire
 import fire from "./fire";
 
-export default function Login() {
+export default function Login(props) {
   const history = useHistory();
   const eye = <FontAwesomeIcon icon={faEye} />;
   const { register, handleSubmit, errors } = useForm();
-
   const [passwordShown, setPasswordShown] = useState(false);
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
@@ -35,7 +34,8 @@ export default function Login() {
       .signInWithEmailAndPassword(data.email, data.password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log("user in login: ", user);
+        //setLoggedIn(true);
+        props.validate(true);
         event.target.reset();
         axios
           .post(`http://localhost:9001/getregistereduser`, { data })
@@ -54,7 +54,6 @@ export default function Login() {
           });
       })
       .catch((error) => {
-        console.log("error with login: ", error);
         switch (error.code) {
           case "auth/invalid-email":
             setEmailError("This is an invalid email");
@@ -102,9 +101,12 @@ export default function Login() {
               autoComplete="off"
               ref={register({ required: true, minLength: 5, maxLength: 255 })}
               type={passwordShown ? "text" : "password"}
-              placeholder="Password"></input>
-            
-            <i className="login-eye" onClick={togglePasswordVisiblity}>{eye}</i>
+              placeholder="Password"
+            ></input>
+
+            <i className="login-eye" onClick={togglePasswordVisiblity}>
+              {eye}
+            </i>
           </div>
           {errors.password && errors.password.type === "required" && (
             <span>Password is required</span>
@@ -117,11 +119,13 @@ export default function Login() {
           )}
           {/* *handling password errors from Firebase */}
           <p>{passwordError ? passwordError : ""}</p>
-          <input className="btn" type="submit" value="Login" />
+          <div className="login-btn-container">
+            <input className="btn" type="submit" value="Login" />
+          </div>
         </div>
       </form>
       <div className="new-user-container">
-        <span>New user?  </span>
+        <span>New user? </span>
         <Link to="/register">Register</Link>
       </div>
     </div>

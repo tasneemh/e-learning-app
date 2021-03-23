@@ -30,3 +30,7 @@ ul li .active {
   background-color: white;
   color: black;
 }
+
+.logout-btn{
+  width: 100px;
+}
