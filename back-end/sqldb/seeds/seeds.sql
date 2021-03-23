@@ -66,20 +66,19 @@ VALUES(
     'Chemistry',
     '103',
     'This is the course description for Chemistry.',
-    'https: / / res.cloudinary.com / c0ur - e / image / upload / v1616426450 / courses / v23akrmv2opt7svm0rwk.jpg',
-    'https: / / res.cloudinary.com / c0ur - e / image / upload / v1616426451 / courses / pq15ngomrswbei8odbru.jpg',
+    'https://res.cloudinary.com/c0ur-e/image/upload/v1616426450/courses/v23akrmv2opt7svm0rwk.jpg',
+    'https://res.cloudinary.com/c0ur-e/image/upload/v1616426451/courses/pq15ngomrswbei8odbru.jpg',
     'jpg',
     'jpg'
   ),
-) (
+  (
   'Literature',
   '104',
   'This is the course description for Literature.',
-  'https: / / res.cloudinary.com / c0ur - e / image / upload / v1616426506 / courses / wrp30qxj5z89t3eatv2o.jpg',
-  'https: / / res.cloudinary.com / c0ur - e / image / upload / v1616426507 / courses / v5hryyo6ob92vuqrgs9e.jpg',
+  'https://res.cloudinary.com/c0ur-e/image/upload/v1616426506/courses/wrp30qxj5z89t3eatv2o.jpg',
+  'https://res.cloudinary.com/c0ur-e/image/upload/v1616426507/courses/v5hryyo6ob92vuqrgs9e.jpg',
   'jpg',
   'jpg'
-)
 );
 
 INSERT INTO educators_courses (educator_id, course_id)

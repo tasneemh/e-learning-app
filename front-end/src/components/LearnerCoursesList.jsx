@@ -45,7 +45,7 @@ export default function LearnerCoursesList() {
   };
 
   const displayCourses = courses.map((course, index) => {
-    console.log("display courses", course.image_url);
+    console.log("display courses", course);
     return (
       <div className="learner-course-card" key={index}>
         <Card
