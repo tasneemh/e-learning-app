@@ -138,13 +138,13 @@ export default function CourseForm() {
           />
         </div>
         <div className="courseForm-btn-container">
-          <input type="submit" className="courseForm-submit-btn" />
+          <input type="submit" className="courseForm-submit-btn" value="SUBMIT"/>
           <button
             className="courseForm-back-btn"
             type="button"
             onClick={() => history.goBack()}
           >
-            Back
+            BACK
           </button>
         </div>
         {message && <span>{message}</span>}

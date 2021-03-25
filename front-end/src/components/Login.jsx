@@ -34,7 +34,8 @@ export default function Login(props) {
       .signInWithEmailAndPassword(data.email, data.password)
       .then((userCredential) => {
         const user = userCredential.user;
-        //setLoggedIn(true);
+        //localStorage.setItem("user", user);
+        //console.log("localstorage", localStorage.user);
         props.validate(true);
         event.target.reset();
         axios
@@ -77,6 +78,7 @@ export default function Login(props) {
         <div className="loginform-group">
           <div>Login</div>
           <input
+            className="login-input"
             name="email"
             autoComplete="off"
             ref={register({
@@ -97,6 +99,7 @@ export default function Login(props) {
 
           <div className="password-wrapper">
             <input
+              className="login-input"
               name="password"
               autoComplete="off"
               ref={register({ required: true, minLength: 5, maxLength: 255 })}

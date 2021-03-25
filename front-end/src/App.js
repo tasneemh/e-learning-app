@@ -15,7 +15,6 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
 
   const validate = (isLoggedIn) => {
-    console.log("validate function", isLoggedIn);
     setLoggedIn(isLoggedIn);
   };
 
@@ -36,7 +35,7 @@ function App() {
             {/** register*/} <Register />
           </Route>
           <Route path="/educator">
-            {/** educator*/} <Educator />
+            {/** educator*/} <Educator validate={validate}/>
           </Route>
           <Route path="/educator-createnewcourses">
             {/** educator-createnewcourse*/}
@@ -47,7 +46,7 @@ function App() {
             <AccessForm />
           </Route>
           <Route path="/learner">
-            {/** learner*/} <Learner />
+            {/** learner*/} <Learner validate={validate}/>
           </Route>
           <Route path="/learner-coursedetails">
             {/** learner-coursedetails*/} <CourseDetails />
