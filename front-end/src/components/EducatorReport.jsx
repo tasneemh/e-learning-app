@@ -5,9 +5,8 @@ import HorizontalBarChart from "./HorizontalBarChart";
 
 export default function EducatorReport() {
   const history = useHistory();
-  //console.log("history in educator report", JSON.stringify(history));
   const educator = history.location.state.user;
-  const { firstname, lastname, email, id } = educator;
+  const { id } = educator;
   const [totalLearners, setTotalLearners] = useState();
   const [totalCourses, setTotalCourses] = useState();
   const [numLearnersForCourses, setNumLearnersForCourses] = useState([]);

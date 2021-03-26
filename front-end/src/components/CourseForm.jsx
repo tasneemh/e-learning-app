@@ -7,7 +7,6 @@ import "./CourseForm.css";
 
 export default function CourseForm() {
   const history = useHistory();
-  //console.log("prop history in course form", JSON.stringify(history));
   const user = history.location.state.user;
   const { id } = user;
   const { register, handleSubmit, errors } = useForm();
@@ -30,12 +29,9 @@ export default function CourseForm() {
       });
 
       const result = await response.json();
-      //console.log("result in uploadfile", JSON.stringify(result.format));
-      //console.log("result secure url in uploadfile", JSON.stringify(result.secure_url));
       const data = {};
       data["secureUrl"] = result.secure_url;
       data["format"] = result.format;
-      console.log("data in upload function", data);
       return data;
     } catch (error) {
       console.log("upload file error", error);
@@ -55,7 +51,6 @@ export default function CourseForm() {
   };
 
   const onSubmit = async (data, event) => {
-    console.log("data in on submit", data);
     let courseImage;
     if (Object.values(data.courseimage).length > 0) {
       courseImage = await uploadFile(data.courseimage[0]);
@@ -75,7 +70,6 @@ export default function CourseForm() {
     course["courseMaterialUrl"] = courseMaterial.secureUrl;
     course["materialFileFormat"] = courseMaterial.format;
     course["educatorId"] = id;
-    console.log("on submit function", course);
     await saveCourse(course);
     event.target.reset();
   };

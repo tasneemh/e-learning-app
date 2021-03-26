@@ -5,8 +5,7 @@
     font-size: 20px;
 }
 
-.form {
-    /**border: 1px solid green;**/   
+.form {   
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -25,8 +24,6 @@
     height: 600px;
     width: 400px;
     font-family: "Nunito", sans-serif;
-    /* position: relative; */
-    /* background-color: rgb(207, 204, 204); */
 }
 
 .register:hover {
@@ -34,13 +31,11 @@
 }
 
 .register-container {
-    /* border: 1px solid red; */
     display: flex;
     flex-direction: column;
     width: 400px;
     height: 500px;
     align-items: center;
-    /* justify-content: space-between; */
 }
 
 .input {
@@ -75,13 +70,11 @@
 
 .password-container {
     display: flex;
-    position: relative;
-    /*border: 1px solid brown;**/  
+    position: relative;  
 }
 
 .eye {
     width: 50px;
-    /* border: 1px solid yellow; */
     display: inline;
     position: absolute;
     top: 30%;
@@ -96,7 +89,6 @@
 .btn-container {
     display: flex;
     flex-direction: column;
-    /* border: 1px solid brown;  */
     align-items: center;
     padding: 0.5em;
     margin: 0.5em;
@@ -105,7 +97,6 @@
 .toggle-container {
     display: flex;
     width: 200px;
-    /**border: 1px solid orange;**/ 
     padding: 0.5em;
     margin: 0.5em;
     justify-content: space-around;
@@ -116,7 +107,6 @@
     display: flex;
     justify-content: space-around;
     width: 400px;
-    /**border: 1px solid blue;**/
     margin: 0.5em; 
 }
 

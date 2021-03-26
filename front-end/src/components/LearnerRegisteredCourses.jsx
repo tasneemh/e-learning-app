@@ -6,7 +6,7 @@ import RegisteredCourseCard from "./RegisteredCourseCard";
 export default function LearnerRegisteredCourses() {
   const history = useHistory();
   const user = history.location.state.user;
-  const { firstname, lastname, email, id } = user;
+  const { id } = user;
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {

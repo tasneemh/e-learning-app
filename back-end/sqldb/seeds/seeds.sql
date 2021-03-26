@@ -25,7 +25,7 @@ VALUES (
     'learnerdemo@gmail.com',
     '$2b$10$L14s9t1qiV3wiNazflUg/uGeYmrxIxVGqCpV2PHtadc/UxxgVd6CG'
   );
-   /**password:learnerdemo**/
+/**password:learnerdemo**/
 INSERT INTO educators (first_name, last_name, email, password)
 VALUES (
     'educator',
@@ -102,3 +102,9 @@ VALUES(1, 4),
   (3, 2),
   (4, 2),
   (4, 3);
+INSERT INTO accessrights (substitute_id, educator_course_id)
+VALUES(1, 3),
+  (1, 4);
+
+
+    

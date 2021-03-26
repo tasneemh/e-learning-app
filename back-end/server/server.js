@@ -139,6 +139,19 @@ app.get("/educator/:id/courses", (request, response) => {
     .catch(error => response.send(error));
 });
 
+app.get("/educator/:id/courseswithaccessrights", (request, response) => {
+  const educatorId = request.params.id;
+  sqldbHelpers.getAllCoursesForEducatorWithAccessRights(educatorId).then(
+    course => {
+      if (!course) {
+        response.send([]);
+        return;
+      }
+      response.send(course);
+    })
+    .catch(error => response.send(error));
+});
+
 app.get("/learner/:id/courses", (request, response) => {
   const learnerId = request.params.id;
   sqldbHelpers.getRegisteredCoursesForLearner(learnerId).then(

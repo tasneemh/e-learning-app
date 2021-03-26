@@ -2,13 +2,10 @@ import { useHistory } from "react-router-dom";
 import "./Learner.css";
 
 export default function LearnerSideBar(props) {
-  console.log("props in learner sidebar", props);
   const history = useHistory();
-  console.log("history in learner side bar", JSON.stringify(history));
   const user = history.location.state.user;
   const { firstname, lastname, email } = user;
   
-
   return (
     <section className="learner-sidebar">
       <img className="profile-img" src="/images/learnerprofile.jpg" alt="learner-img"/>

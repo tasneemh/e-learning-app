@@ -8,7 +8,6 @@ import LearnerCoursesList from "./LearnerCoursesList";
 export default function Learner() {
   const history = useHistory();
   const learner = history.location.state.user;
-  console.log("history in learner", learner);
   
   return (
     <div className="learner-container">

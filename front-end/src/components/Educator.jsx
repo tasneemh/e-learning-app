@@ -6,9 +6,7 @@ import "./Educator.css";
 
 export default function Educator() {
   const history = useHistory();
-  console.log("educator history", JSON.stringify(history));
   const educator = history.location.state.user;
-  //const { firstname, lastname, email, id } = educator;
 
   return (
     <div className="educator-container">
