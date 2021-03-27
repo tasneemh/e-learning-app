@@ -1,0 +1,44 @@
+.loginform-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2em;
+  padding: 2em;
+}
+
+.logingform:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.loginform-group {
+  border: 2px solid #36453B; 
+  margin: 0.5em;
+  padding: 1em;
+}
+
+.new-user-container{
+  margin: 0.5em;
+  padding: 0.5em;
+}
+
+.login-eye {
+  width: 50px;
+  display: inline;
+  position: absolute;
+  top: 10%;
+  left: 90%;
+}
+
+.login-btn-container{
+  display: flex;
+  justify-content: center;
+}
+
+.login-input{
+  width: 100%;
+  border: 1px solid grey;
+}
+
+.password-wrapper{
+  position: relative;
+}

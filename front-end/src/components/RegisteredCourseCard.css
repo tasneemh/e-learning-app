@@ -1,0 +1,22 @@
+.learner-course-card {
+  display: flex;
+  margin: 5px;
+  height: 90%;
+  font-family: Arial, Helvetica, sans-serif;
+  justify-content: center;
+  width: 100%;
+}
+
+.registered-course-name {
+  font-size: 30px;
+  font-weight: bold;
+}
+.registered-course-code {
+  font-size: 20px;
+  font-weight: normal;
+}
+.enrollment-date{
+  font-size: 18px;
+  font-weight: lighter;
+  text-decoration: underline;
+}

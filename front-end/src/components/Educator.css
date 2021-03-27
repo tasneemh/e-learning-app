@@ -1,0 +1,66 @@
+.educator-container {
+  display: flex;
+  width: 100%;
+  height: 80%;
+  align-content: center;
+  margin: 0.5em;
+  padding: 1em;
+  background-color: rgba(244, 244, 244, 1);
+}
+.educator-sidebar {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em;
+  margin: 0.5em;
+  width: 20%;
+  border: 5px solid darkgray;
+}
+
+.educator-content {
+  display: flex;
+  width: 80%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin: 0.25em;
+  padding: 0.5em;
+}
+
+.educator-report {
+  display: flex;
+  margin: 0.5em;
+  padding: 0.5em;
+  width: 98%;
+  height: 50%;
+  flex-direction: column;
+}
+
+.educator-courses-list {
+  display: flex;
+  margin: 0.5em;
+  padding: 0.5em;
+  width: 98%;
+  height: 50%;
+  flex-direction: column;
+}
+
+.educator-my-course {
+  font-size: 25px;
+  margin: 0.25em;
+}
+
+.total-number {
+  display: flex;
+  font-size: 25px;
+  font-weight: normal;
+  width: 100%;
+  justify-content: center;
+}
+
+.bold-number {
+  font-weight: bold;
+  margin-left: 0.25em;
+  margin-right: 0.25em;
+  font-size: 25px;
+}

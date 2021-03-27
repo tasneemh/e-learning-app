@@ -1,0 +1,55 @@
+.learner-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0.5em;
+  align-items: center;
+  background-color: rgba(244, 244, 244, 1);
+}
+.learner-sidebar {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em;
+  width: 20%;
+  border: 5px solid darkgray;
+  margin: 0.5em;
+  align-self: stretch;
+}
+
+.learner-content {
+  display: flex;
+  width: 80%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 1em;
+  padding: 1em;
+}
+
+.learner-registered-courses {
+  display: flex;
+  margin-right: 1em;
+  padding: 1em;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+
+.learner-allcourses-list {
+  display: flex;
+  margin-right: 1em;
+  padding: 1em;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.learner-title{
+  font-size: 25px;
+  margin: 0.25em;
+}

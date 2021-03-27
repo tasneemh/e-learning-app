@@ -1,0 +1,68 @@
+.coursedetails-container {
+  display: flex;
+  padding: 2em;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+}
+
+.course-material {
+  display: flex;
+  width: 90%;
+  height: 50%;
+}
+
+.course-info {
+  display: flex; 
+  margin-top: 1em;
+  width: 90%;
+  height: 50%;
+  
+}
+.learner-courseDetails-btn-container{
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 0.25em;
+}
+.enroll-msg{
+  font-weight: normal;
+  font-size: 20px;
+  color: lightcoral;
+  width: 100%;
+  display: flex;
+  padding: 0.5em;
+  justify-content: center; 
+}
+.course-details-name {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.course-details-code {
+  font-size: 20px;
+  font-weight: normal;
+}
+.course-details-created-at {
+  font-size: 18px;
+  font-weight: lighter;
+  text-decoration: underline;
+}
+.course-details-created-name {
+  font-size: 20px;
+  font-weight: normal;
+  margin-top: 2em;
+}
+.course-details-created-email {
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.course-details-description {
+  font-size: 20px;
+  font-weight: light;
+  margin-top: 2em;
+}
+
