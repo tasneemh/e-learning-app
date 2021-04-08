@@ -22,8 +22,7 @@ const useStyles = makeStyles({
 export default function LearnerCoursesList() {
   const history = useHistory();
   const learner = history.location.state.user;
-  console.log("history in learner courses list", learner);
-  const { firstname, lastname, email, id } = learner;
+  const { id } = learner;
   const [courses, setCourses] = useState([]);
   const classes = useStyles();
   const breakPoints = [{ width: 768, itemsToShow: 2 }];
@@ -33,7 +32,6 @@ export default function LearnerCoursesList() {
       .get(`http://localhost:9001/allcoursesforlearner`)
       .then((response) => {
         setCourses(response.data);
-        console.log("response data", response.data);
       })
       .catch((error) => {
         console.log(error);

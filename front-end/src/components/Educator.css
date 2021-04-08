@@ -1,9 +1,7 @@
 .educator-container {
   display: flex;
-  /*border: 1px solid green;*/
   width: 100%;
   height: 80%;
-  flex-direction: row;
   align-content: center;
   margin: 0.5em;
   padding: 1em;
@@ -20,7 +18,6 @@
 
 .educator-content {
   display: flex;
-  /* border: 1px solid red; */
   width: 80%;
   height: 100%;
   flex-direction: column;
@@ -32,7 +29,6 @@
 
 .educator-report {
   display: flex;
-  /*border: 1px solid blue;*/
   margin: 0.5em;
   padding: 0.5em;
   width: 98%;
@@ -42,7 +38,6 @@
 
 .educator-courses-list {
   display: flex;
-  /*border: 1px solid yellow;*/
   margin: 0.5em;
   padding: 0.5em;
   width: 98%;
@@ -59,10 +54,10 @@
   display: flex;
   font-size: 25px;
   font-weight: normal;
-  /*border: 1px solid red;*/
   width: 100%;
   justify-content: center;
 }
+
 .bold-number {
   font-weight: bold;
   margin-left: 0.25em;

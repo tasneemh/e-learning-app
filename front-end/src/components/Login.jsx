@@ -27,14 +27,12 @@ export default function Login(props) {
   };
 
   const onSubmit = (data, event) => {
-    console.log("data onsubmit: ", data);
     clearErrors();
     fire
       .auth()
       .signInWithEmailAndPassword(data.email, data.password)
       .then((userCredential) => {
         const user = userCredential.user;
-        //setLoggedIn(true);
         props.validate(true);
         event.target.reset();
         axios
@@ -42,7 +40,6 @@ export default function Login(props) {
           .then((response) => {
             const user = response.data.user;
             const userType = response.data.user.usertype;
-            console.log("response", response.data.user);
             if (userType === "learner") {
               history.push({ pathname: "/learner", state: { user } });
             } else if (userType === "educator") {
@@ -77,6 +74,7 @@ export default function Login(props) {
         <div className="loginform-group">
           <div>Login</div>
           <input
+            className="login-input"
             name="email"
             autoComplete="off"
             ref={register({
@@ -97,6 +95,7 @@ export default function Login(props) {
 
           <div className="password-wrapper">
             <input
+              className="login-input"
               name="password"
               autoComplete="off"
               ref={register({ required: true, minLength: 5, maxLength: 255 })}

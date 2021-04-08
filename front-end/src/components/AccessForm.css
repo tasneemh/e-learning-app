@@ -1,12 +1,17 @@
-*{
-  margin:0;
-  padding:0;
-  box-sizing: border-box;
+.accessform-container {
+  display: flex;
+  width: 100%;
+  height: 80%;
+  align-content: center;
+  margin: 0.5em;
+  padding: 1em;
+  background-color: rgba(244, 244, 244, 1);
 }
-.accessform{
-  width: 70%;
-  border: 1px solid green;
+.accessform {
+  width: 80%;
+  margin: 0.5em;
+  padding: 1em;
 }
-.accessform-input{
-  width: 70%;
+.accessform-input {
+  width: 80%;
 }

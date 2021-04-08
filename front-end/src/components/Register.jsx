@@ -44,7 +44,6 @@ export default function Register() {
       .createUserWithEmailAndPassword(data.email, data.password)
       .then((userCredentials) => {
         const user = userCredentials.user;
-        console.log("user: ", user);
         event.target.reset();
         axios
           .post(`http://localhost:9001/savenewuser`, { data })
@@ -52,10 +51,8 @@ export default function Register() {
             const user = response.data.user;
             const userType = response.data.user.usertype;
             if (userType === "learner") {
-              console.log("inside learner");
               history.push({ pathname: "/learner", state: { user } });
             } else if (userType === "educator") {
-              console.log("inside educator");
               history.push({ pathname: "/educator", state: { user } });
             }
           })
@@ -65,8 +62,6 @@ export default function Register() {
       })
 
       .catch((error) => {
-        console.log("error with register: ", error.code);
-        console.log("error.code: ", error.code);
         switch (error.code) {
           case "auth/email-already-in-use":
             setEmailError("Email is already in use");

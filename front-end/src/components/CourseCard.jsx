@@ -9,8 +9,8 @@ import IconButton from "@material-ui/core/IconButton";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Collapse from "@material-ui/core/Collapse";
 import "./CourseCard.css";
-import Carousel from 'react-elastic-carousel';
-import moment from 'moment';
+import Carousel from "react-elastic-carousel";
+import moment from "moment";
 
 const useStyles = makeStyles((theme) => ({
   media: {
@@ -38,25 +38,29 @@ export default function CourseCard(props) {
   };
 
   const coursesList = props.courses;
-  const breakPoints = [{width: 768, itemsToShow:2}];
+  const breakPoints = [{ width: 768, itemsToShow: 2 }];
 
   const calDate = function (timeString) {
     return moment(timeString).fromNow();
-  }
+  };
 
   const displayCourses = coursesList.map((course, index) => {
     return (
       <div className="educator-course-card" key={index}>
-        <Card style={{width:"80%", backgroundColor: "#36453B", color: "silver"}}>
+        <Card
+          style={{ width: "80%", backgroundColor: "#36453B", color: "silver" }}
+        >
           <CardMedia className={classes.media} image={course.image_url} />
-          <CardContent >
+          <CardContent>
             <div className="educator-course-name">{course.name}</div>
             <div className="educator-course-code">{course.code}</div>
-            <div className="educator-course-created">Created: {calDate(course.created_at)}</div>
+            <div className="educator-course-created">
+              Created: {calDate(course.created_at)}
+            </div>
           </CardContent>
           <CardActions disableSpacing>
-            <IconButton 
-              style={{ color: "silver"}}
+            <IconButton
+              style={{ color: "silver" }}
               className={clsx(classes.expand, {
                 [classes.expandOpen]: expanded,
               })}
@@ -64,21 +68,25 @@ export default function CourseCard(props) {
               aria-expanded={expanded}
               aria-label="show more"
             >
-              <ExpandMoreIcon/>
+              <ExpandMoreIcon />
             </IconButton>
           </CardActions>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent>
-              <div >Description:</div>
-              <div >{course.description}</div>
+              <div>Description:</div>
+              <div>{course.description}</div>
             </CardContent>
           </Collapse>
         </Card>
-     </div>
+      </div>
     );
   });
-  return (<div 
-  className="courses-cards-container">
-  <Carousel breakPoints = {breakPoints} className="course-card-carousel"
-      >{displayCourses}</Carousel>
-  </div>)};   
+
+  return (
+    <div className="courses-cards-container">
+      <Carousel breakPoints={breakPoints} className="course-card-carousel">
+        {displayCourses}
+      </Carousel>
+    </div>
+  );
+}

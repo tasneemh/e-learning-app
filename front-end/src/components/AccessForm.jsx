@@ -6,12 +6,11 @@ import { useHistory } from "react-router-dom";
 import EducatorSideBar from "./EducatorSideBar";
 
 function AccessForm() {
-  const { register, handleSubmit, errors } = useForm({});
+  const { register, handleSubmit, reset } = useForm({});
   const [message, setMessage] = useState("");
   const [educators, setEducators] = useState([]);
   const [courses, setCourses] = useState([]);
   const history = useHistory();
-  //console.log("history in educator access form", JSON.stringify(history));
   const user = history.location.state.user;
   const educatorId = user.id;
 
@@ -56,9 +55,8 @@ function AccessForm() {
     );
   };
 
-  const onSubmit = (event, data) => {
-    data['educatorId'] = educatorId;
-    console.log("data in access form", data);
+  const onSubmit = (data) => {
+    data["educatorId"] = educatorId;
     axios
       .post(`http://localhost:9001/addnewsubstitute`, { data })
       .then((response) => {
@@ -67,12 +65,11 @@ function AccessForm() {
         if (message) {
           setMessage("YOU HAVE SUCCESSFULLY PROVIDED ACCESS RIGHTS");
           clearMessage();
-          event.target.reset();
+          
         }
         if (error) {
           setMessage("THERE IS AN ERROR IN PROVIDING ACCESS RIGHTS");
           clearMessage();
-          event.target.reset();
         }
       })
       .catch((error) => {
@@ -87,11 +84,17 @@ function AccessForm() {
         <h4>Access form</h4>
         <label>Substitute: </label>
         <select name="substituteid" ref={register}>
+          <option value="" selected disabled hidden>
+            Select an educator
+          </option>
           {displayEducators()}
         </select>
         <br />
         <label>Courses: </label>
         <select name="courseid" ref={register}>
+          <option value="" selected disabled hidden>
+            Select a course
+          </option>
           {displayCourses()}
         </select>
         <br />

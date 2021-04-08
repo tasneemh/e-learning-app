@@ -1,13 +1,10 @@
 .courses-cards-container {
   display: flex;
-  /* border: 1px solid black; */
-  flex-direction: row;
-  justify-content: space-around;
+  flex-direction: column;
 }
 
 .course-card-carousel{
-  display: flex;
-  /* border: 1px solid rgb(145, 145, 145); */
+  display: flex; 
   justify-content: center;
   margin: 1em;
   width: 100%;
@@ -40,6 +37,12 @@
   font-size: 18px;
   font-weight: lighter;
   text-decoration: underline;
+}
+
+.educator-course-access-rights {
+  font-size: 20px;
+  font-weight: normal;
+  padding-top: 0.5em;
 }
 
 .lgksPe:hover:enabled, .lgksPe:focus:enabled {

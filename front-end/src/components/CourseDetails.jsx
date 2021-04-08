@@ -50,7 +50,7 @@ export default function CourseDetails() {
       <iframe src={material_url} height="100%" width="100%"></iframe>
       );
     }*/
-      return <img src={material_url} width="100%" height="100%" alt=""/>;
+      return <img src={material_url} width="100%" height="100%" alt="" />;
     }
   };
 
@@ -66,12 +66,9 @@ export default function CourseDetails() {
         `http://localhost:9001/learner/${data.learnerid}/checkduplicatecourse/${data.courseid}`
       )
       .then((response) => {
-        //console.log("response in checkDuplicateCourse ",response);
-        console.log("response.data.message", response.data.message);
         if (
           response.data.message === "You have already enrolled for this course!"
         ) {
-          console.log("SUCCESSFUL");
           setMessage("YOU HAVE ALREADY ENROLLED FOR THIS COURSE!");
           clearMessage();
           return true;

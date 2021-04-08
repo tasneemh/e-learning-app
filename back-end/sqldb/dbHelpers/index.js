@@ -45,7 +45,6 @@ module.exports = (pool) => {
   };
 
   const enrollCourse = (id) => {
-    console.log("id", id);
     return pool.query(`
     INSERT INTO learners_courses(learner_id, course_id) VALUES($1, $2) RETURNING *;`,
       [id.learnerid, id.courseid])
@@ -69,19 +68,33 @@ module.exports = (pool) => {
         console.log(error);
       });
   };
+
+  const getAllCoursesForEducatorWithAccessRights = (educatorId) => {
+    return pool.query(`
+    SELECT courses.*, educators.* FROM educators_courses
+    JOIN accessrights ON educators_courses.id = accessrights.educator_course_id 
+    JOIN courses ON educators_courses.course_id = courses.id
+    JOIN educators ON educators_courses.educator_id = educators.id
+    WHERE accessrights.substitute_id = $1`, [educatorId])
+      .then(response => {
+        return response.rows;
+      }).catch(error => {
+        console.log(error);
+      });
+  };
+
   const checkDuplicateCourseForLearner = (learnerId, courseId) => {
     return pool.query(`
     SELECT * FROM learners_courses 
     WHERE learner_id = $1 AND course_id = $2; 
     `, [learnerId, courseId])
       .then(response => {
-        console.log("response in dbhelpers: ", response.rows);
         return response.rows;
       }).catch(error => {
         console.log(error);
       });
   };
-  const getAllEducators = (educatorId) =>{
+  const getAllEducators = (educatorId) => {
     return pool.query(`
     SELECT * FROM educators WHERE NOT id = $1`, [educatorId])
       .then(response => {
@@ -92,8 +105,8 @@ module.exports = (pool) => {
   };
 
   const addNewSubstitute = (user) => {
-    const substituteId = Number(user.substituteId);
-    const courseId = Number(user.courseId);
+    const substituteId = Number(user.substituteid);
+    const courseId = Number(user.courseid);
     const educatorId = user.educatorId;
     return pool.query(`
     SELECT * FROM educators_courses WHERE educator_id = $1 AND course_id = $2; 
@@ -102,12 +115,12 @@ module.exports = (pool) => {
         const educatorCourseId = response.rows[0].id;
         return pool.query(`
         INSERT INTO accessrights(substitute_id, educator_course_id) VALUES($1, $2) RETURNING *; 
-        `, [substituteId, educatorCourseId]).then(response =>{
+        `, [substituteId, educatorCourseId]).then(response => {
           return response.rows[0];
-        })
+        });
       }).catch(error => {
         console.log("error", error);
-    })
+      });
   };
 
   const getUserData = (user) => {
@@ -129,7 +142,6 @@ module.exports = (pool) => {
     JOIN educators ON educators.id = educators_courses.educator_id 
     ORDER BY courses.created_at DESC`)
       .then(response => {
-        console.log("response", response.rows);
         return response.rows;
       }).catch(error => {
         console.log(error);
@@ -179,6 +191,8 @@ module.exports = (pool) => {
       });
   };
 
-  return { saveNewUser, saveCourse, getAllCoursesForEducator, getUserData, getAllCoursesForLearner, enrollCourse, getRegisteredCoursesForLearner, getNumLearnersForCourses, getTotalLearnersAndCoursesForEducator,
-  checkDuplicateCourseForLearner, addNewSubstitute, getAllEducators };
+  return {
+    saveNewUser, saveCourse, getAllCoursesForEducator, getUserData, getAllCoursesForLearner, enrollCourse, getRegisteredCoursesForLearner, getNumLearnersForCourses, getTotalLearnersAndCoursesForEducator,
+    checkDuplicateCourseForLearner, addNewSubstitute, getAllEducators, getAllCoursesForEducatorWithAccessRights
+  };
 };

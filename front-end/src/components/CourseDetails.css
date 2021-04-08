@@ -1,6 +1,5 @@
 .coursedetails-container {
   display: flex;
-  border: 1px solid green;
   padding: 2em;
   flex-direction: column;
   justify-content: center;
@@ -12,14 +11,12 @@
 
 .course-material {
   display: flex;
-  border: 1px solid red;
   width: 90%;
   height: 50%;
 }
 
 .course-info {
-  display: flex;
-  border: 1px solid yellow; 
+  display: flex; 
   margin-top: 1em;
   width: 90%;
   height: 50%;

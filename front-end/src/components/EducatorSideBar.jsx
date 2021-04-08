@@ -3,14 +3,13 @@ import "./EducatorSideBar.css";
 
 export default function EducatorSideBar() {
   const history = useHistory();
-  //console.log("history in educator side bar", JSON.stringify(history));
   const user = history.location.state.user;
   const { firstname, lastname, email } = user;
 
   const handleCreateNewCourseClick = () => {
     history.push({ pathname: "/educator-createnewcourses", state: { user } });
   };
-  //create new pathway
+  
   const handleAccessRights = () => {
     history.push({ pathname: "/educator-giveaccessrights", state: { user } });
   };
