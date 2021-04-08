@@ -72,7 +72,7 @@ module.exports = (pool) => {
   const checkDuplicateCourseForLearner = (learnerId, courseId) => {
     return pool.query(`
     SELECT * FROM learners_courses 
-    WHERE learner_id = $1 AND course_id = $2 
+    WHERE learner_id = $1 AND course_id = $2; 
     `, [learnerId, courseId])
       .then(response => {
         console.log("response in dbhelpers: ", response.rows);
