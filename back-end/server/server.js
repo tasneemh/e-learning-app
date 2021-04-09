@@ -15,7 +15,7 @@ const app = express();
 const PORT = 9001;
 
 app.use(morgan('dev'));
-app.use(cors());
+app.use(cors({origin: true, credentials: true}));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 

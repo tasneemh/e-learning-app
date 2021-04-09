@@ -4,7 +4,7 @@ const { Pool } = require('pg');
 
 //creating pool object
 const pool = new Pool({
-  host: 'localhost',
+  host: "localhost",
   user: 'development',
   password: 'development',
   database: 'educational_web_app',
@@ -12,7 +12,7 @@ const pool = new Pool({
 });
 
 pool.connect((err) => {
-  if (err) throw new Error(err);
+  if (err) throw new Error("error inside db.js: ", err);
 })
 
 console.log('postgrel sql db connection establishing...');
